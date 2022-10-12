@@ -17,6 +17,14 @@
         </a>
     </li>
     <li class="nav-item">
+        <a href="{{ url('pegawai/skp') }}" class="nav-link {{request()->is('pegawai/skp') ? 'active' : ''}} ">
+            <i class="nav-icon far fa-file-alt"></i>
+            <p>
+                SKP
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
         <a href="{{ url('pegawai/absensi') }}" class="nav-link {{request()->is('pegawai/absensi') ? 'active' : ''}} ">
             <i class="nav-icon far fa-list-alt"></i>
             <p>

@@ -6,6 +6,7 @@ use App\Http\Controllers\SuperAdmin\MasterData\BerandaController as MasterDataBe
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Profile\PegawaiProfileController;
+use App\Http\Controllers\Admin\MasterData\SkpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ use App\Http\Controllers\Profile\PegawaiProfileController;
 Route::get('/', function () {
     return view('auth/login');
 });
+
+// validasi
+Route::put('setuju/{id}', [SkpController::class, 'setuju']);
+Route::put('tolak/{id}', [SkpController::class, 'tolak']);
 
 // login
 Route::get('login', [AuthController::class, 'login'])->name('login');

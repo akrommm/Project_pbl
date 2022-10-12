@@ -11,6 +11,7 @@
         <ul class="nav nav-treeview">
             <x-template.menu.menu-item title="Pegawai" url="admin/master-data/pegawai" icon="users" />
             <x-template.menu.menu-item title="Module" url="admin/master-data/module" icon="clone" />
+            <x-template.menu.menu-item title="Skp" url="admin/master-data/skp" icon="file" />
         </ul>
     </li>
 </ul>

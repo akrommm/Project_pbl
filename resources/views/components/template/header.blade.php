@@ -11,7 +11,7 @@
         <!-- Notifications Dropdown Menu -->
         <div class="d-flex align-items-center">
             <div class="float-left p-r-10 fs-10 font-heading d-lg-block d-none">
-                <span class="semi-bold">
+                <span class="semi-bold" style="font:Segue Ui;">
                     @if (auth()->check())
                     {{ auth()->user()->nama }}
                     @endif

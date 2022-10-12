@@ -1,6 +1,6 @@
 <x-module.pegawai>
     <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Absensi
+        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Rekap Absensi
         </h5>
     </div>
 
@@ -16,14 +16,15 @@
                 <thead class="bg-dark">
                     <th width="10px">No</th>
                     <th width="90px">Aksi</th>
-                    <th>Status</th>
                     <th>Nama</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Email</th>
+                    <th>Jabatan</th>
+                    <th>Jumlah Kehadiran</th>
+                    <th>Persentase Kehadiran</th>
                 </thead>
                 <tbody>
+                    @foreach ($list_absensi->sortByDesc('created_at')->values() as $absensi)
                     <tr>
-                        <td></td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>
                             <div class="btn-group">
                                 <x-template.button.info-button url="superadmin/master-data/pegawai" id="" />
@@ -31,11 +32,12 @@
                                 <x-template.button.delete-button url="superadmin/master-data/pegawai" id="" />
                             </div>
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $absensi->nama }}</td>
+                        <td>{{ $absensi->jabatan }}</td>
+                        <td>{{ $absensi->jumlah_kehadiran }}</td>
                         <td></td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
