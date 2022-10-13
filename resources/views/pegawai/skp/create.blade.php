@@ -12,13 +12,37 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="control-label">SKP</label>
-                            <input type="text" name="skp" class="form-control">
+                            <label for="" class="control-label">Tahun</label>
+                            <input type="number" name="tahun" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label">Orientasi Pelayanan</label>
+                            <input type="number" name="orientasi_pelayanan" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label">Inisiatif Kerja</label>
+                            <input type="number" name="inisiatif_kerja" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label">Komitmen</label>
+                            <input type="number" name="komitmen" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="control-label">Upload Syarat Magang</label>
+                            <label for="" class="control-label">Kerja Sama</label>
+                            <input type="number" name="kerja_sama" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label">Kepemimpinan</label>
+                            <input type="number" name="kepemimpinan" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label">Sasaran Kerja ASN</label>
+                            <input type="number" name="sasaran_kerja" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label">Upload Dokumen</label>
                             <input type="file" name="file" accept=".pdf" class="form-control">
                         </div>
                     </div>

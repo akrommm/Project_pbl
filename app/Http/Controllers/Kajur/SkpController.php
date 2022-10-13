@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\MasterData;
+namespace App\Http\Controllers\Kajur;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\MasterData\Skp;
+use App\Models\Kajur\Skp;
 
 class SkpController extends Controller
 {
@@ -11,7 +11,7 @@ class SkpController extends Controller
     {
         $data['list_skp'] = Skp::all();
         $data['pegawai'] = auth()->user();
-        return view('admin.master-data.skp.index', $data);
+        return view('kajur.skp.index', $data);
     }
 
     public function store()
@@ -25,7 +25,7 @@ class SkpController extends Controller
 
         $skp->handleUploadFile();
 
-        return redirect('admin/master-data/skp')->with('success', 'Berhasil Menambahkan SKP');
+        return redirect('kajur/skp')->with('success', 'Berhasil Menambahkan SKP');
     }
 
     public function setuju($id)
@@ -33,7 +33,7 @@ class SkpController extends Controller
         $skp = skp::find($id);
         $skp->status = 2;
         $skp->save();
-        return redirect('admin/master-data/skp')->with('success', 'Data Disetujui');
+        return redirect('kajur/skp')->with('success', 'Data Disetujui');
     }
 
     public function tolak($id)
@@ -41,6 +41,6 @@ class SkpController extends Controller
         $skp = skp::find($id);
         $skp->status = 3;
         $skp->save();
-        return redirect('admin/master-data/skp')->with('danger', 'Data Ditolak');
+        return redirect('kajur/skp')->with('danger', 'Data Ditolak');
     }
 }

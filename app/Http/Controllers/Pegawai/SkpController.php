@@ -24,9 +24,17 @@ class SkpController extends Controller
     public function store()
     {
         $skp = new skp();
-        $skp->skp = request('skp');
+        $skp->tahun = request('tahun');
+        $skp->orientasi_pelayanan = request('orientasi_pelayanan');
+        $skp->inisiatif_kerja = request('inisiatif_kerja');
+        $skp->komitmen = request('komitmen');
+        $skp->kerja_sama = request('kerja_sama');
+        $skp->kepemimpinan = request('kepemimpinan');
+        $skp->sasaran_kerja = request('sasaran_kerja');
         $skp->file = request('file');
         $skp->id_pegawai = request()->user()->id;
+        $skp->nama = request()->user()->nama;
+        $skp->nip = request()->user()->nip;
         $skp->status = 1;
         $skp->save();
 

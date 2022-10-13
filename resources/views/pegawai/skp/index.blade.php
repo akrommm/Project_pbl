@@ -14,33 +14,44 @@
         <div class="card-body">
             <table class="table table-bordered table-striped">
                 <thead class="bg-dark">
-                    <th style="width: 1%">No</th>
-                    <th width="120px">Aksi</th>
-                    <th>SKP</th>
-                    <th width="230px">Status</th>
+                    <th class="text-center">Tahun</th>
+                    <th class="text-center">Nilai</th>
+                    <th class="text-center" width="120px">Dokumen</th>
+                    <th class="text-center" width="120px">Aksi</th>
+                    <th class="text-center" width="230px">Status</th>
                 </thead>
                 <tbody>
                     @foreach ($list_skp as $skp)
                     @if ($pegawai->id == $skp->id_pegawai)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $skp->tahun }}</td>
                         <td>
+                            Pelayanan : {{ $skp->orientasi_pelayanan}} |
+                            Kerja Sama : {{ $skp->kerja_sama}} |
+                            Inisiatif Kerja : {{ $skp->inisiatif_kerja}} |
+                            Kepemimpinan : {{ $skp->kepemimpinan}}
+                            Komitmen : {{ $skp->komitmen}} |
+                            Sasaran Kerja : {{$skp->sasaran_kerja}}
+                        </td>
+                        <td class="text-center">
                             <div class="btn-group">
                                 <a href="" target="popup" onclick="window.open('{{ url($skp->file) }}','popup','width=800,height=600'); return false;" class="btn btn-dark"><i class="fas fa-eye"></i> Lihat</a>
                             </div>
                         </td>
-                        <td>{{ $skp->skp }}</td>
-                        <td>
+                        <td class="text-center">
+                            <x-template.button.delete-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" />
+                        </td>
+                        <td class="text-center">
                             @if ($skp->status == 1)
-                            <p class="btn btn-warning">Pengajuan Baru</p>
+                            <label class="btn btn-warning">Tunggu</label>
                             @endif
 
                             @if ($skp->status == 2)
-                            <p class="btn btn-success">Pengajuan Diterima</p>
+                            <label class="btn btn-success">Disetujui</label>
                             @endif
 
                             @if ($skp->status == 3)
-                            <p class="btn btn-danger">Pengajuan Ditolak</p>
+                            <label class="btn btn-danger">Ditolak</label>
                             @endif
                         </td>
                     </tr>

@@ -6,7 +6,7 @@ use App\Http\Controllers\SuperAdmin\MasterData\BerandaController as MasterDataBe
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Profile\PegawaiProfileController;
-use App\Http\Controllers\Admin\MasterData\SkpController;
+use App\Http\Controllers\Kajur\SkpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +42,8 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('pegawai')->group(function () {
     include "_/pegawai.php";
+});
+
+Route::prefix('kajur')->group(function () {
+    include "_/kajur.php";
 });
