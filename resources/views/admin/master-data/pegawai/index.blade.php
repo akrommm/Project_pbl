@@ -23,7 +23,7 @@
                 <tbody>
                     @foreach ($list_pegawai->sortByDesc('created_at')->values() as $pegawai)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
                         <td>
                             <div class="btn-group">
                                 <x-template.button.info-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" />

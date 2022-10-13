@@ -18,7 +18,7 @@
                 </span>
             </div>
             <li class="nav-item dropdown">
-                <a class="nav-link mb-2" data-toggle="dropdown" href="#">
+                <a class="nav-link" data-toggle="dropdown" href="#">
                     @if (auth()->user()->foto)
                     <img src="{{ url(auth()->user()->foto) }}" alt="User Avatar" height="33px" width="33px" class="img-circle">
                     @else

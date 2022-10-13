@@ -3,31 +3,28 @@
     <li class="nav-item">
         <a href="{{ url('pegawai/beranda') }}" class="nav-link {{request()->is('pegawai/beranda') ? 'active' : ''}} ">
             <i class="nav-icon fas fa-home"></i>
-            <p>
+            <p class="font-weight-bold">
                 Beranda
             </p>
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ url('pegawai/kinerja') }}" class="nav-link {{request()->is('pegawai/kinerja') ? 'active' : ''}} ">
-            <i class="nav-icon fas fa-pencil-alt"></i>
-            <p>
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-chart-line"></i>
+            <p class="font-weight-bold">
                 Kinerja
+                <i class="right fas fa-angle-left"></i>
             </p>
         </a>
-    </li>
-    <li class="nav-item">
-        <a href="{{ url('pegawai/skp') }}" class="nav-link {{request()->is('pegawai/skp') ? 'active' : ''}} ">
-            <i class="nav-icon far fa-file-alt"></i>
-            <p>
-                SKP
-            </p>
-        </a>
+        <ul class="nav nav-treeview">
+            <x-template.menu.menu-item title="Tukin" url="pegawai/tukin" icon="money-bill-wave" />
+            <x-template.menu.menu-item title="Skp" url="pegawai/skp" icon="file-alt" />
+        </ul>
     </li>
     <li class="nav-item">
         <a href="{{ url('pegawai/absensi') }}" class="nav-link {{request()->is('pegawai/absensi') ? 'active' : ''}} ">
             <i class="nav-icon far fa-list-alt"></i>
-            <p>
+            <p class="font-weight-bold">
                 Absensi
             </p>
         </a>

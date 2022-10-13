@@ -14,15 +14,20 @@
         <div class="card-body">
             <table class="table table-bordered table-striped">
                 <thead class="bg-dark">
+                    <th style="width: 1%">No</th>
                     <th width="120px">Preview</th>
                     <th>SKP</th>
                     <th width="260px">Status</th>
                     <th width="200px">Aksi</th>
                 </thead>
                 <tbody>
+                    @php
+                    $no = 1;
+                    @endphp
                     @foreach ($list_skp as $skp)
                     @if ($skp->status == 1)
                     <tr>
+                        <td>{{ $no++ }}</td>
                         <td>
                             <div class="btn-group">
                                 <a href="" target="popup" onclick="window.open('{{ url($skp->file) }}','popup','width=800,height=600'); return false;" class="btn btn-dark"><i class="fas fa-eye"></i> Lihat</a>

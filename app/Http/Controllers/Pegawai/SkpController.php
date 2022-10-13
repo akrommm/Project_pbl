@@ -43,6 +43,13 @@ class SkpController extends Controller
         return redirect('pegawai/skp')->with('success', 'Berhasil Menambahkan SKP');
     }
 
+    function destroy(Skp $skp)
+    {
+        $skp->handleDelete();
+        $skp->delete();
+        return redirect('pegawai/skp')->with('danger', 'berhasil di hapus');
+    }
+
     public function setuju($id)
     {
         $skp = skp::find($id);
