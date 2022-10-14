@@ -88,6 +88,6 @@ class PegawaiController extends Controller
 
         $pegawai->delete();
 
-        return redirect('superadmin/master-data/pegawai')->with('danger', 'Data berhasil dihapus');
+        return redirect('admin/master-data/pegawai')->with('danger', 'Data berhasil dihapus');
     }
 }

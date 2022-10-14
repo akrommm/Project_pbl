@@ -4,6 +4,7 @@ namespace App\Models\Admin\MasterData;
 
 use App\Models\Admin\MasterData\Module;
 use App\Models\Admin\MasterData\Pegawai;
+use App\Models\Admin\MasterData\Unitkerja;
 
 use App\Models\Model;
 
