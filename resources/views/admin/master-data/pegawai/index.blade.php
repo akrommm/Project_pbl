@@ -6,7 +6,6 @@
     <div class="card mt-4">
         <div class="card-header">
             <div class="card-title">
-                Data Pegawai
             </div>
             <a href="{{ url('admin/master-data/pegawai/create') }}" class="float-right btn btn-dark"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
