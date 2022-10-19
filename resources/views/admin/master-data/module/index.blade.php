@@ -24,7 +24,7 @@
                 <tbody>
                     @foreach ($list_module->sortByDesc('created_at')->values() as $module)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
                         <td>
                             <div class="btn-group">
                                 <x-template.button.info-button url="admin/master-data/module" id="{{ $module->id }}" />
@@ -35,7 +35,7 @@
                         <td>{{ $module->name }}</td>
                         <td>{{ $module->title }}</td>
                         <td>{{ $module->tag }}</td>
-                        <td>{{ $module->role_count }}</td>
+                        <td class="text-center">{{ $module->role_count }}</td>
                         <td>{{ $module->url }}</td>
                     </tr>
                     @endforeach

@@ -2,31 +2,45 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title">
-                Pegawai
+                DATA PEGAWAI UNIT KERJA {{ $unitkerja->nama_unit }}
             </div>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ url('admin/master-data/unitkerja/add-role') }}" method="post">
+                    <form action="{{ url('admin/master-data/unitkerja/add-unit') }}" method="post">
                         @csrf
-                        <input type="hidden" name="id_unitkerja" value="{{ $unitkerja->id }}">
-                        <div class="form-group">
-                            <label for="" class="control-label">Pegawai</label>
-                            <select class="form-control select2bs4" class="" name="id_pegawai" style="width: 100%;">
-                                <option selected="selected">Pilih Nama Pegawai</option>
-                                @foreach ($list_pegawai as $pegawai)
-                                <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
-                                @endforeach
-                            </select>
-                            <!-- <select name="id_pegawai" class="form-control">
-                                @foreach ($list_pegawai as $pegawai)
-                                <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
-                                @endforeach
-                            </select> -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="hidden" name="id_unitkerja" value="{{ $unitkerja->id }}">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Pegawai</label>
+                                    <select class="form-control select2bs4" class="" name="id_pegawai" style="width: 100%;">
+                                        <option selected="selected">Pilih Nama Pegawai</option>
+                                        @foreach ($list_pegawai as $pegawai)
+                                        <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                    <!-- <select name="id_pegawai" class="form-control">
+                                    @foreach ($list_pegawai as $pegawai)
+                                    <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
+                                    @endforeach
+                                    </select> -->
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Jabatan</label>
+                                    @if ($errors->has('Jabatan'))
+                                    <label for="" class="label text-danger">{{ $errors->get('Jabatan')[0] }}</label>
+                                    @endif
+                                    <input type="text" name="jabatan" class="form-control">
+                                </div>
+                            </div>
+
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-dark float-right"><i class="far fa-save"> Simpan</i></button>
+                            <button class="btn btn-dark float-right"><i class="far fa-save"> Tambah</i></button>
                         </div>
                     </form>
                 </div>
@@ -40,14 +54,18 @@
                             <th>Jabatan</th>
                         </thead>
                         <tbody>
-                            @foreach ($unitkerja->role as $role)
+                            @foreach ($unitkerja->unitdetail as $unitdetail)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    <a href="{{ url('admin/master-data/unitkerja/delete-role', $role->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"> Hapus</i></a>
+                                    <div class="btn-group">
+                                        <a href="" class="btn btn-dark btn-sm"><i class="fas fa-info"></i></a>
+                                        <a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ url('admin/master-data/unitkerja/delete-unit', $unitdetail->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                    </div>
                                 </td>
-                                <td>{{ $role->pegawai->nip }}</td>
-                                <td>{{ $role->pegawai->nama }}</td>
+                                <td>{{ $unitdetail->pegawai->nama }}, {{ $unitdetail->pegawai->gelar_belakang }}</td>
+                                <td>{{ $unitdetail->jabatan }}</td>
                             </tr>
                             @endforeach
                         </tbody>

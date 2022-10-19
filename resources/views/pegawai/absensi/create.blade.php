@@ -10,10 +10,6 @@
             <form action="{{ url('pegawai/absensi') }}" method="post">
                 @csrf
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nama Pegawai</label>
-                    <input type="text" name="nama" class="form-control" id="exampleFormControlInput1">
-                </div>
-                <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Jabatan</label>
                     <input type="text" name="jabatan" class="form-control" id="exampleFormControlInput1">
                 </div>

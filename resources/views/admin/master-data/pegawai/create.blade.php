@@ -35,20 +35,26 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="control-label">Status</label>
-                            @if ($errors->has('status_pegawai'))
-                            <label for="" class="label text-danger">{{ $errors->get('status_pegawai')[0] }}</label>
+                            <label for="" class="control-label">Gelar Depan</label>
+                            @if ($errors->has('gelar_depan'))
+                            <label for="" class="label text-danger">{{ $errors->get('gelar_depan')[0] }}</label>
                             @endif
-                            <select name="status_pegawai" class="form-control">
-                                <option selected disabled>Pilih opsi</option>
-                                <option value="Admin">Admin</option>
-                                <option value="Pegawai">Pegawai</option>
-                                <option value="Jurusan">Jurusan</option>
-                            </select>
+                            <input type="number" name="gelar_depan" class="form-control">
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="" class="control-label">Gelar Belakang</label>
+                            @if ($errors->has('gelar_belakang'))
+                            <label for="" class="label text-danger">{{ $errors->get('gelar_belakang')[0] }}</label>
+                            @endif
+                            <input type="text" name="gelar_belakang" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="" class="control-label">Agama</label>
@@ -77,6 +83,15 @@
                                 <option value="Laki-laki">Laki-laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="" class="control-label">Username</label>
+                            @if ($errors->has('username'))
+                            <label for="" class="label text-danger">{{ $errors->get('username')[0] }}</label>
+                            @endif
+                            <input type="text" name="username" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -119,17 +134,6 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="control-label">Username</label>
-                            @if ($errors->has('username'))
-                            <label for="" class="label text-danger">{{ $errors->get('username')[0] }}</label>
-                            @endif
-                            <input type="text" name="username" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
                             <label for="" class="control-label">Email</label>
                             @if ($errors->has('email'))
                             <label for="" class="label text-danger">{{ $errors->get('email')[0] }}</label>
@@ -137,6 +141,9 @@
                             <input type="email" name="email" class="form-control">
                         </div>
                     </div>
+                </div>
+                <div class="row">
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Password</label>

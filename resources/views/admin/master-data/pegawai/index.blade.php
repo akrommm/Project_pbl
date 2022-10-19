@@ -15,7 +15,6 @@
                 <thead class="bg-dark">
                     <th width="10px">No</th>
                     <th width="90px">Aksi</th>
-                    <th>Status</th>
                     <th>Nama</th>
                     <th>Jenis Kelamin</th>
                     <th>Email</th>
@@ -31,8 +30,7 @@
                                 <x-template.button.delete-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" />
                             </div>
                         </td>
-                        <td>{{ $pegawai->status_pegawai }}</td>
-                        <td>{{ $pegawai->nama }}</td>
+                        <td>{{ $pegawai->nama }}, {{$pegawai->gelar_belakang}}</td>
                         <td>{{ $pegawai->jenis_kelamin }}</td>
                         <td>{{ $pegawai->email }}</td>
                     </tr>

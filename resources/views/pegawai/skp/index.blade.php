@@ -45,7 +45,7 @@
                             </div>
                         </td>
                         <td class="text-center">
-                            <x-template.button.delete-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" />
+                            <x-template.button.delete-button url="pegawai/skp" id="{{ $skp->id }}" />
                         </td>
                         <td class="text-center">
                             @if ($skp->status == 1)

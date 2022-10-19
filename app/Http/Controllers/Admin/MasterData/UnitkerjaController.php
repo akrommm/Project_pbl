@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin\MasterData;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\MasterData\Pegawai;
 use App\Models\Admin\MasterData\Role;
+use App\Models\Admin\MasterData\Unitdetail;
 use App\Models\Admin\MasterData\Unitkerja;
 
 class UnitkerjaController extends Controller
 {
     public function index()
     {
-        $data['list_unitkerja'] = Unitkerja::all();
+        $data['list_unitkerja'] = Unitkerja::withCount('unitdetail')->get();
         return view('admin.master-data.unitkerja.index', $data);
     }
 
@@ -51,20 +52,20 @@ class UnitkerjaController extends Controller
         return redirect('admin/master-data/module')->with('danger', 'Data berhasil dihapus');
     }
 
-    public function addRole()
+    public function addUnit()
     {
-        $role = new Role();
-        $role->id_pegawai = request('id_pegawai');
-        $role->id_module = request('id_module');
-        $role->id_unitkerja = request('id_unitkerja');
-        $role->save();
+        $unit = new Unitdetail();
+        $unit->id_pegawai = request('id_pegawai');
+        $unit->id_unitkerja = request('id_unitkerja');
+        $unit->jabatan = request('jabatan');
+        $unit->save();
 
         return back()->with('success', 'Data berhasil ditambahkan');
     }
 
-    public function deleteRole(Role $role)
+    public function deleteUnit(Unitdetail $unit)
     {
-        $role->delete();
+        $unit->delete();
 
         return back()->with('danger', 'Data berhasil dihapus');
     }

@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Absensi extends ModelAuthenticate
 {
     protected $table = 'admin__absensi';
+
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class, 'id_pegawai');
+    }
 }

@@ -45,7 +45,7 @@ class SkpController extends Controller
 
     function destroy(Skp $skp)
     {
-        $skp->handleDelete();
+        $skp->handleDeleteFile();
         $skp->delete();
         return redirect('pegawai/skp')->with('danger', 'berhasil di hapus');
     }

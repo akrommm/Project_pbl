@@ -23,20 +23,25 @@
                 </thead>
                 <tbody>
                     @foreach ($list_absensi->sortByDesc('created_at')->values() as $absensi)
+                    @if ($pegawai->id == $absensi->id_pegawai)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>
                             <div class="btn-group">
-                                <x-template.button.info-button url="superadmin/master-data/pegawai" id="" />
-                                <x-template.button.edit-button url="superadmin/master-data/pegawai" id="" />
-                                <x-template.button.delete-button url="superadmin/master-data/pegawai" id="" />
+                                <x-template.button.info-button url="pegawai/absensi" id="{{ $absensi->id }}" />
+                                <x-template.button.edit-button url="pegawai/absensi" id="{{ $absensi->id }}" />
+                                <x-template.button.delete-button url="pegawai/absensi" id="{{ $absensi->id }}" />
                             </div>
                         </td>
                         <td>{{ $absensi->nama }}</td>
                         <td>{{ $absensi->jabatan }}</td>
-                        <td>{{ $absensi->jumlah_kehadiran }}</td>
-                        <td></td>
+                        <td>{{ $absensi->jumlah_kehadiran }} Hari</td>
+                        <td class="text-center">
+                            {{ number_format(($absensi->jumlah_kehadiran / 22) * 100, 2) }}
+                            %
+                        </td>
                     </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>

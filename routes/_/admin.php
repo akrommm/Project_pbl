@@ -13,8 +13,8 @@ Route::resource('master-data/pegawai', PegawaiController::class);
 Route::post('master-data/module/add-role', [ModuleController::class, 'addRole']);
 Route::get('master-data/module/delete-role/{role}', [ModuleController::class, 'deleteRole']);
 
-Route::post('master-data/unitkerja/add-role', [UnitkerjaController::class, 'addRole']);
-Route::get('master-data/unitkerja/delete-role/{role}', [UnitkerjaController::class, 'deleteRole']);
+Route::post('master-data/unitkerja/add-unit', [UnitkerjaController::class, 'addUnit']);
+Route::get('master-data/unitkerja/delete-unit/{unit}', [UnitkerjaController::class, 'deleteUnit']);
 
 Route::resource('master-data/module', ModuleController::class);
 Route::resource('master-data/unitkerja', UnitkerjaController::class);

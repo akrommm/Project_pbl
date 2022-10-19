@@ -4,6 +4,7 @@ namespace App\Models\Admin\MasterData;
 
 use App\Models\ModelAuthenticate;
 use App\Models\Admin\MasterData\Role;
+use App\Models\Admin\MasterData\Unitdetail;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
@@ -12,6 +13,11 @@ class Pegawai extends ModelAuthenticate
     protected $table = 'admin__pegawai';
 
     public $fillable = ['nama', 'email'];
+
+    public function unitdetail()
+    {
+        return $this->hasMany(Unitdetail::class, 'id_pegawai');
+    }
 
     public function role()
     {

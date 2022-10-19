@@ -30,7 +30,7 @@
                             </div>
                         </td>
                         <td>{{ $unitkerja->nama_unit }}</td>
-                        <td class="text-center">{{ $unitkerja->role_count }}</td>
+                        <td class="text-center">{{ $unitkerja->unitdetail_count }}</td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -25,7 +25,6 @@ class PegawaiController extends Controller
     public function store()
     {
         $pegawai = new Pegawai;
-        $pegawai->status_pegawai = request('status_pegawai');
         $pegawai->nip = request('nip');
         $pegawai->nama = request('nama');
         $pegawai->agama = request('agama');
@@ -33,6 +32,8 @@ class PegawaiController extends Controller
         $pegawai->tempat_lahir = request('tempat_lahir');
         $pegawai->tanggal_lahir = request('tanggal_lahir');
         $pegawai->no_hp = request('no_hp');
+        $pegawai->gelar_depan = request('gelar_depan');
+        $pegawai->gelar_belakang = request('gelar_belakang');
         $pegawai->username = request('username');
         $pegawai->email = request('email');
         $pegawai->password = request('password');
@@ -57,7 +58,6 @@ class PegawaiController extends Controller
 
     public function update(Pegawai $pegawai)
     {
-        $pegawai->status_pegawai = request('status_pegawai');
         $pegawai->nip = request('nip');
         $pegawai->nama = request('nama');
         $pegawai->agama = request('agama');
@@ -65,6 +65,8 @@ class PegawaiController extends Controller
         $pegawai->tempat_lahir = request('tempat_lahir');
         $pegawai->tanggal_lahir = request('tanggal_lahir');
         $pegawai->no_hp = request('no_hp');
+        $pegawai->gelar_depan = request('gelar_depan');
+        $pegawai->gelar_belakang = request('gelar_belakang');
         $pegawai->username = request('username');
         $pegawai->email = request('email');
         if (request('password')) $pegawai->password = request('password');
