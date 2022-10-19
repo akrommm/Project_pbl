@@ -16,34 +16,46 @@
                             <input type="number" name="tahun" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="" class="control-label">Orientasi Pelayanan</label>
-                            <input type="number" name="orientasi_pelayanan" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="control-label">Inisiatif Kerja</label>
-                            <input type="number" name="inisiatif_kerja" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="control-label">Komitmen</label>
-                            <input type="number" name="komitmen" class="form-control">
+                            <label for="" class="control-label">Periode Awal</label>
+                            <select name="bulan_awal" id="" class="form-control">
+                                <option value="">Pilih Bulan</option>
+                                <option value="Januari">Januari</option>
+                                <option value="Februari">Februari</option>
+                                <option value="Maret">Maret</option>
+                                <option value="April">April</option>
+                                <option value="Mei">Mei</option>
+                                <option value="Juni">Juni</option>
+                                <option value="Juli">Juli</option>
+                                <option value="Agustus">Agustus</option>
+                                <option value="September">September</option>
+                                <option value="Oktober">Oktober</option>
+                                <option value="November">November</option>
+                                <option value="Desember">Desember</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="control-label">Kerja Sama</label>
-                            <input type="number" name="kerja_sama" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="control-label">Kepemimpinan</label>
-                            <input type="number" name="kepemimpinan" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="control-label">Sasaran Kerja ASN</label>
-                            <input type="number" name="sasaran_kerja" class="form-control">
-                        </div>
-                        <div class="form-group">
                             <label for="" class="control-label">Upload Dokumen</label>
                             <input type="file" name="file" accept=".pdf" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label">Periode Akhir</label>
+                            <select name="bulan_akhir" id="" class="form-control">
+                                <option value="">Pilih Bulan</option>
+                                <option value="Januari">Januari</option>
+                                <option value="Februari">Februari</option>
+                                <option value="Maret">Maret</option>
+                                <option value="April">April</option>
+                                <option value="Mei">Mei</option>
+                                <option value="Juni">Juni</option>
+                                <option value="Juli">Juli</option>
+                                <option value="Agustus">Agustus</option>
+                                <option value="September">September</option>
+                                <option value="Oktober">Oktober</option>
+                                <option value="November">November</option>
+                                <option value="Desember">Desember</option>
+                            </select>
                         </div>
                     </div>
                 </div>

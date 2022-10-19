@@ -39,6 +39,7 @@ class AbsensiController extends Controller
         $absensi->id_pegawai = request()->user()->id;
         $absensi->nama = request()->user()->nama;
         $absensi->jabatan = request('jabatan');
+        $absensi->bulan = request('bulan');
         $absensi->status = request('status');
         $absensi->jumlah_kehadiran = request('jumlah_kehadiran');
         $absensi->jumlah_sakit = request('jumlah_sakit');

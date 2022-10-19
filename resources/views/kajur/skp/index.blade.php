@@ -110,12 +110,7 @@
                                 <form action="{{ url('setuju', $skp->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <button class="btn btn-success"><span class="fa fa-check"></span></button>
-                                </form>
-                                <form action="{{ url('tolak', $skp->id) }}" method="post">
-                                    @csrf
-                                    @method('PUT')
-                                    <button class="btn btn-danger"><span class="fa fa-times"></span></button>
+                                    <button class="btn btn-primary"><span class="fas fa-pencil-alt"></span></button>
                                 </form>
                             </div>
                         </td>

@@ -25,12 +25,8 @@ class SkpController extends Controller
     {
         $skp = new skp();
         $skp->tahun = request('tahun');
-        $skp->orientasi_pelayanan = request('orientasi_pelayanan');
-        $skp->inisiatif_kerja = request('inisiatif_kerja');
-        $skp->komitmen = request('komitmen');
-        $skp->kerja_sama = request('kerja_sama');
-        $skp->kepemimpinan = request('kepemimpinan');
-        $skp->sasaran_kerja = request('sasaran_kerja');
+        $skp->bulan_akhir = request('bulan_akhir');
+        $skp->bulan_awal = request('bulan_awal');
         $skp->file = request('file');
         $skp->id_pegawai = request()->user()->id;
         $skp->nama = request()->user()->nama;

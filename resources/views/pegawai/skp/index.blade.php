@@ -7,7 +7,6 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title">
-                SKP
             </div>
             <a href="{{ url('pegawai/skp/create') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
@@ -16,7 +15,7 @@
                 <thead class="bg-dark">
                     <th style="width: 1%">No</th>
                     <th class="text-center">Tahun</th>
-                    <th class="text-center">Nilai</th>
+                    <th class="text-center">Periode</th>
                     <th class="text-center" width="120px">Dokumen</th>
                     <th class="text-center" width="120px">Aksi</th>
                     <th class="text-center" width="230px">Status</th>
@@ -31,13 +30,8 @@
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">{{ $skp->tahun }}</td>
-                        <td>
-                            Pelayanan : {{ $skp->orientasi_pelayanan}} |
-                            Kerja Sama : {{ $skp->kerja_sama}} |
-                            Inisiatif Kerja : {{ $skp->inisiatif_kerja}} |
-                            Kepemimpinan : {{ $skp->kepemimpinan}}
-                            Komitmen : {{ $skp->komitmen}} |
-                            Sasaran Kerja : {{$skp->sasaran_kerja}}
+                        <td class="text-center">
+                            {{ $skp->bulan_awal }} - {{ $skp->bulan_akhir }}
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
@@ -79,7 +73,7 @@
                 <thead class="bg-dark">
                     <th style="width: 1%">No</th>
                     <th class="text-center">Tahun</th>
-                    <th class="text-center">Nilai</th>
+                    <th class="text-center">Periode</th>
                     <th class="text-center" width="120px">Dokumen</th>
                     <th class="text-center" width="120px">Aksi</th>
                     <th class="text-center" width="230px">Status</th>
@@ -92,15 +86,10 @@
                     @if ($pegawai->id == $skp->id_pegawai)
                     @if ($skp->status == 2)
                     <tr>
-                        <td>{{ $no++ }}</td>
+                        <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">{{ $skp->tahun }}</td>
-                        <td>
-                            Pelayanan : {{ $skp->orientasi_pelayanan}} |
-                            Kerja Sama : {{ $skp->kerja_sama}} |
-                            Inisiatif Kerja : {{ $skp->inisiatif_kerja}} |
-                            Kepemimpinan : {{ $skp->kepemimpinan}}
-                            Komitmen : {{ $skp->komitmen}} |
-                            Sasaran Kerja : {{$skp->sasaran_kerja}}
+                        <td class="text-center">
+                            {{ $skp->bulan_awal }} - {{ $skp->bulan_akhir }}
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
@@ -142,7 +131,7 @@
                 <thead class="bg-dark">
                     <th style="width: 1%">No</th>
                     <th class="text-center">Tahun</th>
-                    <th class="text-center">Nilai</th>
+                    <th class="text-center">Periode</th>
                     <th class="text-center" width="120px">Dokumen</th>
                     <th class="text-center" width="120px">Aksi</th>
                     <th class="text-center" width="230px">Status</th>
@@ -155,15 +144,10 @@
                     @if ($pegawai->id == $skp->id_pegawai)
                     @if ($skp->status == 3)
                     <tr>
-                        <td>{{ $no++ }}</td>
+                        <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">{{ $skp->tahun }}</td>
-                        <td>
-                            Pelayanan : {{ $skp->orientasi_pelayanan}} |
-                            Kerja Sama : {{ $skp->kerja_sama}} |
-                            Inisiatif Kerja : {{ $skp->inisiatif_kerja}} |
-                            Kepemimpinan : {{ $skp->kepemimpinan}}
-                            Komitmen : {{ $skp->komitmen}} |
-                            Sasaran Kerja : {{$skp->sasaran_kerja}}
+                        <td class="text-center">
+                            {{ $skp->bulan_awal }} - {{ $skp->bulan_akhir }}
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
@@ -171,7 +155,7 @@
                             </div>
                         </td>
                         <td class="text-center">
-                            <x-template.button.delete-button url="admin/master-data/pegawai" id="{{ $pegawai->id }}" />
+                            <x-template.button.delete-button url="pegawai/skp" id="{{ $skp->id }}" />
                         </td>
                         <td class="text-center">
                             @if ($skp->status == 1)

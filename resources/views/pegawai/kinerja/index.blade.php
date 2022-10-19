@@ -8,7 +8,6 @@
         <div class="card-header">
             <a href="{{ url('pegawai/absensi/create') }}" class="btn btn-dark float-right"><i class="fa fa-plus"></i> Tambah Data</a>
             <div class="card-title">
-                Absensi
             </div>
         </div>
         <div class="card-body">

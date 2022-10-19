@@ -7,7 +7,6 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title">
-                SKP
             </div>
             <a href="{{ url('admin/master-data/skp') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
