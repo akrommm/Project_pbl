@@ -1,6 +1,6 @@
 <x-module.pegawai>
     <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="font-size: 30px"> Selamat Datang, {{ auth()->user()->nama }}</h5>
+        <h5 class="m-0 font-weight-bold text-dark" style="font-size: 30px"> Selamat Datang, {{ auth()->user()->username }}</h5>
     </div>
 
     <div class="row mt-5">
@@ -8,9 +8,9 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>89.9<sup style="font-size: 20px">%</sup></h3>
-
                     <p>Absensi</p>
+                    
+                    <h3>89.9<sup style="font-size: 20px">%</sup></h3>
                 </div>
                 <div class="icon">
                     <i class="far fa-calendar-alt"></i>
@@ -22,9 +22,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>Rp. 200.000</h3>
-
                     <p>Tunjangan Kinerja</p>
+                    
+                    <h3>Rp. 200.000</h3>
                 </div>
                 <div class="icon">
                     <i class="fas fa-wallet"></i>
@@ -36,9 +36,9 @@
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner" style="color:white;">
-                    <h3>Rp. 200.000</h3>
-
                     <p>Uang Makan</p>
+                    
+                    <h3>Rp. 200.000</h3>
                 </div>
                 <div class="icon">
                     <i class="fas fa-money-bill-wave"></i>
