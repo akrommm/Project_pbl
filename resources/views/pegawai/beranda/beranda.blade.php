@@ -35,7 +35,7 @@
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
-                <div class="inner">
+                <div class="inner" style="color:white;">
                     <h3>Rp. 200.000</h3>
 
                     <p>Uang Makan</p>
@@ -48,15 +48,15 @@
     </div>
     <div class="col-md-7">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" style="background-color: #9933CC">
                 <div class="card-title float-center">
-                    <h5 class="font-weight-bold text-dark " style="font-size: 21px"> Deskripsi</h5>
+                    <h5 class="font-weight-bold" style="color:white;" style="font-size: 21px"> Deskripsi</h5>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="background-color: #aa66cc">
                 <div class="row">
                     <div class="col-md-12">
-                        <dl class="row">
+                        <dl class="row" style="color:white;">
                             <dt class="col-2">Nama Lengkap</dt>
                             <dd class="col-10">: {{ auth()->user()->nama }}</dd>
                             <dt class="col-2">NIP</dt>
