@@ -15,8 +15,7 @@
                     <th width="10px">No</th>
                     <th width="90px">Aksi</th>
                     <th>Nama</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Email</th>
+                    <th>Jabatan</th>
                 </thead>
                 <tbody>
                     @foreach ($list_pegawai->sortByDesc('created_at')->values() as $pegawai)
@@ -30,8 +29,7 @@
                             </div>
                         </td>
                         <td>{{ $pegawai->nama }}, {{$pegawai->gelar_belakang}}</td>
-                        <td>{{ $pegawai->jenis_kelamin }}</td>
-                        <td>{{ $pegawai->email }}</td>
+                        <td>{{ $pegawai->jabatan }}</td>
                     </tr>
                     @endforeach
                 </tbody>

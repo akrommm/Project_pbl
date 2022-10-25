@@ -32,4 +32,20 @@
             </p>
         </a>
     </li>
+    <li class="nav-item">
+        <a href="{{ url('kajur/sakit') }}" class="nav-link {{request()->is('kajur/sakit') ? 'active' : ''}} ">
+            <i class="nav-icon far fa-file-alt"></i>
+            <p>
+                Pengajuan Sakit
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ url('kajur/izin') }}" class="nav-link {{request()->is('kajur/izin') ? 'active' : ''}} ">
+            <i class="nav-icon far fa-file-alt"></i>
+            <p>
+                Pengajuan Izin
+            </p>
+        </a>
+    </li>
 </ul>

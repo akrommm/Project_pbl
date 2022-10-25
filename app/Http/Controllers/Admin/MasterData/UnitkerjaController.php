@@ -40,16 +40,10 @@ class UnitkerjaController extends Controller
 
     public function destroy(Unitkerja $unitkerja)
     {
-        $list_role = Role::where('id_unitkerja', $unitkerja->id)->get();
-        if ($list_role->count() > 0) {
-            $list_role->each(function ($role) {
-                $role->delete();
-            });
-        }
 
         $unitkerja->delete();
 
-        return redirect('admin/master-data/module')->with('danger', 'Data berhasil dihapus');
+        return redirect('admin/master-data/unitkerja')->with('danger', 'Data berhasil dihapus');
     }
 
     public function addUnit()

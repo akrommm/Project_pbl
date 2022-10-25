@@ -23,8 +23,6 @@
                             @endif
                             <input type="number" name="nip" class="form-control">
                         </div>
-                    </div>
-                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Nama Lengkap</label>
                             @if ($errors->has('nama'))
@@ -33,6 +31,23 @@
                             <input type="text" name="nama" class="form-control">
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="" class="control-label">NIK</label>
+                            @if ($errors->has('nik'))
+                            <label for="" class="label text-danger">{{ $errors->get('nik')[0] }}</label>
+                            @endif
+                            <input type="number" name="nik" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label">Email</label>
+                            @if ($errors->has('email'))
+                            <label for="" class="label text-danger">{{ $errors->get('email')[0] }}</label>
+                            @endif
+                            <input type="email" name="email" class="form-control">
+                        </div>
+                    </div>
+
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -96,7 +111,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="" class="control-label">Tempat Lahir</label>
                             @if ($errors->has('tempat_lahir'))
@@ -105,7 +120,7 @@
                             <input type="text" name="tempat_lahir" class="form-control">
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="" class="control-label">Tanggal Lahir</label>
                             @if ($errors->has('tanggal_lahir'))
@@ -114,13 +129,23 @@
                             <input type="date" name="tanggal_lahir" class="form-control">
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <label for="" class="control-label">No. Handphone</label>
-                            @if ($errors->has('no_hp'))
-                            <label for="" class="label text-danger">{{ $errors->get('no_hp')[0] }}</label>
+                            <label for="" class="control-label">Jabatan</label>
+                            @if ($errors->has('jabatan'))
+                            <label for="" class="label text-danger">{{ $errors->get('jabatan')[0] }}</label>
                             @endif
-                            <input type="number" name="no_hp" class="form-control">
+                            <select name="jabatan" class="form-control">
+                                <option disabled selected>Pilih Jabatan</option>
+                                <option value="Ketua Jurusan">Ketua Jurusan</option>
+                                <option value="Sekretaris Jurusan">Sekretaris Jurusan</option>
+                                <option value="Koordinator Prodi">Koordinator Prodi</option>
+                                <option value="Kepala Lab">Kepala Lab</option>
+                                <option value="Dosen">Dosen</option>
+                                <option value="Administrasi">Administrasi</option>
+                                <option value="Teknisi Laboratorium">Teknisi Laboratorium</option>
+                                <option value="Teknisi">Teknisi</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -132,18 +157,6 @@
                         @endif
                         <input type="file" name="foto" accept=".jpg, .png, .jpeg" class="form-control">
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Email</label>
-                            @if ($errors->has('email'))
-                            <label for="" class="label text-danger">{{ $errors->get('email')[0] }}</label>
-                            @endif
-                            <input type="email" name="email" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Password</label>

@@ -26,12 +26,13 @@ class PegawaiController extends Controller
     {
         $pegawai = new Pegawai;
         $pegawai->nip = request('nip');
+        $pegawai->nik = request('nik');
         $pegawai->nama = request('nama');
         $pegawai->agama = request('agama');
         $pegawai->jenis_kelamin = request('jenis_kelamin');
         $pegawai->tempat_lahir = request('tempat_lahir');
         $pegawai->tanggal_lahir = request('tanggal_lahir');
-        $pegawai->no_hp = request('no_hp');
+        $pegawai->jabatan = request('jabatan');
         $pegawai->gelar_depan = request('gelar_depan');
         $pegawai->gelar_belakang = request('gelar_belakang');
         $pegawai->username = request('username');
@@ -64,7 +65,7 @@ class PegawaiController extends Controller
         $pegawai->jenis_kelamin = request('jenis_kelamin');
         $pegawai->tempat_lahir = request('tempat_lahir');
         $pegawai->tanggal_lahir = request('tanggal_lahir');
-        $pegawai->no_hp = request('no_hp');
+        $pegawai->jabatan = request('jabatan');
         $pegawai->gelar_depan = request('gelar_depan');
         $pegawai->gelar_belakang = request('gelar_belakang');
         $pegawai->username = request('username');
