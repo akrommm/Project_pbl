@@ -1,6 +1,5 @@
-<li class="nav-item">
-    <a href="{{ url($url) }}" class="nav-link @if ($active) active @endif">
-        <i class="fas fa-{{ $icon }}"></i>
-        <p>{{ $title }}</p>
+<li class="@if ($active) active @endif">
+    <a href="{{ url($url) }}">
+        {{ $title }}
     </a>
 </li>

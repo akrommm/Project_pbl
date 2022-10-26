@@ -1,3 +1,3 @@
-<x-app title="Pegawai" header="Si Tukiman | Pegawai" menu="menu.pegawai">
+<x-app title="PEGAWAI" header="PEGAWAI" menu="menu.pegawai">
     {{$slot}}
 </x-app>

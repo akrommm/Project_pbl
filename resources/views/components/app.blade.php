@@ -3,233 +3,183 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SiTukin | {{$title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SI TUKIN - {{$title}}</title>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{ url('/') }}/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ url('/') }}/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="{{ url('/') }}/dist/css/adminlte.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ url('/') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ url('/') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ url('/') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ url('/') }}/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="{{ url('/') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url('/') }}/assets/images/logo/favicon.png">
+
+    <!-- page css -->
+    <link href="{{ url('/') }}/assets/vendors/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
+
+    <!-- Core css -->
+    <link href="{{ url('/') }}/assets/css/app.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/assets/css/simadu.css" rel="stylesheet">
+
 </head>
 
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
+<body>
+    <div class="app">
+        <div class="layout">
+            <!-- Header START -->
+            <x-template.header :menu="$menu" :title="$title" :header="$header" />
+            <!-- Header END -->
 
-        <!-- Navbar -->
-        <x-template.header />
-        <!-- /.navbar -->
+            <!-- Side Nav START -->
+            <x-template.sidebar :menu="$menu" :title="$title" :header="$header" />
+            <!-- Side Nav END -->
 
-        <!-- Main Sidebar Container -->
-        <x-template.sidebar :menu="$menu" :title="$title" :header="$header" />
+            <!-- Page Container START -->
+            <div class="page-container">
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
-            <div class="content">
-                <div class="container-fluid pt-4">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <x-template.utils.notif />
+
+                <!-- Content Wrapper START -->
+                <div class="main-content">
+                    <div class="container-fluid pt-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <x-template.utils.notif />
+                            </div>
+                        </div>
+                        {{ $slot }}
+                    </div><!-- /.container-fluid -->
+                </div>
+                <!-- Content Wrapper END -->
+
+                <!-- Footer START -->
+                <x-template.footer />
+                <!-- Footer END -->
+
+            </div>
+            <!-- Page Container END -->
+
+            <!-- Search Start-->
+            <div class="modal modal-left fade search" id="search-drawer">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header justify-content-between align-items-center">
+                            <h5 class="modal-title">Search</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <i class="anticon anticon-close"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body scrollable">
+                            <div class="input-affix">
+                                <i class="prefix-icon anticon anticon-search"></i>
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <div class="m-t-30">
+                                <h5 class="m-b-20">Files</h5>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-cyan avatar-icon">
+                                        <i class="anticon anticon-file-excel"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Quater Report.exl</a>
+                                        <p class="m-b-0 text-muted font-size-13">by Finance</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-blue avatar-icon">
+                                        <i class="anticon anticon-file-word"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Documentaion.docx</a>
+                                        <p class="m-b-0 text-muted font-size-13">by Developers</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-purple avatar-icon">
+                                        <i class="anticon anticon-file-text"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Recipe.txt</a>
+                                        <p class="m-b-0 text-muted font-size-13">by The Chef</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-red avatar-icon">
+                                        <i class="anticon anticon-file-pdf"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Project Requirement.pdf</a>
+                                        <p class="m-b-0 text-muted font-size-13">by Project Manager</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-t-30">
+                                <h5 class="m-b-20">Members</h5>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-image">
+                                        <img src="{{ url('/') }}/assets/images/avatars/thumb-1.jpg" alt="">
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Erin Gonzales</a>
+                                        <p class="m-b-0 text-muted font-size-13">UI/UX Designer</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-image">
+                                        <img src="{{ url('/') }}/assets/images/avatars/thumb-2.jpg" alt="">
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Darryl Day</a>
+                                        <p class="m-b-0 text-muted font-size-13">Software Engineer</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-image">
+                                        <img src="{{ url('/') }}/assets/images/avatars/thumb-3.jpg" alt="">
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Marshall Nichols</a>
+                                        <p class="m-b-0 text-muted font-size-13">Data Analyst</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-t-30">
+                                <h5 class="m-b-20">News</h5>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-image">
+                                        <img src="{{ url('/') }}/assets/images/others/img-1.jpg" alt="">
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">5 Best Handwriting Fonts</a>
+                                        <p class="m-b-0 text-muted font-size-13">
+                                            <i class="anticon anticon-clock-circle"></i>
+                                            <span class="m-l-5">25 Nov 2018</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    {{ $slot }}
-                </div><!-- /.container-fluid -->
+                </div>
             </div>
-            <!-- /.content -->
+            <!-- Search End-->
+
+            <!-- Quick View START -->
+            <x-template.control-sidebar />
+            <!-- Quick View END -->
         </div>
-        <!-- /.content-wrapper -->
-
-        <!-- Control Sidebar -->
-        <x-template.control-sidebar />
-        <!-- /.control-sidebar -->
-
-        <!-- Main Footer -->
-        <x-template.footer />
     </div>
-    <!-- ./wrapper -->
 
-    <!-- REQUIRED SCRIPTS -->
 
-    <!-- jQuery -->
-    <script src="{{ url('/') }}/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ url('/') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ url('/') }}/dist/js/adminlte.min.js"></script>
+    <!-- Core Vendors JS -->
+    <script src="{{ url('/') }}/assets/js/vendors.min.js"></script>
 
-    <!-- DataTables  & Plugins -->
-    <script src="{{ url('/') }}/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{ url('/') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="{{ url('/') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="{{ url('/') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="{{ url('/') }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="{{ url('/') }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="{{ url('/') }}/plugins/jszip/jszip.min.js"></script>
-    <script src="{{ url('/') }}/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="{{ url('/') }}/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="{{ url('/') }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="{{ url('/') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="{{ url('/') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- page js -->
+    <script src="{{ url('/') }}/assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="{{ url('/') }}/assets/js/pages/dashboard-default.js"></script>
+    <script src="{{ url('/') }}/assets/vendors/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ url('/') }}/assets/vendors/datatables/dataTables.bootstrap.min.js"></script>
+
+    <!-- Core JS -->
+    <script src="{{ url('/') }}/assets/js/app.min.js"></script>
     <script>
-        $(".table-datatable").dataTable();
+        $('#data-table').DataTable();
     </script>
-    <!-- Select2 -->
-    <script src="{{ url('/') }}/plugins/select2/js/select2.full.min.js"></script>
-    <script>
-        $(function() {
-            //Initialize Select2 Elements
-            $('.select2').select2()
 
-            //Initialize Select2 Elements
-            $('.select2bs4').select2({
-                theme: 'bootstrap4'
-            })
-
-            //Datemask dd/mm/yyyy
-            $('#datemask').inputmask('dd/mm/yyyy', {
-                'placeholder': 'dd/mm/yyyy'
-            })
-            //Datemask2 mm/dd/yyyy
-            $('#datemask2').inputmask('mm/dd/yyyy', {
-                'placeholder': 'mm/dd/yyyy'
-            })
-            //Money Euro
-            $('[data-mask]').inputmask()
-
-            //Date picker
-            $('#reservationdate').datetimepicker({
-                format: 'L'
-            });
-
-            //Date and time picker
-            $('#reservationdatetime').datetimepicker({
-                icons: {
-                    time: 'far fa-clock'
-                }
-            });
-
-            //Date range picker
-            $('#reservation').daterangepicker()
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({
-                timePicker: true,
-                timePickerIncrement: 30,
-                locale: {
-                    format: 'MM/DD/YYYY hh:mm A'
-                }
-            })
-            //Date range as a button
-            $('#daterange-btn').daterangepicker({
-                    ranges: {
-                        'Today': [moment(), moment()],
-                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                        'This Month': [moment().startOf('month'), moment().endOf('month')],
-                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                    },
-                    startDate: moment().subtract(29, 'days'),
-                    endDate: moment()
-                },
-                function(start, end) {
-                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-                }
-            )
-
-            //Timepicker
-            $('#timepicker').datetimepicker({
-                format: 'LT'
-            })
-
-            //Bootstrap Duallistbox
-            $('.duallistbox').bootstrapDualListbox()
-
-            //Colorpicker
-            $('.my-colorpicker1').colorpicker()
-            //color picker with addon
-            $('.my-colorpicker2').colorpicker()
-
-            $('.my-colorpicker2').on('colorpickerChange', function(event) {
-                $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-            })
-
-            $("input[data-bootstrap-switch]").each(function() {
-                $(this).bootstrapSwitch('state', $(this).prop('checked'));
-            })
-
-        })
-        // BS-Stepper Init
-        document.addEventListener('DOMContentLoaded', function() {
-            window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-        })
-
-        // DropzoneJS Demo Code Start
-        Dropzone.autoDiscover = false
-
-        // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-        var previewNode = document.querySelector("#template")
-        previewNode.id = ""
-        var previewTemplate = previewNode.parentNode.innerHTML
-        previewNode.parentNode.removeChild(previewNode)
-
-        var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-            url: "/target-url", // Set the url
-            thumbnailWidth: 80,
-            thumbnailHeight: 80,
-            parallelUploads: 20,
-            previewTemplate: previewTemplate,
-            autoQueue: false, // Make sure the files aren't queued until manually added
-            previewsContainer: "#previews", // Define the container to display the previews
-            clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
-        })
-
-        myDropzone.on("addedfile", function(file) {
-            // Hookup the start button
-            file.previewElement.querySelector(".start").onclick = function() {
-                myDropzone.enqueueFile(file)
-            }
-        })
-
-        // Update the total progress bar
-        myDropzone.on("totaluploadprogress", function(progress) {
-            document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
-        })
-
-        myDropzone.on("sending", function(file) {
-            // Show the total progress bar when upload starts
-            document.querySelector("#total-progress").style.opacity = "1"
-            // And disable the start button
-            file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
-        })
-
-        // Hide the total progress bar when nothing's uploading anymore
-        myDropzone.on("queuecomplete", function(progress) {
-            document.querySelector("#total-progress").style.opacity = "0"
-        })
-
-        // Setup the buttons for all transfers
-        // The "add files" button doesn't need to be setup because the config
-        // `clickable` has already been specified.
-        document.querySelector("#actions .start").onclick = function() {
-            myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
-        }
-        document.querySelector("#actions .cancel").onclick = function() {
-            myDropzone.removeAllFiles(true)
-        }
-        // DropzoneJS Demo Code End
-    </script>
 </body>
 
 </html>

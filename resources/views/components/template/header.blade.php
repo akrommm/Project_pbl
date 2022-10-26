@@ -1,79 +1,144 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links  -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-    </ul>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-        <!-- Notifications Dropdown Menu -->
-        <div class="d-flex align-items-center">
-            <div class="float-left p-r-10 fs-10 font-heading d-lg-block d-none">
-                <span class="semi-bold" style="font:Segue Ui;">
-                    @if (auth()->check())
-                    {{ auth()->user()->nama }}
-                    @endif
-                </span>
-            </div>
-            <div class="dropdown pull-right">
-                <button aria-expanded="false" aria-haspopup="true" class="profile-dropdown-toggle" style="display:table-cell; vertical-align:middle; text-align:center" data-toggle="dropdown" type="button">
-                    <span class="thumbnail-wrapper d32 circular inline">
-                        @if (auth()->user()->foto)
-                        <img height="33" width="33" src="{{ url(auth()->user()->foto) }}" style="object-fit: cover; object-position: 0px 10%;">
-                        @else
-                        <img height="33" width="33" src="https://simadu.politap.ac.id/assets/img/template/default-person.jpg" style="object-fit: cover; object-position: 0px 10%;">
-                        @endif
-                    </span>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu" x-placement="top-end" style="position: absolute; transform: translate3d(-1px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-                    <div class="dropdown-item dropdown-profile-pic" href="#" style="display:table-cell; vertical-align:middle; text-align:center">
-                        @if (auth()->user()->foto)
-                        <img src="{{ url(auth()->user()->foto) }}" height="150px" width="150px" class="img-circle mb-2">
-                        @else
-                        <img src="https://simadu.politap.ac.id/assets/img/template/default-person.jpg" height="150px" width="150px" class="img-circle mb-2">
-                        @endif
-                        <p class="text-center m-t-10 m-b-20">{{ auth()->user()->nama }}</p>
-                    </div>
-                    <a class="dropdown-item" href="{{ url('profile/pegawai') }}">
-                        <span class="pull-left">Profile</span>
-                        <span class="float-right"><i class="fas fa-user"></i></span>
-                    </a>
-                    <a class="clearfix bg-master-lighter dropdown-item mt-2" href="{{url('logout')}}">
-                        <span class="pull-left">Logout</span>
-                        <span class="float-right"><i class="fas fa-sign-out-alt"></i></span>
-                    </a>
-                </div>
-            </div>
-            <!-- <li class="nav-item dropdown">
-                <a class="nav-link thumbnail-wrapper d32 circular inline" data-toggle="dropdown" href="#">
-                    @if (auth()->user()->foto)
-                    <img src="{{ url(auth()->user()->foto) }}" alt="User Avatar" height="33px" width="33px" class="img-circle">
-                    @else
-                    <i class="fas fa-user-alt"></i>
-                    @endif
+<div class="header">
+    <div class="logo logo-dark">
+        <a href="index.html">
+            <img src="{{ url('/') }}/assets/images/logo/logo1.png" alt="Logo" width="175" height="47" class="mt-2">
+            <img class="logo-fold" src="{{ url('/') }}/assets/images/logo/wkwk1.png" alt="Logo" width="85" height="74" class="ml-0">
+        </a>
+    </div>
+    <div class="logo logo-white">
+        <a href="index.html">
+            <img src="{{ url('/') }}/assets/images/logo/logo-white.png" alt="Logo">
+            <img class="logo-fold" src="{{ url('/') }}/assets/images/logo/logo-fold-white.png" alt="Logo">
+        </a>
+    </div>
+    <div class="nav-wrap">
+        <ul class="nav-left">
+            <li class="desktop-toggle">
+                <a href="javascript:void(0);">
+                    <i class="anticon"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu" x-placement="top-end" style="position: absolute; transform: translate3d(-10px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
-                    <div class="dropdown-item dropdown-profile-pic" href="#" style="display:table-cell; vertical-align:middle; text-align:center">
-                        <img src="{{ url(auth()->user()->foto) }}" height="150px" width="150px" class="img-circle">
-                        <p class="text-center mt-3 m-t-10 m-b-20">{{ auth()->user()->nama }}</p>
+            </li>
+            <li class="mobile-toggle">
+                <a href="javascript:void(0);">
+                    <i class="anticon"></i>
+                </a>
+            </li>
+            <div class="sidebar-header font-weight-bold" style="display: block;background-color: #fff;color: #2A2A2A;width: 100%;padding: 0 20px;padding-left: 20px;clear: both;z-index: 10;position: relative;text-align:center;font-size: 16px;">
+                SITUKIN {{ $header }}
+            </div>
+        </ul>
+        <ul class="nav-right">
+            <li class="dropdown dropdown-animated scale-left">
+                <a href="javascript:void(0);" data-toggle="dropdown">
+                    <i class="anticon anticon-bell notification-badge"></i>
+                </a>
+                <div class="dropdown-menu pop-notification">
+                    <div class="p-v-15 p-h-25 border-bottom d-flex justify-content-between align-items-center">
+                        <p class="text-dark font-weight-semibold m-b-0">
+                            <i class="anticon anticon-bell"></i>
+                            <span class="m-l-10">Notification</span>
+                        </p>
+                        <a class="btn-sm btn-default btn" href="javascript:void(0);">
+                            <small>View All</small>
+                        </a>
                     </div>
-                    <a class="dropdown-item" href="{{ url('profile/pegawai') }}">
-                        <span class="pull-left">Profile</span>
-                        <span class="float-right"><i class="fas fa-user"></i></span>
+                    <div class="relative">
+                        <div class="overflow-y-auto relative scrollable" style="max-height: 300px">
+                            <a href="javascript:void(0);" class="dropdown-item d-block p-15 border-bottom">
+                                <div class="d-flex">
+                                    <div class="avatar avatar-blue avatar-icon">
+                                        <i class="anticon anticon-mail"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <p class="m-b-0 text-dark">You received a new message</p>
+                                        <p class="m-b-0"><small>8 min ago</small></p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0);" class="dropdown-item d-block p-15 border-bottom">
+                                <div class="d-flex">
+                                    <div class="avatar avatar-cyan avatar-icon">
+                                        <i class="anticon anticon-user-add"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <p class="m-b-0 text-dark">New user registered</p>
+                                        <p class="m-b-0"><small>7 hours ago</small></p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0);" class="dropdown-item d-block p-15 border-bottom">
+                                <div class="d-flex">
+                                    <div class="avatar avatar-red avatar-icon">
+                                        <i class="anticon anticon-user-add"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <p class="m-b-0 text-dark">System Alert</p>
+                                        <p class="m-b-0"><small>8 hours ago</small></p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0);" class="dropdown-item d-block p-15 ">
+                                <div class="d-flex">
+                                    <div class="avatar avatar-gold avatar-icon">
+                                        <i class="anticon anticon-user-add"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <p class="m-b-0 text-dark">You have a new update</p>
+                                        <p class="m-b-0"><small>2 days ago</small></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown dropdown-animated scale-left" style="padding-left: 20px;">
+                <div class="pointer" data-toggle="dropdown">
+                    <div class="pull-left p-r-10 fs-14 font-heading d-lg-block d-none">
+                        <span class="semi-bold">
+                            @if (auth()->check())
+                            {{ auth()->user()->nama }}
+                            @endif
+                        </span>
+                        <i class="anticon anticon-down"></i>
+                    </div>
+                </div>
+                <div class="p-b-15 p-t-20 dropdown-menu pop-profile">
+                    <div class="p-h-20 p-b-15 m-b-10 border-bottom">
+                        <div class="d-flex m-r-50">
+                            <div class="m-l-10">
+                                <p class="m-b-0 text-dark font-weight-semibold">@if (auth()->check())
+                                    {{ auth()->user()->nama }}
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ url('profile/pegawai') }}" class="dropdown-item d-block p-h-15 p-v-10">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <i class="anticon opacity-04 font-size-16 anticon-user"></i>
+                                <span class="m-l-10">Edit Profile</span>
+                            </div>
+                            <i class="anticon font-size-10 anticon-right"></i>
+                        </div>
                     </a>
-                    <a class="clearfix bg-master-lighter dropdown-item mt-2" href="{{url('logout')}}">
-                        <span class="pull-left">Logout</span>
-                        <span class="float-right"><i class="fas fa-sign-out-alt"></i></span>
+                    <a href="{{ url('logout') }}" class="dropdown-item d-block p-h-15 p-v-10">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <i class="anticon opacity-04 font-size-16 anticon-logout"></i>
+                                <span class="m-l-10">Logout</span>
+                            </div>
+                            <i class="anticon font-size-10 anticon-right"></i>
+                        </div>
                     </a>
                 </div>
-            </li> -->
-
-            <a class="nav-link" data-widget="control-sidebar" data-slide="false" href="#" role="button">
-                <i class="fas fa-th-large"></i>
-            </a>
-        </div>
-    </ul>
-</nav>
-<div class="dropdown-menu dropdown-menu-right::before"></div>
+            </li>
+            <li>
+                <a href="javascript:void(0);" data-toggle="modal" data-target="#quick-view">
+                    <i class="anticon anticon-appstore"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

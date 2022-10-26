@@ -1,14 +1,17 @@
-<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-    <li class="nav-header font-weight-bold">Menu</li>
-    <li class="nav-item">
-        <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-archive"></i>
-            <p class="font-weight-bold">
-                Master Data
-                <i class="right fas fa-angle-left"></i>
-            </p>
+<ul class="side-nav-menu scrollable ps-theme-dark">
+    <br>
+    <li class="font-weight-bold ml-3">Menu</li>
+    <li class="nav-item dropdown closed">
+        <a class="dropdown-toggle" href="javascript:void(0);">
+            <span class="icon-holder">
+                <i class="fas fa-archive"></i>
+            </span>
+            <span class="title">MASTER DATA</span>
+            <span class="arrow">
+                <i class="arrow-icon"></i>
+            </span>
         </a>
-        <ul class="nav nav-treeview">
+        <ul class="dropdown-menu">
             <x-template.menu.menu-item title="Pegawai" url="admin/master-data/pegawai" icon="users" />
             <x-template.menu.menu-item title="Module" url="admin/master-data/module" icon="clone" />
             <x-template.menu.menu-item title="Unit Kerja" url="admin/master-data/unitkerja" icon="university" />

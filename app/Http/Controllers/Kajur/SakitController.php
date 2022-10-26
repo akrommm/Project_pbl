@@ -26,7 +26,7 @@ class SakitController extends Controller
 
         $sakit->handleUploadFile();
 
-        return redirect('kajur/sakit')->with('success', 'Berhasil Menambahkan sakit');
+        return redirect('kajur/sakit')->with('success', 'Berhasil Menambahkan Pengajuan');
     }
 
     public function setuju($id)

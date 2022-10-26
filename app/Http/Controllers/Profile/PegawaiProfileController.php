@@ -27,7 +27,6 @@ class PegawaiProfileController extends Controller
         $pegawai->jenis_kelamin = request('jenis_kelamin');
         $pegawai->tempat_lahir = request('tempat_lahir');
         $pegawai->tanggal_lahir = request('tanggal_lahir');
-        $pegawai->no_hp = request('no_hp');
         $pegawai->email = request('email');
         if (request('password')) $pegawai->password = request('password');
         $pegawai->save();

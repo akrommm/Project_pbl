@@ -1,14 +1,12 @@
-<footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-        <strong>Team Situkin wkwk 2022</strong>
-        <!-- <strong><a href="https://www.instagram.com/arfmhmmdakrm_/?hl=id">Arief Muhammad Akrom</a></strong> -->
+<footer class="footer">
+    <div class="footer-content">
+        <p class="m-b-0">Project Based Learning SiTukin &copy; 2022
+            @if (date('Y') > '2022')
+            - {{ date('Y') }}
+            @endif All rights reserved.</p>
+        <span>
+            <a href="" class="text-gray m-r-15">Term &amp; Conditions</a>
+            <a href="" class="text-gray">Privacy &amp; Policy</a>
+        </span>
     </div>
-    <!-- Default to the left -->
-    <strong>Project Based Learning SiTukin &copy; 2022
-        @if (date('Y') > '2022')
-        - {{ date('Y') }}
-        @endif
-        <a href="">POLITAP</a>.
-    </strong> All rights reserved.
 </footer>

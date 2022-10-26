@@ -1,3 +1,3 @@
-<x-app title="Kajur" header="Si Tukin | Kajur" menu="menu.kajur">
+<x-app title="KAJUR" header="KAJUR" menu="menu.kajur">
     {{$slot}}
 </x-app>

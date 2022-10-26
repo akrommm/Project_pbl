@@ -3,19 +3,16 @@
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Data Pegawai
         </h5>
     </div>
-    <div class="card mt-4">
-        <div class="card-header">
-            <div class="card-title">
-            </div>
-            <a href="{{ url('admin/master-data/pegawai/create') }}" class="float-right btn btn-dark"><i class="fas fa-plus"></i> Tambah Data</a>
-        </div>
+    <br>
+    <div class="card">
         <div class="card-body">
-            <table class="table table-datatable table-striped table-bordered">
+            <a href="{{ url('admin/master-data/pegawai/create') }}" class="float-right btn btn-dark"><i class="fas fa-plus"></i> Tambah Data</a>
+            <table id="data-table" class="table table-datatable table-bordered">
                 <thead class="bg-dark">
-                    <th width="10px">No</th>
-                    <th width="90px">Aksi</th>
-                    <th>Nama</th>
-                    <th>Jabatan</th>
+                    <th style="color: white;" width=" 10px">No</th>
+                    <th style="color: white;" width=" 90px">Aksi</th>
+                    <th style="color: white;">Nama</th>
+                    <th style=" color: white;">Jabatan</th>
                 </thead>
                 <tbody>
                     @foreach ($list_pegawai->sortByDesc('created_at')->values() as $pegawai)

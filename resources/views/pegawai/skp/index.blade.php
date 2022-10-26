@@ -5,20 +5,16 @@
     </div>
     <br>
     <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-            </div>
-            <a href="{{ url('pegawai/skp/create') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
-        </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <a href="{{ url('pegawai/skp/create') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
+            <table id="data-table" class="table table-bordered">
                 <thead class="bg-dark">
-                    <th style="width: 1%">No</th>
-                    <th class="text-center">Tahun</th>
-                    <th class="text-center">Periode</th>
-                    <th class="text-center" width="120px">Dokumen</th>
-                    <th class="text-center" width="120px">Aksi</th>
-                    <th class="text-center" width="230px">Status</th>
+                    <th style="width: 1%;color: white;">No</th>
+                    <th class="text-center" style="color: white;">Tahun</th>
+                    <th class="text-center" style="color: white;">Periode</th>
+                    <th class="text-center" width="120px" style="color: white;">Dokumen</th>
+                    <th class="text-center" width="120px" style="color: white;">Aksi</th>
+                    <th class="text-center" width="230px" style="color: white;">Status</th>
                 </thead>
                 <tbody>
                     @php
@@ -35,7 +31,7 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="" target="popup" onclick="window.open('{{ url($skp->file) }}','popup','width=800,height=600'); return false;" class="btn btn-dark"><i class="fas fa-eye"></i> Lihat</a>
+                                <a href="" target="popup" onclick="window.open('{{ url($skp->file) }}','popup','width=800,height=600'); return false;" class="btn btn-dark"><i class="fas fa-eye"></i></a>
                             </div>
                         </td>
                         <td class="text-center">
@@ -69,14 +65,14 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered">
                 <thead class="bg-dark">
-                    <th style="width: 1%">No</th>
-                    <th class="text-center">Tahun</th>
-                    <th class="text-center">Periode</th>
-                    <th class="text-center" width="120px">Dokumen</th>
-                    <th class="text-center" width="120px">Aksi</th>
-                    <th class="text-center" width="230px">Status</th>
+                    <th style="width: 1%;color: white;">No</th>
+                    <th class="text-center" style="color: white;">Tahun</th>
+                    <th class="text-center" style="color: white;">Periode</th>
+                    <th class="text-center" style="color: white;" width="120px">Dokumen</th>
+                    <th class="text-center" style="color: white;" width="120px">Aksi</th>
+                    <th class="text-center" style="color: white;" width="230px">Status</th>
                 </thead>
                 <tbody>
                     @php
@@ -93,7 +89,7 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="" target="popup" onclick="window.open('{{ url($skp->file) }}','popup','width=800,height=600'); return false;" class="btn btn-dark"><i class="fas fa-eye"></i> Lihat</a>
+                                <a href="" target="popup" onclick="window.open('{{ url($skp->file) }}','popup','width=800,height=600'); return false;" class="btn btn-dark"><i class="fas fa-eye"></i></a>
                             </div>
                         </td>
                         <td class="text-center">
@@ -129,12 +125,12 @@
         <div class="card-body">
             <table class="table table-bordered table-striped">
                 <thead class="bg-dark">
-                    <th style="width: 1%">No</th>
-                    <th class="text-center">Tahun</th>
-                    <th class="text-center">Periode</th>
-                    <th class="text-center" width="120px">Dokumen</th>
-                    <th class="text-center" width="120px">Aksi</th>
-                    <th class="text-center" width="230px">Status</th>
+                    <th style="width: 1%;color: white;">No</th>
+                    <th class="text-center" style="color: white;">Tahun</th>
+                    <th class="text-center" style="color: white;">Periode</th>
+                    <th class="text-center" style="color: white;" width="120px">Dokumen</th>
+                    <th class="text-center" style="color: white;" width="120px">Aksi</th>
+                    <th class="text-center" style="color: white;" width="230px">Status</th>
                 </thead>
                 <tbody>
                     @php
@@ -151,7 +147,7 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="" target="popup" onclick="window.open('{{ url($skp->file) }}','popup','width=800,height=600'); return false;" class="btn btn-dark"><i class="fas fa-eye"></i> Lihat</a>
+                                <a href="" target="popup" onclick="window.open('{{ url($skp->file) }}','popup','width=800,height=600'); return false;" class="btn btn-dark"><i class="fas fa-eye"></i></a>
                             </div>
                         </td>
                         <td class="text-center">
@@ -167,7 +163,7 @@
                             @endif
 
                             @if ($skp->status == 3)
-                            <label class="btn btn-danger">Ditolak</label>
+                            <label class="btn btn-danger m-r-5">Ditolak</label>
                             @endif
                         </td>
                     </tr>

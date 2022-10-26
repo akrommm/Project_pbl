@@ -1,0 +1,18 @@
+.page-sidebar .sidebar-header {
+  display: block;
+  height: 60px;
+  line-height: 60px;
+  background-color: #272b35;
+  border-bottom: 1px solid #232730;
+  color: #fff;
+  width: 100%;
+  padding: 0 20px;
+  padding-left: 30px;
+  clear: both;
+  z-index: 10;
+  position: relative;
+}
+.m-b-30 {
+  margin-bottom: 30px;
+}
+

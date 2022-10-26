@@ -3,21 +3,17 @@
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Rekap Absensi
         </h5>
     </div>
-
-    <div class="card mt-4">
-        <div class="card-header">
-            <a href="{{ url('pegawai/absensi/create') }}" class="btn btn-dark float-right"><i class="fa fa-plus"></i> Rekap Absen</a>
-            <div class="card-title">
-            </div>
-        </div>
+    <br>
+    <div class="card">
         <div class="card-body">
-            <table class="table table-datatable table-striped table-bordered">
+            <a href="{{ url('pegawai/absensi/create') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Rekap Absen</a>
+            <table id="data-table" class="table table-bordered">
                 <thead class="bg-dark">
-                    <th width="10px" class="text-center">No</th>
-                    <th width="90px" class="text-center">Aksi</th>
-                    <th class="text-center">Data Absensi Bulan</th>
-                    <th class="text-center">Jumlah Kehadiran</th>
-                    <th class="text-center">Persentase Kehadiran</th>
+                    <th style="width: 1%;color: white;">No</th>
+                    <th width="90px" class="text-center" style="color: white;">Aksi</th>
+                    <th class="text-center" style="color: white;">Data Absensi Bulan</th>
+                    <th class="text-center" style="color: white;">Jumlah Kehadiran</th>
+                    <th class="text-center" style="color: white;">Persentase Kehadiran</th>
                 </thead>
                 <tbody>
                     @foreach ($list_absensi->sortByDesc('created_at')->values() as $absensi)

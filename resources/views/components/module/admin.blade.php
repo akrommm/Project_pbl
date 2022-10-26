@@ -1,3 +1,3 @@
-<x-app title="Admin" header="Si Tukiman | Admin" menu="menu.admin">
+<x-app title="ADMIN" header="ADMIN" menu="menu.admin">
     {{$slot}}
 </x-app>

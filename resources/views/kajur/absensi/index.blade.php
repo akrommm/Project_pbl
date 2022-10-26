@@ -5,21 +5,16 @@
     </div>
 
     <div class="card mt-4">
-        <div class="card-header">
-            <a href="{{ url('kajur/absensi/create') }}" class="btn btn-dark float-right"><i class="fa fa-plus"></i> Rekap Absen</a>
-            <div class="card-title">
-                Absensi
-            </div>
-        </div>
         <div class="card-body">
-            <table class="table table-datatable table-striped table-bordered">
+            <a href="{{ url('kajur/absensi/create') }}" class="btn btn-dark float-right"><i class="fa fa-plus"></i> Rekap Absen</a>
+            <table id="data-table" class="table table-bordered">
                 <thead class="bg-dark">
-                    <th width="10px">No</th>
-                    <th width="90px">Aksi</th>
-                    <th>Nama</th>
-                    <th>Jabatan</th>
-                    <th>Jumlah Kehadiran</th>
-                    <th>Persentase Kehadiran</th>
+                    <th style="color: white;" width="10px">No</th>
+                    <th style="color: white;" width="90px">Aksi</th>
+                    <th style="color: white;">Nama</th>
+                    <th style="color: white;">Jabatan</th>
+                    <th style="color: white;">Jumlah Kehadiran</th>
+                    <th style="color: white;">Persentase Kehadiran</th>
                 </thead>
                 <tbody>
                     @foreach ($list_absensi->sortByDesc('created_at')->values() as $absensi)

@@ -2,102 +2,92 @@
 <html lang="en">
 
 <head>
-    <title>Si Tukin</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{{ url('/') }}/images/icons/favicon.ico" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/vendor/bootstrap/css/bootstrap.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/vendor/animate/animate.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/vendor/css-hamburgers/hamburgers.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/vendor/animsition/css/animsition.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/vendor/daterangepicker/daterangepicker.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/util.css">
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/main.css">
-    <!--===============================================================================================-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SITUKIN - Login</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url('/')}}/assets/images/logo/favicon.png">
+
+    <!-- page css -->
+
+    <!-- Core css -->
+    <link href="{{ url('/')}}/assets/css/app.min.css" rel="stylesheet">
+
 </head>
 
-<body style="background-color: #666666;">
-
-    <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100">
-                <form action="{{ url('/login') }}" method="post" class="login100-form validate-form">
-                    <span class="login100-form-title p-b-43">
-                        Sistem Informasi Pembayaran Tukin dan Uang Makan
-                    </span>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <x-template.utils.notif />
+<body>
+    <div class="app">
+        <div class="container-fluid p-0 h-100">
+            <div class="row no-gutters h-100 full-height">
+                <div class="col-lg-4 d-none d-lg-flex bg" style="background-image:url('assets/images/others/wkwk.jpg')">
+                    <div class="d-flex h-100 p-h-40 p-v-15 flex-column justify-content-between">
+                        <div>
+                            <img src="{{ url('/')}}/assets/images/logo/logo1.png" alt="" width="175" height="47">
+                        </div>
+                        <div>
+                            <h1 class="text-white m-b-20 font-weight-normal">Sistem Informasi Pembayaran Tukin Dan Uang Makan</h1>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-white">© 2022 Project Base Learning</span>
                         </div>
                     </div>
-                    @if (isset($message))
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @endif
-                    @csrf
-                    <div class="wrap-input100 validate-input" data-validate="Diperlukan User ID yang valid">
-                        <input class="input100" type="text" name="userid">
-                        <span class="focus-input100"></span>
-                        <span class="label-input100">User ID</span>
-                    </div>
-                    <div class="wrap-input100 validate-input" data-validate="Diperlukan Password">
-                        <input class="input100" type="password" name="password">
-                        <span class="focus-input100"></span>
-                        <span class="label-input100">Password</span>
-                    </div>
-                    <div class="flex-sb-m w-full p-t-3 p-b-32">
-                        <div class="contact100-form-checkbox">
-                            <input class="input-checkbox100" id="remember" type="checkbox" name="remember">
-                            <label class="label-checkbox100" for="remember">
-                                Remember me
-                            </label>
+                </div>
+                <div class="col-lg-8 bg-white">
+                    <div class="container h-100">
+                        <div class="row no-gutters h-100 align-items-center">
+                            <div class="col-md-8 col-lg-7 col-xl-6 mx-auto">
+                                <h2>Login</h2>
+                                <form action="{{ url('/login') }}" method="post">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <x-template.utils.notif />
+                                        </div>
+                                    </div>
+                                    @if (isset($message))
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @endif
+                                    @csrf
+                                    <div class="form-group" data-validate="Diperlukan User ID yang valid">
+                                        <label class="font-weight-semibold" for="userid">User ID</label>
+                                        <div class="input-affix">
+                                            <i class="prefix-icon anticon anticon-user"></i>
+                                            <input type="text" class="form-control" name="userid" placeholder="User ID">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" data-validate="Diperlukan Password">
+                                        <label class="font-weight-semibold" for="password">Password:</label>
+                                        <a class="float-right font-size-13 text-muted" href="">Forget Password?</a>
+                                        <div class="input-affix m-b-10">
+                                            <i class="prefix-icon anticon anticon-lock"></i>
+                                            <input type="password" class="form-control" name="password" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <span class="font-size-13 text-muted">
+                                                Don't have an account?
+                                                <a class="small" href=""> Signup</a>
+                                            </span>
+                                            <button class="btn btn-primary">Sign In</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" type="submit">
-                            Login
-                        </button>
-                    </div>
-                </form>
-
-                <div class="login100-more" style="background-image: url('images/bg-01.jpg');">
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Core Vendors JS -->
+    <script src="{{ url('/')}}/assets/js/vendors.min.js"></script>
 
+    <!-- page js -->
 
-
-
-    <!--===============================================================================================-->
-    <script src="{{ url('/') }}/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="{{ url('/') }}/vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="{{ url('/') }}/vendor/bootstrap/js/popper.js"></script>
-    <script src="{{ url('/') }}/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="{{ url('/') }}/vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="{{ url('/') }}/vendor/daterangepicker/moment.min.js"></script>
-    <script src="{{ url('/') }}/vendor/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
-    <script src="{{ url('/') }}/vendor/countdowntime/countdowntime.js"></script>
-    <!--===============================================================================================-->
-    <script src="{{ url('/') }}/js/main.js"></script>
+    <!-- Core JS -->
+    <script src="{{ url('/')}}/assets/js/app.min.js"></script>
 
 </body>
 

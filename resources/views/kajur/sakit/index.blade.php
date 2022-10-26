@@ -9,16 +9,17 @@
             <div class="card-title">
                 Pengajuan Baru
             </div>
-            <a href="{{ url('kajur/sakit') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
+
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <a href="{{ url('kajur/sakit') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
+            <table id="data-table" class="table table-bordered">
                 <thead class="bg-dark">
-                    <th style="width: 1%" class="text-center">No</th>
-                    <th width="100px " class="text-center">NIP</th>
-                    <th class="text-center">Nama Pegawai</th>
-                    <th width="190px " class="text-center">Status</th>
-                    <th width="170px " class="text-center">Aksi</th>
+                    <th style="width: 1%;color: white;" class="text-center">No</th>
+                    <th width="100px " class="text-center" style="color: white;">NIP</th>
+                    <th class="text-center" style="color: white;">Nama Pegawai</th>
+                    <th width="190px " class="text-center" style="color: white;">Status</th>
+                    <th width="170px " class="text-center" style="color: white;">Aksi</th>
                 </thead>
                 <tbody>
                     @php
@@ -70,16 +71,15 @@
             <div class="card-title">
                 Pengajuan Disetujui
             </div>
-            <a href="{{ url('kajur/sakit') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered">
                 <thead class="bg-dark">
-                    <th style="width: 1%" class="text-center">No</th>
-                    <th width="100px " class="text-center">NIP</th>
-                    <th class="text-center">Nama Pegawai</th>
-                    <th width="190px " class="text-center">Status</th>
-                    <th width="170px " class="text-center">Aksi</th>
+                    <th style="width: 1%;color: white;" class="text-center">No</th>
+                    <th width="100px " class="text-center" style="color: white;">NIP</th>
+                    <th class="text-center" style="color: white;">Nama Pegawai</th>
+                    <th width="190px " class="text-center" style="color: white;">Status</th>
+                    <th width="170px " class="text-center" style="color: white;">Aksi</th>
                 </thead>
                 <tbody>
                     @php
@@ -121,16 +121,15 @@
             <div class="card-title">
                 Pengajuan Ditolak
             </div>
-            <a href="{{ url('kajur/sakit') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered">
                 <thead class="bg-dark">
-                    <th style="width: 1%" class="text-center">No</th>
-                    <th width="100px " class="text-center">NIP</th>
-                    <th class="text-center">Nama Pegawai</th>
-                    <th width="190px " class="text-center">Status</th>
-                    <th width="170px " class="text-center">Aksi</th>
+                    <th style="width: 1%;color: white;" class="text-center">No</th>
+                    <th width="100px " class="text-center" style="color: white;">NIP</th>
+                    <th class="text-center" style="color: white;">Nama Pegawai</th>
+                    <th width="190px " class="text-center" style="color: white;">Status</th>
+                    <th width="170px " class="text-center" style="color: white;">Aksi</th>
                 </thead>
                 <tbody>
                     @php
