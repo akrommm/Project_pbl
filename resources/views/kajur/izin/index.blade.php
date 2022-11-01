@@ -1,33 +1,32 @@
-<x-module.pegawai>
+<x-module.kajur>
     <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Pengajuan izin
+        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Pengajuan Izin
         </h5>
     </div>
     <br>
     <div class="card">
         <div class="card-header">
-            <div class="card-title text-center">
-                Form ini digunakan untuk mengajukan surat izin dan cuti.
+            <div class="card-title">
+                Pengajuan Baru
             </div>
+
         </div>
         <div class="card-body">
-            <a href="{{ url('pegawai/izin/create') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
             <table id="data-table" class="table table-bordered">
                 <thead class="bg-dark">
-                    <th style="width: 1%;color: white;">No</th>
+                    <th style="width: 1%;color: white;" class="text-center">No</th>
                     <th width="100px " class="text-center" style="color: white;">NIP</th>
                     <th class="text-center" style="color: white;">Nama Pegawai</th>
                     <th class="text-center" style="color: white;">Perihal</th>
                     <th class="text-center" style="color: white;">Periode</th>
-                    <th class="text-center" style="color: white;" width="120px">Aksi</th>
-                    <th class="text-center" style="color: white;" width="230px">Status</th>
+                    <th width="190px " class="text-center" style="color: white;">Status</th>
+                    <th width="170px " class="text-center" style="color: white;">Aksi</th>
                 </thead>
                 <tbody>
                     @php
                     $no = 1;
                     @endphp
                     @foreach ($list_izin as $izin)
-                    @if ($pegawai->id == $izin->id_pegawai)
                     @if ($izin->status == 1)
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
@@ -36,27 +35,25 @@
                         <td class="text-center">{{ $izin->perihal }}</td>
                         <td class="text-center">{{ $izin->dari_tanggal }} - {{ $izin->sampai_tanggal }}</td>
                         <td class="text-center">
-                            <div class="btn-group">
-                                <x-template.button.info-button url="pegawai/izin" id="{{ $izin->id }}/edit" />
-                                <x-template.button.edit-button url="pegawai/izin" id="{{ $izin->id }}" />
-                                <x-template.button.delete-button url="pegawai/izin" id="{{ $izin->id }}" />
-                            </div>
-                        </td>
-                        <td class="text-center">
                             @if ($izin->status == 1)
-                            <label class="btn btn-warning">Tunggu</label>
+                            <h4><span class="badge badge-warning">Pengajuan Baru</span></h4>
                             @endif
 
                             @if ($izin->status == 2)
-                            <label class="btn btn-success">Disetujui</label>
+                            <p>Pengajuan Diterima</p>
                             @endif
 
                             @if ($izin->status == 3)
-                            <label class="btn btn-danger">Ditolak</label>
+                            <p>Pengajuan Ditolak</p>
                             @endif
                         </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a href="{{ url('cetak_izin', $izin->id) }}" class="btn btn-dark" target="_blank"><i class="fa fa-download"></i></a>
+                                <a href="{{ url('kajur/izin', $izin->id) }}/edit" class="btn btn-primary"><i class="fa fa-info"></i></a>
+                            </div>
+                        </td>
                     </tr>
-                    @endif
                     @endif
                     @endforeach
                 </tbody>
@@ -72,36 +69,29 @@
         <div class="card-body">
             <table class="table table-bordered">
                 <thead class="bg-dark">
-                    <th style="width: 1%;color: white;">No</th>
+                    <th style="width: 1%;color: white;" class="text-center">No</th>
                     <th width="100px " class="text-center" style="color: white;">NIP</th>
                     <th class="text-center" style="color: white;">Nama Pegawai</th>
                     <th class="text-center" style="color: white;">Perihal</th>
                     <th class="text-center" style="color: white;">Periode</th>
-                    <th class="text-center" style="color: white;" width="120px">Aksi</th>
-                    <th class="text-center" style="color: white;" width="230px">Status</th>
+                    <th width="190px " class="text-center" style="color: white;">Status</th>
+                    <th width="170px " class="text-center" style="color: white;">Aksi</th>
                 </thead>
                 <tbody>
                     @php
                     $no = 1;
                     @endphp
                     @foreach ($list_izin as $izin)
-                    @if ($pegawai->id == $izin->id_pegawai)
                     @if ($izin->status == 2)
                     <tr>
-                        <td class="text-center">{{ $no++ }}</td>
+                        <td>{{ $no++ }}</td>
                         <td class="text-center">{{ $izin->nip }}</td>
                         <td class="text-center">{{ $izin->nama}} </td>
                         <td class="text-center">{{ $izin->perihal }}</td>
                         <td class="text-center">{{ $izin->dari_tanggal }} - {{ $izin->sampai_tanggal }}</td>
                         <td class="text-center">
-                            <div class="btn-group">
-                                <x-template.button.edit-button url="pegawai/izin" id="{{ $izin->id }}" />
-                                <x-template.button.delete-button url="pegawai/izin" id="{{ $izin->id }}" />
-                            </div>
-                        </td>
-                        <td class="text-center">
                             @if ($izin->status == 1)
-                            <h4><span class="badge badge-warning">Tunggu</span></h4>
+                            <label class="btn btn-warning">Pengajuan Baru</label>
                             @endif
 
                             @if ($izin->status == 2)
@@ -112,8 +102,12 @@
                             <label class="btn btn-danger">Ditolak</label>
                             @endif
                         </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a href="{{ url('cetak_izin', $izin->id) }}" class="btn btn-dark" target="_blank"><i class="fa fa-download"></i></a>
+                            </div>
+                        </td>
                     </tr>
-                    @endif
                     @endif
                     @endforeach
                 </tbody>
@@ -129,36 +123,28 @@
         <div class="card-body">
             <table class="table table-bordered">
                 <thead class="bg-dark">
-                    <th style="width: 1%;color: white;">No</th>
+                    <th style="width: 1%;color: white;" class="text-center">No</th>
                     <th width="100px " class="text-center" style="color: white;">NIP</th>
                     <th class="text-center" style="color: white;">Nama Pegawai</th>
                     <th class="text-center" style="color: white;">Perihal</th>
                     <th class="text-center" style="color: white;">Periode</th>
-                    <th class="text-center" style="color: white;" width="120px">Aksi</th>
-                    <th class="text-center" style="color: white;" width="230px">Status</th>
+                    <th width="190px " class="text-center" style="color: white;">Status</th>
                 </thead>
                 <tbody>
                     @php
                     $no = 1;
                     @endphp
                     @foreach ($list_izin as $izin)
-                    @if ($pegawai->id == $izin->id_pegawai)
                     @if ($izin->status == 3)
                     <tr>
-                        <td class="text-center">{{ $no++ }}</td>
+                        <td>{{ $no++ }}</td>
                         <td class="text-center">{{ $izin->nip }}</td>
                         <td class="text-center">{{ $izin->nama}} </td>
                         <td class="text-center">{{ $izin->perihal }}</td>
                         <td class="text-center">{{ $izin->dari_tanggal }} - {{ $izin->sampai_tanggal }}</td>
                         <td class="text-center">
-                            <div class="btn-group">
-                                <x-template.button.edit-button url="pegawai/izin" id="{{ $izin->id }}" />
-                                <x-template.button.delete-button url="pegawai/izin" id="{{ $izin->id }}" />
-                            </div>
-                        </td>
-                        <td class="text-center">
                             @if ($izin->status == 1)
-                            <label class="btn btn-warning">Tunggu</label>
+                            <label class="btn btn-warning">Pengajuan Baru</label>
                             @endif
 
                             @if ($izin->status == 2)
@@ -169,12 +155,12 @@
                             <h4><span class="badge badge-danger">Ditolak</span></h4>
                             @endif
                         </td>
+
                     </tr>
-                    @endif
                     @endif
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-</x-module.pegawai>
+</x-module.kajur>

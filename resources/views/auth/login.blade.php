@@ -20,7 +20,7 @@
     <div class="app">
         <div class="container-fluid p-0 h-100">
             <div class="row no-gutters h-100 full-height">
-                <div class="col-lg-4 d-none d-lg-flex bg" style="background-image:url('assets/images/others/wkwk.jpg')">
+                <div class="col-lg-4 d-none d-lg-flex bg full-height" style="background-image:url('assets/images/others/wkwk.jpg')">
                     <div class="d-flex h-100 p-h-40 p-v-15 flex-column justify-content-between">
                         <div>
                             <img src="{{ url('/')}}/assets/images/logo/logo1.png" alt="" width="175" height="47">
@@ -36,7 +36,7 @@
                 <div class="col-lg-8 bg-white">
                     <div class="container h-100">
                         <div class="row no-gutters h-100 align-items-center">
-                            <div class="col-md-8 col-lg-7 col-xl-6 mx-auto">
+                            <div class="col-md-8 col-lg-12 col-xl-6 mx-auto">
                                 <h2>Login</h2>
                                 <form action="{{ url('/login') }}" method="post">
                                     <div class="row">
@@ -57,7 +57,6 @@
                                     </div>
                                     <div class="form-group" data-validate="Diperlukan Password">
                                         <label class="font-weight-semibold" for="password">Password:</label>
-                                        <a class="float-right font-size-13 text-muted" href="">Forget Password?</a>
                                         <div class="input-affix m-b-10">
                                             <i class="prefix-icon anticon anticon-lock"></i>
                                             <input type="password" class="form-control" name="password" placeholder="Password">
@@ -65,10 +64,6 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <span class="font-size-13 text-muted">
-                                                Don't have an account?
-                                                <a class="small" href=""> Signup</a>
-                                            </span>
                                             <button class="btn btn-primary">Sign In</button>
                                         </div>
                                     </div>

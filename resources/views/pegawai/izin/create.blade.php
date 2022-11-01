@@ -7,17 +7,31 @@
     <a href="{{ url('pegawai/izin') }}" class="btn btn-dark btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
     <div class="card">
         <div class="card-body">
-            <form action="{{ url('pegawai/izin') }}" method="post" enctype="multipart/form-data" onsubmit="return confirm('Yakin ingin mengupload data ini?')">
+            <form action="{{ url('pegawai/izin') }}" method="post" onsubmit="return confirm('Yakin ingin mengupload data ini?')">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="control-label">Upload Dokumen</label>
-                            <input type="file" name="file" accept=".pdf,.png,.jpg" class="form-control">
+                            <label for="" class="control-label">Perihal</label>
+                            <input type="text" name="perihal" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Periode</label>
+                            <div class="d-flex align-items-center">
+                                <input type="text" class="form-control datepicker-input" name="dari_tanggal" placeholder="Dari Tanggal">
+                                <span class="p-h-10">to</span>
+                                <input type="text" class="form-control datepicker-input" name="sampai_tanggal" placeholder="Sampai Tanggal">
+                            </div>
                         </div>
                     </div>
                 </div>
-
+                <div class="form-grup">
+                    <label for="" class="control-label">Keterangan</label>
+                    <textarea name="komen" id="deskripsi" class="form-control"></textarea>
+                </div>
+                <br>
                 <div class="row">
                     <div class="col-md-12">
                         <button class="btn btn-dark float-right"><i class="fas fa-save"></i> Simpan</button>

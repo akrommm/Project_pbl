@@ -11,6 +11,7 @@
 
     <!-- page css -->
     <link href="{{ url('/') }}/assets/vendors/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
 
     <!-- Core css -->
     <link href="{{ url('/') }}/assets/css/app.min.css" rel="stylesheet">
@@ -173,11 +174,15 @@
     <script src="{{ url('/') }}/assets/js/pages/dashboard-default.js"></script>
     <script src="{{ url('/') }}/assets/vendors/datatables/jquery.dataTables.min.js"></script>
     <script src="{{ url('/') }}/assets/vendors/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="{{ url('/') }}/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
     <!-- Core JS -->
     <script src="{{ url('/') }}/assets/js/app.min.js"></script>
     <script>
         $('#data-table').DataTable();
+    </script>
+    <script>
+        $('.datepicker-input').datepicker();
     </script>
 
 </body>

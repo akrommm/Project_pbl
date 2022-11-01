@@ -22,22 +22,6 @@
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="card">
-                <div class="card-body">
-                    <div class="media align-items-center">
-                        <div class="avatar avatar-icon avatar-lg avatar-gold">
-                            <i class="fas fa-wallet"></i>
-                        </div>
-                        <div class="m-l-15">
-                            <h2 class="m-b-0">Rp. 200.000</h2>
-                            <p class="m-b-0 text-muted">Tunjangan Kinerja</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->

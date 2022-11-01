@@ -3,7 +3,7 @@
     <li class="font-weight-bold ml-3">Menu</li>
     <!-- <li class=" ml-3">Menu</li> -->
     <li class="nav-item">
-        <a href=" {{ url('kajur/beranda') }}">
+        <a href=" {{ url('kepegawaian/beranda') }}">
             <span class="icon-holder">
                 <i class="nav-icon fas fa-home"></i>
             </span>
@@ -21,9 +21,9 @@
             </span>
         </a>
         <ul class="dropdown-menu">
-            <x-template.menu.menu-item title="Rekap Absensi" url="kajur/absensi" icon="file-alt" />
-            <x-template.menu.menu-item title="Pengajuan Izin" url="kajur/izin" icon="file-alt" />
-            <x-template.menu.menu-item title="Pengajuan Sakit" url="kajur/sakit" icon="file-alt" />
+            <x-template.menu.menu-item title="Rekap Absensi" url="kepegawaian/absensi" icon="file-alt" />
+            <x-template.menu.menu-item title="Pengajuan Izin" url="kepegawaian/izin" icon="file-alt" />
+            <x-template.menu.menu-item title="Pengajuan Sakit" url="kepegawaian/sakit" icon="file-alt" />
         </ul>
     </li>
 </ul>

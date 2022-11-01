@@ -5,6 +5,11 @@
     </div>
     <br>
     <div class="card">
+        <div class="card-header">
+            <div class="card-title text-center">
+                Form ini digunakan untuk mengajukan surat sakit.
+            </div>
+        </div>
         <div class="card-body">
             <a href="{{ url('pegawai/sakit/create') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
             <table id="data-table" class="table table-bordered">

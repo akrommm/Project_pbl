@@ -3,7 +3,7 @@
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Data Module
         </h5>
     </div>
-    <div class="card mt-4"> 
+    <div class="card mt-4">
         <div class="card-body">
             <a href="{{ url('admin/master-data/module/create') }}" class="float-right btn btn-dark"><i class="fas fa-plus"></i> Tambah Module</a>
             <table id="data-table" class="table table-datatable table-bordered">

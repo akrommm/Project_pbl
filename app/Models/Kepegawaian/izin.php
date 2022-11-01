@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Kajur;
+namespace App\Models\Kepegawaian;
 
 use App\Models\ModelAuthenticate;
 use Illuminate\Support\Carbon;

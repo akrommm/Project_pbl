@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Kajur;
 use App\Http\Controllers\Controller;
 use App\Models\Kajur\Izin;
 use App\Models\Pegawai\izin as PegawaiSakit;
+use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
+use PDF;
+use Svg\Surface\SurfacePDFLib;
 
 class IzinController extends Controller
 {
@@ -15,18 +19,21 @@ class IzinController extends Controller
         return view('kajur.izin.index', $data);
     }
 
-    public function store()
+    public function update(Izin $izin)
     {
-        $izin = new izin();
-        $izin->izin = request('izin');
-        $izin->file = request('file');
-        $izin->id_pegawai = request()->user()->id;
-        $izin->status = 1;
+        $izin->komen = request('komen');
+        $izin->status = request('status');
         $izin->save();
 
         $izin->handleUploadFile();
 
-        return redirect('kajur/izin')->with('success', 'Berhasil Menambahkan Pengajuan');
+        return redirect('kajur/izin');
+    }
+
+    public function edit(Izin $izin)
+    {
+        $data['izin'] = $izin;
+        return view('kajur.izin.izin_detail', $data);
     }
 
     public function setuju($id)
@@ -43,5 +50,18 @@ class IzinController extends Controller
         $izin->status = 3;
         $izin->save();
         return redirect('kajur/izin')->with('danger', 'Data Ditolak');
+    }
+
+    public function cetak(Izin $izin)
+    {
+        $data = Izin::where('id', $izin->id)->get();
+        $pdf = PDF::loadview('cetak_izin', ['data' => $data]);
+        return $pdf->stream('cetak_izin.pdf', $data);
+    }
+
+    public function show(Izin $izin)
+    {
+        $data['list_izin'] = Izin::where('id', $izin->id)->get();
+        return view('kajur.izin.izin_detail', $data);
     }
 }

@@ -15,3 +15,8 @@ Route::resource('kinerja', KinerjaController::class);
 Route::resource('skp', SkpController::class);
 Route::resource('sakit', SakitController::class);
 Route::resource('izin', IzinController::class);
+
+Route::get('izin_detail/{id}', [IzinController::class, 'izin_detail']);
+
+Route::put('setuju/{id}', [IzinController::class, 'setuju']);
+Route::put('tolak/{id}', [IzinController::class, 'tolak']);

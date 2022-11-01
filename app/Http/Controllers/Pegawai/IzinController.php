@@ -24,16 +24,35 @@ class IzinController extends Controller
     public function store()
     {
         $izin = new izin();
-        $izin->file = request('file');
+        $izin->perihal = request('perihal');
+        $izin->dari_tanggal = request('dari_tanggal');
+        $izin->sampai_tanggal = request('sampai_tanggal');
         $izin->id_pegawai = request()->user()->id;
         $izin->nama = request()->user()->nama;
         $izin->nip = request()->user()->nip;
+        $izin->jabatan = request()->user()->jabatan;
         $izin->status = 1;
+        $izin->save();
+
+
+        return redirect('pegawai/izin')->with('success', 'Berhasil Menambahkan Pengajuan');
+    }
+
+    public function update(Izin $izin)
+    {
+        $izin->komen = request('komen');
+        $izin->status = request('status');
         $izin->save();
 
         $izin->handleUploadFile();
 
-        return redirect('pegawai/izin')->with('success', 'Berhasil Menambahkan Pengajuan');
+        return redirect('pegawai/izin');
+    }
+
+    public function edit(Izin $izin)
+    {
+        $data['izin'] = $izin;
+        return view('pegawai.izin.izin_detail', $data);
     }
 
     function destroy(izin $izin)
@@ -57,5 +76,11 @@ class IzinController extends Controller
         $izin->status = 3;
         $izin->save();
         return redirect('admin/master-data/izin')->with('danger', 'Data Ditolak');
+    }
+
+    public function show(Izin $izin)
+    {
+        $data['list_izin'] = Izin::where('id', $izin->id)->get();
+        return view('pegawai.izin.izin_detail', $data);
     }
 }

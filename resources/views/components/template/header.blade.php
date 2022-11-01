@@ -24,7 +24,7 @@
                 </a>
             </li>
             <div class="sidebar-header font-weight-bold" style="display: block;background-color: #fff;color: #2A2A2A;width: 100%;padding: 0 20px;padding-left: 20px;clear: both;z-index: 10;position: relative;text-align:center;font-size: 16px;">
-                SITUKIN {{ $header }}
+                SIMANTAP {{ $header }}
             </div>
         </ul>
         <ul class="nav-right">
