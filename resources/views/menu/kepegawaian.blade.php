@@ -26,4 +26,18 @@
             <x-template.menu.menu-item title="Pengajuan Sakit" url="kepegawaian/sakit" icon="file-alt" />
         </ul>
     </li>
+    <li class="nav-item dropdown">
+        <a class="dropdown-toggle" href="javascript:void(0);">
+            <span class="icon-holder">
+                <i class="nav-icon fas fa-qrcode"></i>
+            </span>
+            <span class="title">QR Generator</span>
+            <span class="arrow">
+                <i class="arrow-icon"></i>
+            </span>
+        </a>
+        <ul class="dropdown-menu">
+            <x-template.menu.menu-item title="New-QR" url="kepegawaian/qr" icon="file-alt" />
+        </ul>
+    </li>
 </ul>

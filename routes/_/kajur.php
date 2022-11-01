@@ -5,6 +5,7 @@ use App\Http\Controllers\Kajur\AbsensiController;
 use App\Http\Controllers\Kajur\BerandaController;
 use App\Http\Controllers\Kajur\IzinController;
 use App\Http\Controllers\Kajur\KinerjaController;
+use App\Http\Controllers\Kajur\QrController;
 use App\Http\Controllers\Kajur\SakitController;
 use App\Http\Controllers\Kajur\SkpController;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,9 @@ Route::get('izin_detail/{id}', [IzinController::class, 'izin_detail']);
 
 Route::put('setuju/{id}', [IzinController::class, 'setuju']);
 Route::put('tolak/{id}', [IzinController::class, 'tolak']);
+
+Route::get('qr', [QrController::class, 'index']);
+Route::post('pengajuan-izin', [PengajuanController::class, 'generateizin']);
+Route::post('pengajuan-sakit', [PengajuanController::class, 'generatesakit']);
+Route::post('persetujuan-izin', [PersetujuanController::class, 'generateizin']);
+Route::post('persetujuan-sakit', [PersetujuanController::class, 'generatesakit']);

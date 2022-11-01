@@ -11,6 +11,8 @@ use App\Http\Controllers\Profile\PegawaiProfileController;
 use App\Http\Controllers\Kajur\SkpController;
 use App\Http\Controllers\Kepegawaian\IzinController as KepegawaianIzinController;
 use App\Http\Controllers\Pegawai\IzinController as PegawaiIzinController;
+use App\Http\Controllers\Qr\PengajuanController;
+use App\Http\Controllers\Qr\QrController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +47,12 @@ Route::get('cetak_izin/{id}', [IzinController::class, 'cetak']);
 // cetan izin kepegawaian
 Route::get('cetak_izin/{id}', [KepegawaianIzinController::class, 'cetak']);
 
+// QR CODE
+Route::get('qr', [QrController::class, 'index']);
+Route::post('pengajuan-izin', [PengajuanController::class, 'generateizin']);
+Route::post('pengajuan-sakit', [PengajuanController::class, 'generatesakit']);
+Route::post('persetujuan-izin', [PersetujuanController::class, 'generateizin']);
+Route::post('persetujuan-sakit', [PersetujuanController::class, 'generatesakit']);
 
 // login
 Route::get('login', [AuthController::class, 'login'])->name('login');
