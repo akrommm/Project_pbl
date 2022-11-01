@@ -37,7 +37,7 @@
                         <td class="text-center">{{ $izin->dari_tanggal }} - {{ $izin->sampai_tanggal }}</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <x-template.button.info-button url="pegawai/izin" id="{{ $izin->id }}/edit" />
+                                <x-template.button.info-button url="pegawai/izin" id="{{ $izin->id }}" />
                                 <x-template.button.edit-button url="pegawai/izin" id="{{ $izin->id }}" />
                                 <x-template.button.delete-button url="pegawai/izin" id="{{ $izin->id }}" />
                             </div>
@@ -152,6 +152,7 @@
                         <td class="text-center">{{ $izin->dari_tanggal }} - {{ $izin->sampai_tanggal }}</td>
                         <td class="text-center">
                             <div class="btn-group">
+                                <x-template.button.info-button url="pegawai/izin" id="{{ $izin->id }}" />
                                 <x-template.button.edit-button url="pegawai/izin" id="{{ $izin->id }}" />
                                 <x-template.button.delete-button url="pegawai/izin" id="{{ $izin->id }}" />
                             </div>

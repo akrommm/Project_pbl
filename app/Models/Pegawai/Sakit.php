@@ -31,7 +31,7 @@ class Sakit extends ModelAuthenticate
         }
     }
 
-    function handleDelete()
+    function handleDeleteFile()
     {
         $file = $this->file;
         if ($file) {

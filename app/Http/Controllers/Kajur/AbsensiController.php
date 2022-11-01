@@ -39,4 +39,10 @@ class AbsensiController extends Controller
         $data['absensi'] = $absensi;
         return view('kajur.absensi.show', $data);
     }
+
+    function destroy(Absensi $absensi)
+    {
+        $absensi->delete();
+        return redirect('kajur/absensi')->with('danger', 'berhasil di hapus');
+    }
 }

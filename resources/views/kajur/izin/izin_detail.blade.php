@@ -12,53 +12,32 @@
                 @method("PUT")
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Nama Lengkap</label>
-                            <input type="text" class="form-control" placeholder="{{ $izin->nama}}" disabled="">
-                        </div>
+                        <dt class="font-weight-bold">Nama Pengaju</dt>
+                        <dd>{{ $izin->nama }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">NIP/NIK</label>
-                            <input type="text" class="form-control" placeholder="{{ $izin->nip}}" disabled="">
-                        </div>
+                        <dt class="font-weight-bold">NIP/NIK</dt>
+                        <dd>{{ $izin->nip }}</dd>
+                    </div>
+                    <div class="col-md-6">
+                        <dt class="font-weight-bold">Jabatan</dt>
+                        <dd>{{ $izin->jabatan }}</dd>
+                    </div>
+                    <div class="col-md-6">
+                        <dt class="font-weight-bold">Perihal</dt>
+                        <dd>{{ $izin->perihal }}</dd>
+                    </div>
+                    <div class="col-md-6">
+                        <dt class="font-weight-bold">Periode Izin</dt>
+                        <dd>{{ $izin->dari_tanggal }} - {{ $izin->sampai_tanggal }}</dd>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Jabatan</label>
-                            <input type="text" class="form-control" placeholder="{{ $izin->jabatan}}" disabled="">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Perihal</label>
-                            <input type="text" class="form-control" placeholder="{{ $izin->perihal}}" disabled="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Dari Tanggal</label>
-                            <div class="input-affix m-b-10">
-                                <i class="prefix-icon anticon anticon-calendar"></i>
-                                <input type="text" class="form-control datepicker-input" placeholder="{{ $izin->dari_tanggal }}" disabled="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Sampai Tanggal</label>
-                            <div class="input-affix m-b-10">
-                                <i class="prefix-icon anticon anticon-calendar"></i>
-                                <input type="text" class="form-control datepicker-input" placeholder="{{ $izin->sampai_tanggal }}" disabled="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <br>
+                <a href="{{ url('cetak_izin', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
+                    <span> Download Dokumen</span>
+                </a>
+                <br>
+                <br>
                 <div class="form-grup">
                     <label for="" class="control-label">Keterangan</label>
                     <textarea name="komen" id="deskripsi" class="form-control"></textarea>
@@ -72,8 +51,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group float-right">
-                            <button class="btn btn-success" name="status" value="2"><span class="fa fa-check"></span> Terima</button>
-                            <button class="btn btn-danger ml-4" name="status" value="3"><span class="fa fa-times"></span> Tolak</button>
+                            <button class="btn btn-success btn-tone" name="status" value="2"><span class="fa fa-check"></span> Terima</button>
+                            <button class="btn btn-danger ml-4 btn-tone" name="status" value="3"><span class="fa fa-times"></span> Tolak</button>
                         </div>
                     </div>
                 </div>

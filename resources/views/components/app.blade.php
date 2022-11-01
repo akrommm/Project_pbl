@@ -7,7 +7,7 @@
     <title>SI TUKIN - {{$title}}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('/') }}/assets/images/logo/favicon.png">
+    <link rel="shortcut icon" href="{{ url('/') }}/assets/images/logo/ico.png">
 
     <!-- page css -->
     <link href="{{ url('/') }}/assets/vendors/datatables/dataTables.bootstrap.min.css" rel="stylesheet">

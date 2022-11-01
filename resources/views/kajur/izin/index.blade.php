@@ -49,8 +49,7 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="{{ url('cetak_izin', $izin->id) }}" class="btn btn-dark" target="_blank"><i class="fa fa-download"></i></a>
-                                <a href="{{ url('kajur/izin', $izin->id) }}/edit" class="btn btn-primary"><i class="fa fa-info"></i></a>
+                                <a href="{{ url('kajur/izin', $izin->id) }}/edit" class="btn btn-primary btn-tone"><i class="fa fa-eye"> Detail</i></a>
                             </div>
                         </td>
                     </tr>

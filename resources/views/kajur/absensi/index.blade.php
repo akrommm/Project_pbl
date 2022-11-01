@@ -22,9 +22,9 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>
                             <div class="btn-group">
-                                <x-template.button.info-button url="superadmin/master-data/kajur" id="" />
-                                <x-template.button.edit-button url="superadmin/master-data/kajur" id="" />
-                                <x-template.button.delete-button url="superadmin/master-data/kajur" id="" />
+                                <x-template.button.info-button url="kajur/absensi" id="{{ $absensi->id}}" />
+                                <x-template.button.edit-button url="kajur/absensi" id="{{ $absensi->id}}" />
+                                <x-template.button.delete-button url="kajur/absensi" id="{{ $absensi->id}}" />
                             </div>
                         </td>
                         <td>{{ $absensi->nama }}</td>

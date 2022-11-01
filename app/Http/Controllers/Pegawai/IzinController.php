@@ -49,6 +49,12 @@ class IzinController extends Controller
         return redirect('pegawai/izin');
     }
 
+    public function show(Izin $izin)
+    {
+        $data['izin'] = $izin;
+        return view('pegawai.izin.izin_detail', $data);
+    }
+
     public function edit(Izin $izin)
     {
         $data['izin'] = $izin;
@@ -76,11 +82,5 @@ class IzinController extends Controller
         $izin->status = 3;
         $izin->save();
         return redirect('admin/master-data/izin')->with('danger', 'Data Ditolak');
-    }
-
-    public function show(Izin $izin)
-    {
-        $data['list_izin'] = Izin::where('id', $izin->id)->get();
-        return view('pegawai.izin.izin_detail', $data);
     }
 }

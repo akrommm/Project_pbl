@@ -12,55 +12,29 @@
                 @method("PUT")
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Nama Lengkap</label>
-                            <input type="text" class="form-control" placeholder="{{ $izin->nama}}" disabled="">
-                        </div>
+                        <dt class="font-weight-bold">Nama Pengaju</dt>
+                        <dd>{{ $izin->nama }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">NIP/NIK</label>
-                            <input type="text" class="form-control" placeholder="{{ $izin->nip}}" disabled="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Jabatan</label>
-                            <input type="text" class="form-control" placeholder="{{ $izin->jabatan}}" disabled="">
-                        </div>
+                        <dt class="font-weight-bold">NIP/NIK</dt>
+                        <dd>{{ $izin->nip }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Perihal</label>
-                            <input type="text" class="form-control" placeholder="{{ $izin->perihal}}" disabled="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Dari Tanggal</label>
-                            <div class="input-affix m-b-10">
-                                <i class="prefix-icon anticon anticon-calendar"></i>
-                                <input type="text" class="form-control datepicker-input" placeholder="{{ $izin->dari_tanggal }}" disabled="">
-                            </div>
-                        </div>
+                        <dt class="font-weight-bold">Jabatan</dt>
+                        <dd>{{ $izin->jabatan }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Sampai Tanggal</label>
-                            <div class="input-affix m-b-10">
-                                <i class="prefix-icon anticon anticon-calendar"></i>
-                                <input type="text" class="form-control datepicker-input" placeholder="{{ $izin->sampai_tanggal }}" disabled="">
-                            </div>
-                        </div>
+                        <dt class="font-weight-bold">Perihal</dt>
+                        <dd>{{ $izin->perihal }}</dd>
                     </div>
-                </div>
-                <br>
-                <div class="row col-3">
-
+                    <div class="col-md-6">
+                        <dt class="font-weight-bold">Periode Izin</dt>
+                        <dd>{{ $izin->dari_tanggal }} - {{ $izin->sampai_tanggal }}</dd>
+                    </div>
+                    <div class="col-md-6">
+                        <dt class="font-weight-bold">Keterangan</dt>
+                        <dd>{{ $izin->komen }}</dd>
+                    </div>
                 </div>
                 <br>
                 <br>
@@ -72,7 +46,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </x-module.pegawai>
