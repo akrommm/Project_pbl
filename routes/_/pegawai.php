@@ -5,10 +5,11 @@ use App\Http\Controllers\Pegawai\AbsensiController;
 use App\Http\Controllers\Pegawai\BerandaController;
 use App\Http\Controllers\Pegawai\IzinController;
 use App\Http\Controllers\Pegawai\KinerjaController;
-use App\Http\Controllers\Pegawai\QrController as PegawaiQrController;
+use App\Http\Controllers\Pegawai\PengajuanController;
+use App\Http\Controllers\Pegawai\PersetujuanController;
+use App\Http\Controllers\Pegawai\QrController;
 use App\Http\Controllers\Pegawai\SakitController;
 use App\Http\Controllers\Pegawai\SkpController;
-use App\Http\Controllers\Qr\PengajuanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('beranda', BerandaController::class);
@@ -23,7 +24,7 @@ Route::get('izin_detail/{id}', [IzinController::class, 'izin_detail']);
 Route::put('setuju/{id}', [IzinController::class, 'setuju']);
 Route::put('tolak/{id}', [IzinController::class, 'tolak']);
 
-Route::get('qr', [PegawaiQrController::class, 'index']);
+Route::get('qr', [QrController::class, 'index']);
 Route::post('pengajuan-izin', [PengajuanController::class, 'generateizin']);
 Route::post('pengajuan-sakit', [PengajuanController::class, 'generatesakit']);
 Route::post('persetujuan-izin', [PersetujuanController::class, 'generateizin']);
