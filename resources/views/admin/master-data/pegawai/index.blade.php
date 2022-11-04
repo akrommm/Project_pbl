@@ -1,6 +1,6 @@
 <x-module.admin>
     <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Data Pegawai
+        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> DATA PEGAWAI
         </h5>
     </div>
     <br>

@@ -4,23 +4,19 @@ namespace App\Http\Controllers\Qr;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 
 use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
-use Endroid\QrCode\Label\Alignment\LabelAlignmentLeft;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Label\Label;
-use Endroid\QrCode\LabelAlignment;
 use Endroid\QrCode\Logo\Logo;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 
-
-class PengajuanController extends Controller
+class PersetujuanController extends Controller
 {
-
     public function generateizin(Request $request)
     {
         $request->validate([
@@ -32,11 +28,11 @@ class PengajuanController extends Controller
 
         $logo =  public_path('assets/images/logo/inim.png');
         $data = "
-        Memberikan Pengesahan Tanda tangan pengajuan izin ke pada  :
-        nama pegawai : " . request('nama') . "
-        jabatan pegawai : " . request('jabatan') . "
-        devisi pegawai : " . request('devisi') . "
-        tanggal pengajuan : " . request('tanggal');
+        Memberikan Pengesahan Tanda tangan Persetujuan Izin  pada  :
+        Nama Pegawai : " . request('nama') . "
+        Jabatan Pegawai : " . request('jabatan') . "
+        Devisi Pegawai : " . request('devisi') . "
+        Tanggal Persetujuan : " . request('tanggal');
         $writer = new PngWriter();
         $filenama = request('nama') . ".png";
         // Create QR code
@@ -62,33 +58,31 @@ class PengajuanController extends Controller
         // $result->saveToFile(public_path("JneQr/$filenama"));
         $result->saveToFile(public_path('SiMantapQR'), $filenama);
 
-        // $response = response()->download(public_path("SIMANTAPQR/$filenama"));
+
+        // $response = response()->download(public_path("SiMantapQR/$filenama"));
         $response = response()->download(public_path('SiMantapQR'), $filenama);
+
         ob_clean();
 
         return $response->deleteFileAfterSend();
     }
-
-    public function generatesakit(Request $request)
+    public function generatebarang(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
-            'jabatan' => 'required',
-            'devisi' => 'required',
-            'tanggal' => 'required',
-            'barang' => 'required',
+            'tanggal_spb' => 'required',
+            'keperluan_devisi' => 'required',
+            'lokasi_kantor' => 'required',
         ]);
 
-        $logo =  public_path('assets/images/logo/inim.png');
+
+        $logo =  public_path('asset/logo/jne.png');
         $data = "
-        Memberikan Pengesahan Tanda tangan pengajuan sakit ke pada  :
-        nama pegawai : " . request('nama') . "
-        jabatan pegawai : " . request('jabatan') . "
-        devisi pegawai : " . request('devisi') . "
-        jenis barang/jasa : " . request('barang') . "
-        tanggal pengajuan : " . request('tanggal');
+        Memberikan Pengesahan Tanda tangan Persetujuan barang pada  :
+        tanggal spb : " . request('tanggal_spb') . "
+        keperluan devisi : " . request('keperluan_devisi') . "
+        lokasi kantor : " . request('lokasi_kantor');
         $writer = new PngWriter();
-        $filenama = request('nama') . ".png";
+        $filenama = request('keperluan_devisi') . ".png";
         // Create QR code
         $qrCode = QrCode::create($data)
             ->setEncoding(new Encoding('UTF-8'))
@@ -109,9 +103,9 @@ class PengajuanController extends Controller
         $result = $writer->write($qrCode, $logo, $label);
 
         // Directly output the QR code
-        $result->saveToFile(public_path("SiMantapQR/$filenama"));
+        $result->saveToFile(public_path("JneQr/$filenama"));
 
-        $response = response()->download(public_path("SiMantapQR/$filenama"));
+        $response = response()->download(public_path("JneQr/$filenama"));
         ob_clean();
 
         return $response->deleteFileAfterSend();

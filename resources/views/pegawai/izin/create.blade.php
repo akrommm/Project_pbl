@@ -7,7 +7,7 @@
     <a href="{{ url('pegawai/izin') }}" class="btn btn-dark btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
     <div class="card">
         <div class="card-body">
-            <form action="{{ url('pegawai/izin') }}" method="post" onsubmit="return confirm('Yakin ingin mengupload data ini?')">
+            <form action="{{ url('pegawai/izin') }}" method="post" enctype="multipart/form-data" onsubmit="return confirm('Yakin ingin mengupload data ini?')">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -27,9 +27,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="" class="control-label">QR Pengajuan</label>
+                        @if ($errors->has('qr'))
+                        <label for="" class="label text-danger">{{ $errors->get('qr')[0] }}</label>
+                        @endif
+                        <input type="file" name="qr" accept=".jpg, .png, .jpeg" class="form-control" required>
+                    </div>
+                </div>
                 <div class="form-grup">
                     <label for="" class="control-label">Keterangan</label>
-                    <textarea name="komen" id="deskripsi" class="form-control"></textarea>
+                    <textarea name="keterangan" id="deskripsi" class="form-control"></textarea>
                 </div>
                 <br>
                 <div class="row">

@@ -7,7 +7,7 @@
             <span class="icon-holder">
                 <i class="nav-icon fas fa-home"></i>
             </span>
-            <span class="title">Beranda</span>
+            <span class="title">Dashboard</span>
         </a>
     </li>
     <li class="nav-item dropdown">
@@ -21,23 +21,28 @@
             </span>
         </a>
         <ul class="dropdown-menu">
-            <x-template.menu.menu-item title="Rekap Absensi" url="pegawai/absensi" icon="file-alt" />
-            <x-template.menu.menu-item title="Pengajuan Izin" url="pegawai/izin" icon="file-alt" />
-            <x-template.menu.menu-item title="Pengajuan Sakit" url="pegawai/sakit" icon="file-alt" />
+            <li class="{{request()->is('pegawai/absensi') ? 'active' : ''}} ">
+                <a href="{{ url('pegawai/absensi') }}"><i class="fas fa-clipboard-list"></i> Rekap Absensi</a>
+            </li>
         </ul>
     </li>
     <li class="nav-item dropdown">
         <a class="dropdown-toggle" href="javascript:void(0);">
             <span class="icon-holder">
-                <i class="nav-icon fas fa-qrcode"></i>
+                <i class="nav-icon fas fas fa-paper-plane"></i>
             </span>
-            <span class="title">QR Generator</span>
+            <span class="title">Pengajuan</span>
             <span class="arrow">
                 <i class="arrow-icon"></i>
             </span>
         </a>
         <ul class="dropdown-menu">
-            <x-template.menu.menu-item title="New-QR" url="pegawai/qr" icon="file-alt" />
+            <li class="{{request()->is('pegawai/izin') ? 'active' : ''}} ">
+                <a href="{{ url('pegawai/izin') }}"><i class="fas fa-file-word"></i> Pengajuan Izin</a>
+            </li>
+            <li class="{{request()->is('pegawai/sakit') ? 'active' : ''}} ">
+                <a href="{{ url('pegawai/sakit') }}"><i class="fas fa-file-medical-alt"></i> Pengajuan Sakit</a>
+            </li>
         </ul>
     </li>
 </ul>

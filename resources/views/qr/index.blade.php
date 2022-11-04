@@ -1,4 +1,4 @@
-<x-module.pegawai>
+<x-module.qr>
     <div class="card-header py-2">
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> QR Generate
         </h5>
@@ -36,7 +36,7 @@
                                 <div class="pt-4">
                                     <h4>Qr generate </h4>
                                     <br>
-                                    <form action="{{ url('jneqr/pengajuan-izin') }}" method="post">
+                                    <form action="{{ url('simantap/pengajuan-izin') }}" method="post">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-6">
@@ -67,7 +67,7 @@
                                             </div>
                                         </div>
 
-                                        <button class="btn btn-info float-right">Generate</button>
+                                        <button class="btn btn-dark float-right"><i class="fas fa-qrcode"></i> Generate</button>
 
                                     </form>
                                 </div>
@@ -76,13 +76,13 @@
                                 <div class="pt-4">
                                     <h4>Qr generate </h4>
                                     <br>
-                                    <form action="{{ url('jneqr/persetujuan-izin') }}" method="post">
+                                    <form action="{{ url('simantap/persetujuan-izin') }}" method="post">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Tanggal Spl</h5>
-                                                    <input type="date" class="form-control input-rounded @error('tanggal_spl') is-invalid @enderror" name="tanggal_spl">
+                                                    <h5>Nama</h5>
+                                                    <input type="text" class="form-control input-rounded @error('nama') is-invalid @enderror" name="nama">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -95,20 +95,20 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Lokasi izin</h5>
-                                                    <input type="text" class="form-control input-rounded @error('lokasi') is-invalid @enderror" name="lokasi">
+                                                    <h5>Jabatan</h5>
+                                                    <input type="text" class="form-control input-rounded @error('jabatan') is-invalid @enderror" name="jabatan">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <h5>Tanggal Persetujuan</h5>
-                                                    <input type="date" class="form-control input-rounded @error('tanggal_izin') is-invalid @enderror" name="tanggal_izin">
+                                                    <input type="date" class="form-control input-rounded @error('tanggal') is-invalid @enderror" name="tanggal">
                                                 </div>
                                             </div>
                                         </div>
 
 
-                                        <button class="btn btn-info float-right">Generate</button>
+                                        <button class="btn btn-dark float-right"><i class="fas fa-qrcode"></i> Generate</button>
 
                                     </form>
                                 </div>
@@ -117,7 +117,7 @@
                                 <div class="pt-4">
                                     <h4>Qr generate </h4>
                                     <br>
-                                    <form action="{{ url('jneqr/pengajuan-barang') }}" method="post">
+                                    <form action="{{ url('simantap/pengajuan-barang') }}" method="post">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-6">
@@ -148,7 +148,7 @@
                                             </div>
                                         </div>
 
-                                        <button class="btn btn-info float-right">Generate</button>
+                                        <button class="btn btn-dark float-right"><i class="fas fa-qrcode"></i> Generate</button>
 
                                     </form>
                                 </div>
@@ -157,7 +157,7 @@
                                 <div class="pt-4">
                                     <h4>Qr generate </h4>
                                     <br>
-                                    <form action="{{ url('jneqr/persetujuan-barang') }}" method="post">
+                                    <form action="{{ url('simantap/persetujuan-barang') }}" method="post">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-6">
@@ -187,7 +187,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="btn btn-info float-right">Generate</button>
+                                        <button class="btn btn-dark float-right"><i class="fas fa-qrcode"></i> Generate</button>
 
                                     </form>
                                 </div>
@@ -198,4 +198,4 @@
             </div>
         </div>
     </div>
-</x-module.pegawai>
+</x-module.qr>

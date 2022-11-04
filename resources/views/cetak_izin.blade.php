@@ -65,10 +65,10 @@
     </table>
     <br>
     <table align="center">
-        @foreach ($data as $d)
+        @foreach($data as $d)
         <tr>
             <td>Nama Lengkap</td>
-            <td width="541"> : {{ $d->nama}}</td>
+            <td width="541"> : {{$d->nama}}</td>
         </tr>
         <tr>
             <td>NIP/NIK</td>
@@ -82,11 +82,9 @@
     </table>
     <br>
     <table align="center">
-        @foreach ($data as $d)
         <tr>
-            <td width="660">Bermaksud mengajukan izin sakit pada tanggal {{$d->dari_tanggal}} hingga {{$d->sampai_tanggal}}.</td>
+            <td width="660">Bermaksud mengajukan izin sakit pada tanggal .</td>
         </tr>
-        @endforeach
         <tr>
             <td width="660">Demikian surat sakit ini saya ajukan. Atas perhatian dan diberikannya permohohan izin saya ini. Saya ucapkan banyak terimakasih.</td>
         </tr>

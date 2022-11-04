@@ -55,8 +55,8 @@
                             <dd class="col-10">: {{ auth()->user()->nama }}</dd>
                             <dt class="col-2">NIP</dt>
                             <dd class="col-10">: {{ auth()->user()->nip }}</dd>
-                            <dt class="col-2">Kelas Jabatan</dt>
-                            <dd class="col-10">: Mentri</dd>
+                            <dt class="col-2">Jabatan</dt>
+                            <dd class="col-10">: {{ auth()->user()->jabatan }}</dd>
                             <!-- <dt class="col-2">Jenis Kelamin</dt>
                             <dd class="col-10">: </dd>
                             <dt class="col-2">Tempat Lahir</dt>

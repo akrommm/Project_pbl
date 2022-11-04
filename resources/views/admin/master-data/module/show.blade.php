@@ -77,13 +77,13 @@
                     </form>
                 </div>
                 <div class="col-md-12">
-                    <hr>
-                    <table class="table table-bordered table-striped">
+                    <br>
+                    <table id="data-table" class="table table-datatable table-bordered">
                         <thead class="bg-dark">
-                            <th width="10px">No</th>
-                            <th width="100px">Aksi</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
+                            <th style="color: white;" width="10px">No</th>
+                            <th style="color: white;" width="100px">Aksi</th>
+                            <th style="color: white;">NIP</th>
+                            <th style="color: white;">Nama</th>
                         </thead>
                         <tbody>
                             @foreach ($module->role as $role)

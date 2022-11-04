@@ -12,9 +12,15 @@
             </span>
         </a>
         <ul class="dropdown-menu">
-            <x-template.menu.menu-item title="Pegawai" url="admin/master-data/pegawai" icon="users" />
-            <x-template.menu.menu-item title="Module" url="admin/master-data/module" icon="clone" />
-            <x-template.menu.menu-item title="Unit Kerja" url="admin/master-data/unitkerja" icon="university" />
+            <li class="{{request()->is('admin/master-data/pegawai') ? 'active' : ''}} ">
+                <a href="{{ url('admin/master-data/pegawai') }}"><i class="far fa-user"></i> Pegawai</a>
+            </li>
+            <li class="{{request()->is('admin/master-data/module') ? 'active' : ''}} ">
+                <a href="{{ url('admin/master-data/module') }}"><i class="far fa-clone"></i> Module</a>
+            </li>
+            <li class="{{request()->is('admin/master-data/unitkerja') ? 'active' : ''}} ">
+                <a href="{{ url('admin/master-data/unitkerja') }}"><i class="fas fa-university"></i> Unit Kerja</a>
+            </li>
         </ul>
     </li>
 </ul>

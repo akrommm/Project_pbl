@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Kajur;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kajur\Izin;
+use PhpOffice\PhpWord\TemplateProcessor;
 use App\Models\Pegawai\izin as PegawaiSakit;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Svg\Surface\SurfacePDFLib;
 
 class IzinController extends Controller
@@ -21,11 +22,12 @@ class IzinController extends Controller
 
     public function update(Izin $izin)
     {
-        $izin->komen = request('komen');
+        $izin->keterangan = request('keterangan');
         $izin->status = request('status');
+        $izin->qr_kj = request('qr_kj');
         $izin->save();
 
-        $izin->handleUploadFile();
+        $izin->handleUploadFoto();
 
         return redirect('kajur/izin');
     }
@@ -52,11 +54,24 @@ class IzinController extends Controller
         return redirect('kajur/izin')->with('danger', 'Data Ditolak');
     }
 
-    public function cetak(Izin $izin)
+    public function wordExport($id)
     {
-        $data = Izin::where('id', $izin->id)->get();
-        $pdf = PDF::loadview('cetak_izin', ['data' => $data]);
-        return $pdf->stream('cetak_izin.pdf', $data);
+        $izin = Izin::findOrFail($id);
+        $templateProcessor = new TemplateProcessor('word-template/inim.docx');
+        $templateProcessor->setValue('nama', $izin->nama);
+        $templateProcessor->setValue('nip', $izin->nip);
+        $templateProcessor->setValue('jabatan', $izin->jabatan);
+        $templateProcessor->setValue('perihal', $izin->perihal);
+        $templateProcessor->setValue('dari_tanggal', $izin->dari_tanggal);
+        $templateProcessor->setValue('sampai_tanggal', $izin->sampai_tanggal);
+        $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
+        $templateProcessor->setImageValue('qr', $qrdata);
+        $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr_ak', ["path" => $izin->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        // $templateProcessor->setImageValue('qr', '');
+        $fileName = $izin->nama;
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
 
     public function show(Izin $izin)

@@ -1,6 +1,6 @@
 <x-module.admin>
     <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Data Module
+        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> DATA MODULE
         </h5>
     </div>
     <div class="card mt-4">

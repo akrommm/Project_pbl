@@ -25,6 +25,7 @@ class IzinController extends Controller
     {
         $izin = new izin();
         $izin->perihal = request('perihal');
+        $izin->qr = request('qr');
         $izin->dari_tanggal = request('dari_tanggal');
         $izin->sampai_tanggal = request('sampai_tanggal');
         $izin->id_pegawai = request()->user()->id;
@@ -34,6 +35,7 @@ class IzinController extends Controller
         $izin->status = 1;
         $izin->save();
 
+        $izin->handleUploadFoto();
 
         return redirect('pegawai/izin')->with('success', 'Berhasil Menambahkan Pengajuan');
     }

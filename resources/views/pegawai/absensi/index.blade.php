@@ -1,10 +1,15 @@
 <x-module.pegawai>
     <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Rekap Absensi
+        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> REKAP ABSENSI
         </h5>
     </div>
     <br>
     <div class="card">
+        <div class="card-header">
+            <div class="card-title text-center">
+                Form ini digunakan untuk merekap absensi.
+            </div>
+        </div>
         <div class="card-body">
             <a href="{{ url('pegawai/absensi/create') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Rekap Absen</a>
             <table id="data-table" class="table table-bordered">

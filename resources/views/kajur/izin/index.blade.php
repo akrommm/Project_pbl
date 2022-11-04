@@ -103,7 +103,7 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="{{ url('cetak_izin', $izin->id) }}" class="btn btn-dark" target="_blank"><i class="fa fa-download"></i></a>
+                                <a href="{{ url('cetak_izin/word-export', $izin->id) }}" class="btn btn-dark" target="_blank"><i class="fa fa-download"></i></a>
                             </div>
                         </td>
                     </tr>

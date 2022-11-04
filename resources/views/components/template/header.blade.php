@@ -1,8 +1,8 @@
 <div class="header">
     <div class="logo logo-dark">
         <a href="index.html">
-            <img src="{{ url('/') }}/assets/images/logo/logo1.png" alt="Logo" width="175" height="47" class="mt-2">
-            <img class="logo-fold" src="{{ url('/') }}/assets/images/logo/wkwk1.png" alt="Logo" width="85" height="74" class="ml-0">
+            <img src="{{ url('/') }}/assets/images/logo/simantap1.png" alt="Logo" width="175" height="47" class="mt-2">
+            <img class="logo-fold" src="{{ url('/') }}/assets/images/logo/simantap3.png" alt="Logo" width="70" height="57" class="">
         </a>
     </div>
     <div class="logo logo-white">
@@ -97,7 +97,7 @@
                     <div class="pull-left p-r-10 fs-14 font-heading d-lg-block d-none">
                         <span class="semi-bold">
                             @if (auth()->check())
-                            {{ auth()->user()->nama }}
+                            Hallo, {{ auth()->user()->nama }}
                             @endif
                         </span>
                         <i class="anticon anticon-down"></i>

@@ -42,17 +42,11 @@ Route::put('setuju/{id}', [IzinController::class, 'setuju']);
 Route::put('tolak/{id}', [IzinController::class, 'tolak']);
 
 // cetan izin Kajur
-Route::get('cetak_izin/{id}', [IzinController::class, 'cetak']);
+Route::get('cetak_izin/word-export/{id}', [IzinController::class, 'wordExport']);
 
 // cetan izin kepegawaian
 Route::get('cetak_izin/{id}', [KepegawaianIzinController::class, 'cetak']);
 
-// QR CODE
-Route::get('qr', [QrController::class, 'index']);
-Route::post('pengajuan-izin', [PengajuanController::class, 'generateizin']);
-Route::post('pengajuan-sakit', [PengajuanController::class, 'generatesakit']);
-Route::post('persetujuan-izin', [PersetujuanController::class, 'generateizin']);
-Route::post('persetujuan-sakit', [PersetujuanController::class, 'generatesakit']);
 
 // login
 Route::get('login', [AuthController::class, 'login'])->name('login');
@@ -77,4 +71,8 @@ Route::prefix('kajur')->middleware('auth')->group(function () {
 
 Route::prefix('kepegawaian')->middleware('auth')->group(function () {
     include "_/kepegawaian.php";
+});
+
+Route::prefix('simantap')->middleware('auth')->group(function () {
+    include "_/qr.php";
 });

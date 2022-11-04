@@ -45,27 +45,27 @@
                     </form>
                 </div>
                 <div class="col-md-12">
-                    <hr>
-                    <table class="table table-bordered table-striped">
+                    <br>
+                    <table id="data-table" class="table table-datatable table-bordered">
                         <thead class="bg-dark">
-                            <th width="10px">No</th>
-                            <th width="100px">Aksi</th>
-                            <th>Nama</th>
-                            <th>Jabatan</th>
+                            <th class="text-center" style="color: white;" width="10px">No</th>
+                            <th class="text-center" style="color: white;" width="100px">Aksi</th>
+                            <th class="text-center" style="color: white;">Nama</th>
+                            <th class="text-center" style="color: white;">Jabatan</th>
                         </thead>
                         <tbody>
                             @foreach ($unitkerja->unitdetail as $unitdetail)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="" class="btn btn-dark btn-sm"><i class="fas fa-info"></i></a>
-                                        <a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                        <a href="{{ url('admin/master-data/unitkerja/delete-unit', $unitdetail->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                        <x-template.button.info-button url="" id="" />
+                                        <x-template.button.edit-button url="" id="" />
+                                        <a href="{{ url('admin/master-data/unitkerja/delete-unit', $unitdetail->id) }}" class="btn btn-danger btn-tone"><i class="fas fa-trash"></i></a>
                                     </div>
                                 </td>
                                 <td>{{ $unitdetail->pegawai->nama }}, {{ $unitdetail->pegawai->gelar_belakang }}</td>
-                                <td>{{ $unitdetail->jabatan }}</td>
+                                <td class="text-center">{{ $unitdetail->jabatan }}</td>
                             </tr>
                             @endforeach
                         </tbody>

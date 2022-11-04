@@ -7,7 +7,7 @@
     <title>SI MANTAP - {{$title}}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('/') }}/assets/images/logo/inim.png">
+    <link rel="shortcut icon" href="{{ url('/') }}/assets/images/logo/simantap.png" width="70" height="57">
 
     <!-- page css -->
     <link href="{{ url('/') }}/assets/vendors/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
