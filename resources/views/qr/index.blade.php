@@ -1,6 +1,6 @@
 <x-module.qr>
     <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> QR Generate
+        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> QR GENERATE
         </h5>
     </div>
     <br>
@@ -34,34 +34,28 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="home" role="tabpanel">
                                 <div class="pt-4">
-                                    <h4>Qr generate </h4>
+                                    <h4>Qr Generate </h4>
                                     <br>
                                     <form action="{{ url('simantap/pengajuan-izin') }}" method="post">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Nama</h5>
-                                                    <input type="text" class="form-control input-rounded @error('nama') is-invalid @enderror" name="nama">
+                                                    <h5>PERIHAL</h5>
+                                                    <input type="text" class="form-control input-rounded @error('perihal') is-invalid @enderror" name="perihal">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Jabatan</h5>
-                                                    <input type="text" class="form-control input-rounded @error('jabatan') is-invalid @enderror" name="jabatan">
+                                                    <h5>DEVISI</h5>
+                                                    <input type="text" class="form-control input-rounded @error('devisi') is-invalid @enderror" name="devisi">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Devisi</h5>
-                                                    <input type="text" class="form-control input-rounded @error('devisi') is-invalid @enderror" name="devisi">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Tanggal Pengajuan</h5>
+                                                    <h5>TANGGAL PENGAJUAN</h5>
                                                     <input type="date" class="form-control input-rounded @error('tanggal') is-invalid @enderror" name="tanggal">
                                                 </div>
                                             </div>
@@ -74,20 +68,20 @@
                             </div>
                             <div class="tab-pane fade" id="profile">
                                 <div class="pt-4">
-                                    <h4>Qr generate </h4>
+                                    <h4>Qr Generate </h4>
                                     <br>
                                     <form action="{{ url('simantap/persetujuan-izin') }}" method="post">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Nama</h5>
+                                                    <h5>PEGAWAI YANG DISETUJUI</h5>
                                                     <input type="text" class="form-control input-rounded @error('nama') is-invalid @enderror" name="nama">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Devisi</h5>
+                                                    <h5>UNIT KERJA</h5>
                                                     <input type="text" class="form-control input-rounded @error('devisi') is-invalid @enderror" name="devisi">
                                                 </div>
                                             </div>
@@ -95,13 +89,13 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Jabatan</h5>
-                                                    <input type="text" class="form-control input-rounded @error('jabatan') is-invalid @enderror" name="jabatan">
+                                                    <h5>PERIHAL</h5>
+                                                    <input type="text" class="form-control input-rounded @error('perihal') is-invalid @enderror" name="perihal">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Tanggal Persetujuan</h5>
+                                                    <h5>TANGGAL PERSETUJUAN</h5>
                                                     <input type="date" class="form-control input-rounded @error('tanggal') is-invalid @enderror" name="tanggal">
                                                 </div>
                                             </div>

@@ -1,4 +1,4 @@
-<x-module.kajur>
+<x-module.kepegawaian>
     <div class="card-header py-2">
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Pengajuan izin
         </h5>
@@ -12,7 +12,7 @@
 
         </div>
         <div class="card-body">
-            <a href="{{ url('kajur/izin') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
+            <a href="{{ url('kepegawaian/izin') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
             <table id="data-table" class="table table-bordered">
                 <thead class="bg-dark">
                     <th style="width: 1%;color: white;" class="text-center">No</th>
@@ -46,7 +46,8 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="{{ url('cetak_izin', $izin->id) }}" class="btn btn-dark" target="_blank"><i class="far fa-file-pdf"></i></a>
+                                <a href="{{ url('kepegawaian/izin', $izin->id) }}/edit" class="btn btn-info btn-tone" target="_blank"><i class="far fa-info"></i></a>
+                                <a href="{{ url('cetak_izin/word-export', $izin->id) }}" class="btn btn-dark" target="_blank"><i class="far fa-file-pdf"></i></a>
                                 <form action="{{ url('setuju', $izin->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
@@ -66,4 +67,4 @@
             </table>
         </div>
     </div>
-</x-module.kajur>
+</x-module.kepegawaian>

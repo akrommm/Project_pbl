@@ -13,6 +13,7 @@ use App\Http\Controllers\Kepegawaian\IzinController as KepegawaianIzinController
 use App\Http\Controllers\Pegawai\IzinController as PegawaiIzinController;
 use App\Http\Controllers\Qr\PengajuanController;
 use App\Http\Controllers\Qr\QrController;
+use App\Models\Kepegawaian\Izin;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +46,7 @@ Route::put('tolak/{id}', [IzinController::class, 'tolak']);
 Route::get('cetak_izin/word-export/{id}', [IzinController::class, 'wordExport']);
 
 // cetan izin kepegawaian
-Route::get('cetak_izin/{id}', [KepegawaianIzinController::class, 'cetak']);
+Route::get('cetak_izin/word-export/{id}', [KepegawaianIzinController::class, 'wordExport']);
 
 
 // login

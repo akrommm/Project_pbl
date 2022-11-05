@@ -65,6 +65,9 @@ class IzinController extends Controller
         $templateProcessor->setValue('dari_tanggal', $izin->dari_tanggal);
         $templateProcessor->setValue('sampai_tanggal', $izin->sampai_tanggal);
         $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
+        // if (request('qr')) $templateProcessor->setImageValue('qr', $qrdata);
+        // if (request('qr_kj')) $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        // if (request('path')) $templateProcessor->setImageValue('qr_ak', ["path" => $izin->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);
         $templateProcessor->setImageValue('qr', $qrdata);
         $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
         $templateProcessor->setImageValue('qr_ak', ["path" => $izin->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);

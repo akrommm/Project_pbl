@@ -21,20 +21,25 @@ class PersetujuanController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'jabatan' => 'required',
             'devisi' => 'required',
             'tanggal' => 'required',
+            'perihal' => 'required',
         ]);
 
         $logo =  public_path('assets/images/logo/inim.png');
         $data = "
-        Memberikan Pengesahan Tanda tangan Persetujuan Izin  pada  :
-        Nama Pegawai : " . request('nama') . "
-        Jabatan Pegawai : " . request('jabatan') . "
-        Devisi Pegawai : " . request('devisi') . "
-        Tanggal Persetujuan : " . request('tanggal');
+Digital Signature
+" . request()->user()->nama . "
+NIP/NIK. " . request()->user()->nip . "
+        
+        
+Tanda Tangan Digital untuk Persetujuan Surat Izin Pada :
+Nama Pegawai    : " . request('nama') . "
+Unit Kerja      : " . request('devisi') . "
+Tanggal         : " . request('tanggal') . "
+Perihal         : " . request('perihal');
         $writer = new PngWriter();
-        $filenama = request('nama') . ".png";
+        $filenama = request()->user()->nama . ".png";
         // Create QR code
         $qrCode = QrCode::create($data)
             ->setEncoding(new Encoding('UTF-8'))
@@ -49,7 +54,7 @@ class PersetujuanController extends Controller
         $logo = Logo::create($logo)
             ->setResizeToWidth(100);
 
-        $label = Label::create(request('nama'))
+        $label = Label::create(request()->user()->nama)
             ->setTextColor(new Color(0, 0, 0));
 
         $result = $writer->write($qrCode, $logo, $label);

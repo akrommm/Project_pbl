@@ -24,21 +24,24 @@ class PengajuanController extends Controller
     public function generateizin(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
-            'jabatan' => 'required',
-            'devisi' => 'required',
+            'perihal' => 'required',
             'tanggal' => 'required',
+            'devisi' => 'required',
         ]);
 
         $logo =  public_path('assets/images/logo/inim.png');
         $data = "
-        Memberikan Pengesahan Tanda tangan pengajuan izin ke pada  :
-        nama pegawai : " . request('nama') . "
-        jabatan pegawai : " . request('jabatan') . "
-        devisi pegawai : " . request('devisi') . "
-        tanggal pengajuan : " . request('tanggal');
+Digital Signature
+" . request()->user()->nama . "
+NIP/NIK. " . request()->user()->nip . "
+" . request('devisi') . "
+
+
+Tanda Tangan Digital untuk Pengajuan Surat Izin :
+Tanggal         : " . request('tanggal') . "
+Perihal         : " . request('perihal');
         $writer = new PngWriter();
-        $filenama = request('nama') . ".png";
+        $filenama = request()->user()->nama . ".png";
         // Create QR code
         $qrCode = QrCode::create($data)
             ->setEncoding(new Encoding('UTF-8'))
@@ -53,7 +56,7 @@ class PengajuanController extends Controller
         $logo = Logo::create($logo)
             ->setResizeToWidth(100);
 
-        $label = Label::create(request('nama'))
+        $label = Label::create(request()->user()->nama)
             ->setTextColor(new Color(0, 0, 0));
 
         $result = $writer->write($qrCode, $logo, $label);

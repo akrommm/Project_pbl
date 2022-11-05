@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Kepegawaian;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kepegawaian\Izin;
+use PhpOffice\PhpWord\TemplateProcessor;
 use App\Models\Pegawai\izin as PegawaiSakit;
 use PDF;
 
@@ -14,6 +15,30 @@ class IzinController extends Controller
         $data['list_izin'] = Izin::all();
         $data['pegawai'] = auth()->user();
         return view('kepegawaian.izin.index', $data);
+    }
+
+    public function show(Izin $izin)
+    {
+        $data['list_izin'] = Izin::where('id', $izin->id)->get();
+        return view('kepegawaian.izin.izin_detail', $data);
+    }
+
+    public function edit(Izin $izin)
+    {
+        $data['izin'] = $izin;
+        return view('kepegawaian.izin.izin_detail', $data);
+    }
+
+    public function update(Izin $izin)
+    {
+        $izin->keterangan = request('keterangan');
+        $izin->status = request('status');
+        $izin->qr_ak = request('qr_ak');
+        $izin->save();
+
+        $izin->handleUploadFoto();
+
+        return redirect('kepegawaian/izin');
     }
 
     public function store()
@@ -46,10 +71,26 @@ class IzinController extends Controller
         return redirect('kepegawaian/izin')->with('danger', 'Data Ditolak');
     }
 
-    public function cetak(Izin $izin)
+    public function wordExport($id)
     {
-        $data = Izin::where('id', $izin->id)->get();
-        $pdf = PDF::loadview('cetak_izin', ['data' => $data]);
-        return $pdf->stream('cetak_izin.pdf', $data);
+        $izin = Izin::findOrFail($id);
+        $templateProcessor = new TemplateProcessor('word-template/inim.docx');
+        $templateProcessor->setValue('nama', $izin->nama);
+        $templateProcessor->setValue('nip', $izin->nip);
+        $templateProcessor->setValue('jabatan', $izin->jabatan);
+        $templateProcessor->setValue('perihal', $izin->perihal);
+        $templateProcessor->setValue('dari_tanggal', $izin->dari_tanggal);
+        $templateProcessor->setValue('sampai_tanggal', $izin->sampai_tanggal);
+        $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
+        // if (request('qr')) $templateProcessor->setImageValue('qr', $qrdata);
+        // if (request('qr_kj')) $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        // if (request('path')) $templateProcessor->setImageValue('qr_ak', ["path" => $izin->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr', $qrdata);
+        $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr_ak', ["path" => $izin->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        // $templateProcessor->setImageValue('qr', '');
+        $fileName = $izin->nama;
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
 }

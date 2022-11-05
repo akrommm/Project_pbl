@@ -24,25 +24,25 @@ class Izin extends ModelAuthenticate
         return $this->belongsTo(Pegawai::class, 'id_pegawai');
     }
 
-    function handleUploadFile()
+    function handleUploadFoto()
     {
         $this->handleDelete();
-        if (request()->hasFile('file')) {
-            $file = request()->file('file');
-            $destination = "file";
+        if (request()->hasFile('qr_ak')) {
+            $qr_ak = request()->file('qr_ak');
+            $destination = "images/pegawai/qr/kepegawaian";
             $randomStr = Str::random(5);
-            $filename = $this->id . "-" . time() . "-" . $randomStr . "." . $file->extension();
-            $url = $file->storeAs($destination, $filename);
-            $this->file = "app/" . $url;
+            $filename = $this->id . "-" . time() . "-" . $randomStr . "." . $qr_ak->extension();
+            $url = $qr_ak->storeAs($destination, $filename);
+            $this->qr_ak = "app/" . $url;
             $this->save();
         }
     }
 
     function handleDelete()
     {
-        $file = $this->file;
-        if ($file) {
-            $path = public_path($file);
+        $qr_ak = $this->qr_ak;
+        if ($qr_ak) {
+            $path = public_path($qr_ak);
             if (file_exists($path)) {
                 unlink($path);
             }
