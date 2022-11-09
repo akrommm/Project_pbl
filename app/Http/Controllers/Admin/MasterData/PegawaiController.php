@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Pegawai\StoreRequest;
 use App\Http\Requests\Admin\Pegawai\UpdateRequest;
 use App\Models\Admin\MasterData\Pegawai;
 use App\Models\Admin\MasterData\Role;
+use App\Models\Admin\MasterData\Unitkerja;
 use App\Models\SimaduPegawai;
 
 class PegawaiController extends Controller
@@ -19,7 +20,8 @@ class PegawaiController extends Controller
 
     public function create()
     {
-        return view('admin.master-data.pegawai.create');
+        $data['list_unitkerja'] = UnitKerja::all();
+        return view('admin.master-data.pegawai.create', $data);
     }
 
     public function store()
@@ -28,7 +30,7 @@ class PegawaiController extends Controller
         $pegawai->nip = request('nip');
         $pegawai->nik = request('nik');
         $pegawai->nama = request('nama');
-        $pegawai->agama = request('agama');
+        $pegawai->id_unitkerja = request('unitkerja');
         $pegawai->jenis_kelamin = request('jenis_kelamin');
         $pegawai->tempat_lahir = request('tempat_lahir');
         $pegawai->tanggal_lahir = request('tanggal_lahir');

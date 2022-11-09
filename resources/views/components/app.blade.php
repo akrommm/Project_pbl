@@ -8,6 +8,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url('/') }}/assets/images/logo/simantap.png" width="70" height="57">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- page css -->
     <link href="{{ url('/') }}/assets/vendors/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -35,7 +36,7 @@
 
 
                 <!-- Content Wrapper START -->
-                <div class="main-content">
+                <div class="main-content" style="background-image: url('{{ url('/')}}/assets/images/others/login-3.png')">
                     <div class="container-fluid pt-4">
                         <div class="row">
                             <div class="col-md-12">
@@ -182,7 +183,19 @@
         $('#data-table').DataTable();
     </script>
     <script>
-        $('.datepicker-input').datepicker();
+        $(function() {
+            $(document).ready(function() {
+                $('.datepicker-input').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    autoclose: true,
+                    todayHighlight: true,
+                    format: 'dd-mm-yyyy',
+                    language: 'id',
+                    locale: 'id',
+                });
+            });
+        })
     </script>
 
 </body>

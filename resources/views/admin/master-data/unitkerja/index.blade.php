@@ -8,10 +8,10 @@
             <a href="{{ url('admin/master-data/unitkerja/create') }}" class="float-right btn btn-dark"><i class="fas fa-plus"></i> Tambah Data</a>
             <table id="data-table" class="table table-datatable table-bordered">
                 <thead class="bg-dark">
-                    <th width="10px" class="text-center" style="color: white;">No</th>
-                    <th width="90px" class="text-center" style="color: white;">Aksi</th>
-                    <th class="text-center" style="color: white;">Nama Unit Kerja</th>
-                    <th width="180px" class="text-center" style="color: white;">Jumlah Pegawai</th>
+                    <th width="10px" class="text-center" style="color: white;">NO</th>
+                    <th width="90px" class="text-center" style="color: white;">AKSI</th>
+                    <th class="text-center" style="color: white;">NAMA UNIT KERJA</th>
+                    <th width="180px" class="text-center" style="color: white;">JUMLAH PEGAWAI</th>
                 </thead>
                 <tbody>
                     @foreach ($list_unitkerja->sortByDesc('created_at')->values() as $unitkerja)

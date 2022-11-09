@@ -12,20 +12,22 @@ use App\Http\Controllers\Pegawai\SakitController;
 use App\Http\Controllers\Pegawai\SkpController;
 use Illuminate\Support\Facades\Route;
 
+// Menu
 Route::get('beranda', BerandaController::class);
 Route::resource('absensi', AbsensiController::class);
-Route::resource('kinerja', KinerjaController::class);
-Route::resource('skp', SkpController::class);
 Route::resource('sakit', SakitController::class);
 Route::resource('izin', IzinController::class);
 
-Route::get('izin_detail/{id}', [IzinController::class, 'izin_detail']);
-
+// Validasi
 Route::put('setuju/{id}', [IzinController::class, 'setuju']);
 Route::put('tolak/{id}', [IzinController::class, 'tolak']);
 
-Route::get('qr', [QrController::class, 'index']);
-Route::post('pengajuan-izin', [PengajuanController::class, 'generateizin']);
-Route::post('pengajuan-sakit', [PengajuanController::class, 'generatesakit']);
-Route::post('persetujuan-izin', [PersetujuanController::class, 'generateizin']);
-Route::post('persetujuan-sakit', [PersetujuanController::class, 'generatesakit']);
+// Cetak Izin
+Route::get('cetak_izin/word-export3/{id}', [IzinController::class, 'wordExport3']);
+Route::get('cetak_izin/word-export2/{id}', [IzinController::class, 'wordExport2']);
+Route::get('cetak_izin/word-export/{id}', [IzinController::class, 'wordExport']);
+
+// Cetak Sakit
+Route::get('cetak_sakit/word-export3/{id}', [SakitController::class, 'wordExport3']);
+Route::get('cetak_sakit/word-export2/{id}', [SakitController::class, 'wordExport2']);
+Route::get('cetak_sakit/word-export/{id}', [SakitController::class, 'wordExport']);

@@ -8,11 +8,11 @@
             <a href="{{ url('admin/master-data/module/create') }}" class="float-right btn btn-dark"><i class="fas fa-plus"></i> Tambah Module</a>
             <table id="data-table" class="table table-datatable table-bordered">
                 <thead class="bg-dark">
-                    <th style="color: white;" width="10px">No</th>
-                    <th style="color: white;" width="90px">Aksi</th>
-                    <th style="color: white;">Nama Module</th>
-                    <th style="color: white;">Tag</th>
-                    <th style="color: white;">Pegawai</th>
+                    <th style="color: white;" width="10px">NO</th>
+                    <th style="color: white;" width="90px" class="text-center">AKSI</th>
+                    <th style="color: white;">NAMA MODULE</th>
+                    <th style="color: white;">TAG</th>
+                    <th style="color: white;" class="text-center">JUMLAH PEGAWAI</th>
                 </thead>
                 <tbody>
                     @foreach ($list_module->sortByDesc('created_at')->values() as $module)

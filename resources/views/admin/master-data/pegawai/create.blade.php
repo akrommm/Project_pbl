@@ -72,18 +72,17 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="" class="control-label">Agama</label>
-                            @if ($errors->has('agama'))
-                            <label for="" class="label text-danger">{{ $errors->get('agama')[0] }}</label>
+                            <label for="" class="control-label">Unit Kerja</label>
+                            @if ($errors->has('unitkerja'))
+                            <label for="" class="label text-danger">{{ $errors->get('unitkerja')[0] }}</label>
                             @endif
-                            <select name="agama" class="form-control">
-                                <option disabled selected>Pilih Opsi</option>
-                                <option value="Islam">Islam</option>
-                                <option value="Kristen Katolik">Kristen Katolik</option>
-                                <option value="Kristen Protestan">Kristen Protestan</option>
-                                <option value="Hindu">Hindu</option>
-                                <option value="Buddha">Buddha</option>
-                                <option value="Konghucu">Konghucu</option>
+                            <select class="form-control default-select" name="unitkerja">
+                                <option selected>Pilih Unit Kerja</option>
+                                @foreach ($list_unitkerja as $unitkerja)
+                                </option>
+                                <option value="{{ $unitkerja->id }}">{{ $unitkerja->nama_unit }}
+                                </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

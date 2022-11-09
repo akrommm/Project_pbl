@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Pegawai;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pegawai\Sakit;
-use App\Models\Admin\MasterData\Pegawai;
-use Illuminate\Http\Request;
+use App\Models\PengajuanSakit\Sakit;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class SakitController extends Controller
 {
@@ -21,26 +20,41 @@ class SakitController extends Controller
         return view('pegawai.sakit.create');
     }
 
+    public function show(Sakit $sakit)
+    {
+        $data['sakit'] = $sakit;
+        return view('pegawai.sakit.show', $data);
+    }
+
     public function store()
     {
-        $sakit = new sakit();
-        $sakit->file = request('file');
+        $sakit = new Sakit();
+        $sakit->perihal = request('perihal');
+        $sakit->qr = request('qr');
+        $sakit->dari_tanggal = request('dari_tanggal');
+        $sakit->sampai_tanggal = request('sampai_tanggal');
+        $sakit->lampiran = request('lampiran');
         $sakit->id_pegawai = request()->user()->id;
         $sakit->nama = request()->user()->nama;
         $sakit->nip = request()->user()->nip;
+        $sakit->jabatan = request()->user()->jabatan;
         $sakit->status = 1;
         $sakit->save();
 
-        $sakit->handleUploadFile();
+        $sakit->handleUploadFoto();
+        $sakit->handleUploadLampiran();
 
-        return redirect('pegawai/sakit')->with('success', 'Berhasil Menambahkan sakit');
+        return redirect('pegawai/sakit')->with('success', 'Berhasil Menambahkan Pengajuan Sakit');
     }
 
     function destroy(sakit $sakit)
     {
-        $sakit->handleDeleteFile();
+        $sakit->handleDelete();
+        $sakit->handleDeleteKajur();
+        $sakit->handleDeleteKepegawaian();
+        $sakit->handleDeleteLampiran();
         $sakit->delete();
-        return redirect('pegawai/sakit')->with('danger', 'berhasil di hapus');
+        return redirect('pegawai/sakit')->with('danger', 'Data Berhasil Dihapus');
     }
 
     public function setuju($id)
@@ -57,5 +71,62 @@ class SakitController extends Controller
         $sakit->status = 3;
         $sakit->save();
         return redirect('admin/master-data/sakit')->with('danger', 'Data Ditolak');
+    }
+
+    public function wordExport($id)
+    {
+        $sakit = sakit::findOrFail($id);
+        $templateProcessor = new TemplateProcessor('word-template/sakit/sakit_pegawai.docx');
+        $templateProcessor->setValue('nama', $sakit->nama);
+        $templateProcessor->setValue('nip', $sakit->nip);
+        $templateProcessor->setValue('jabatan', $sakit->jabatan);
+        $templateProcessor->setValue('perihal', $sakit->perihal);
+        $templateProcessor->setValue('dari_tanggal', $sakit->dari_tanggal_string);
+        $templateProcessor->setValue('sampai_tanggal', $sakit->sampai_tanggal_string);
+        $qrdata = ["path" => $sakit->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
+        $templateProcessor->setImageValue('qr', $qrdata);
+        $templateProcessor->setImageValue('lampiran', ["path" => $sakit->lampiran, 'width' => 600, 'height' => 400, 'ratio' => false]);
+        $fileName = $sakit->nama;
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
+    }
+
+    public function wordExport2($id)
+    {
+        $sakit = sakit::findOrFail($id);
+        $templateProcessor = new TemplateProcessor('word-template/sakit_kajur.docx');
+        $templateProcessor->setValue('nama', $sakit->nama);
+        $templateProcessor->setValue('nip', $sakit->nip);
+        $templateProcessor->setValue('jabatan', $sakit->jabatan);
+        $templateProcessor->setValue('perihal', $sakit->perihal);
+        $templateProcessor->setValue('dari_tanggal', $sakit->dari_tanggal_string);
+        $templateProcessor->setValue('sampai_tanggal', $sakit->sampai_tanggal_string);
+        $qrdata = ["path" => $sakit->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
+        $templateProcessor->setImageValue('qr', $qrdata);
+        $templateProcessor->setImageValue('lampiran', ["path" => $sakit->lampiran, 'width' => 600, 'height' => 400, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr_kj', ["path" => $sakit->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $fileName = $sakit->nama;
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
+    }
+
+    public function wordExport3($id)
+    {
+        $sakit = sakit::findOrFail($id);
+        $templateProcessor = new TemplateProcessor('word-template/sakit_kepegawaian.docx');
+        $templateProcessor->setValue('nama', $sakit->nama);
+        $templateProcessor->setValue('nip', $sakit->nip);
+        $templateProcessor->setValue('jabatan', $sakit->jabatan);
+        $templateProcessor->setValue('perihal', $sakit->perihal);
+        $templateProcessor->setValue('dari_tanggal', $sakit->dari_tanggal_string);
+        $templateProcessor->setValue('sampai_tanggal', $sakit->sampai_tanggal_string);
+        $qrdata = ["path" => $sakit->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
+        $templateProcessor->setImageValue('qr', $qrdata);
+        $templateProcessor->setImageValue('lampiran', ["path" => $sakit->lampiran, 'width' => 600, 'height' => 400, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr_kj', ["path" => $sakit->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr_ak', ["path" => $sakit->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $fileName = $sakit->nama;
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
 }

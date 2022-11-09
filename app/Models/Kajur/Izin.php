@@ -6,6 +6,7 @@ use App\Models\ModelAuthenticate;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use App\Models\Admin\MasterData\Pegawai;
+use App\Models\Admin\MasterData\Unitkerja;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Izin extends ModelAuthenticate
@@ -25,12 +26,32 @@ class Izin extends ModelAuthenticate
         return $this->belongsTo(Pegawai::class, 'id_pegawai');
     }
 
+    public function unitkerja()
+    {
+        return $this->belongsTo(Unitkerja::class, 'id_unitkerja');
+    }
+
+    public function getTanggalSuratStringAttribute()
+    {
+        return Carbon::parse($this->attributes['tanggal_surat'])->translatedFormat('d F Y');
+    }
+
+    public function getDariTanggalStringAttribute()
+    {
+        return Carbon::parse($this->attributes['dari_tanggal'])->translatedFormat('d F Y');
+    }
+
+    public function getSampaiTanggalStringAttribute()
+    {
+        return Carbon::parse($this->attributes['sampai_tanggal'])->translatedFormat('d F Y');
+    }
+
     function handleUploadFoto()
     {
         $this->handleDelete();
         if (request()->hasFile('qr_kj')) {
             $qr_kj = request()->file('qr_kj');
-            $destination = "images/pegawai/qr/kajur";
+            $destination = "SiMantapQR";
             $randomStr = Str::random(5);
             $filename = $this->id . "-" . time() . "-" . $randomStr . "." . $qr_kj->extension();
             $url = $qr_kj->storeAs($destination, $filename);

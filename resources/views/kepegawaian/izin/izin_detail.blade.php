@@ -33,9 +33,16 @@
                     </div>
                 </div>
                 <br>
-                <a href="{{ url('cetak_izin/word-export', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
+                @if ($izin->status == 2)
+                <a href="{{ url('kepegawaian/cetak_izin/word-export2', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
                     <span> Download Dokumen</span>
                 </a>
+                @endif
+                @if ($izin->status == 3)
+                <a href="{{ url('kepegawaian/cetak_izin/word-export3', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
+                    <span> Download Dokumen</span>
+                </a>
+                @endif
                 <hr>
                 <div class="row">
                     <div class="col-md-6">
@@ -43,7 +50,7 @@
                         @if ($errors->has('qr_ak'))
                         <label for="" class="label text-danger">{{ $errors->get('qr_ak')[0] }}</label>
                         @endif
-                        <input type="file" name="qr_ak" accept=".jpg, .png, .jpeg" class="form-control" required>
+                        <input type="file" name="qr_ak" accept=".jpg, .png, .jpeg" class="form-control">
                     </div>
                 </div>
                 <br>
@@ -60,8 +67,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group float-right">
-                            <button class="btn btn-success btn-tone" name="status" value="2"><span class="fa fa-check"></span> Terima</button>
-                            <button class="btn btn-danger ml-4 btn-tone" name="status" value="3"><span class="fa fa-times"></span> Tolak</button>
+                            <button class="btn btn-success btn-tone" name="status" value="3"><span class="fa fa-check"></span> Terima</button>
+                            <button class="btn btn-danger ml-4 btn-tone" name="status" value="5"><span class="fa fa-times"></span> Tolak</button>
                         </div>
                     </div>
                 </div>

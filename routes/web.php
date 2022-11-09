@@ -1,19 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\MasterData\PegawaiController;
-use App\Http\Controllers\Pegawai\BerandaController;
-use App\Http\Controllers\SuperAdmin\MasterData\BerandaController as MasterDataBerandaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Kajur\IzinController;
+use App\Http\Controllers\Kajur\PengajuanAktifController;
+use App\Http\Controllers\Kajur\PengajuanSelesaiController;
 use App\Http\Controllers\Kajur\SakitController;
 use App\Http\Controllers\Profile\PegawaiProfileController;
 use App\Http\Controllers\Kajur\SkpController;
 use App\Http\Controllers\Kepegawaian\IzinController as KepegawaianIzinController;
-use App\Http\Controllers\Pegawai\IzinController as PegawaiIzinController;
-use App\Http\Controllers\Qr\PengajuanController;
-use App\Http\Controllers\Qr\QrController;
-use App\Models\Kepegawaian\Izin;
+use App\Http\Controllers\Kepegawaian\PengajuanSelesaiController as KepegawaianPengajuanSelesaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,11 +38,15 @@ Route::put('tolak/{id}', [SakitController::class, 'tolak']);
 Route::put('setuju/{id}', [IzinController::class, 'setuju']);
 Route::put('tolak/{id}', [IzinController::class, 'tolak']);
 
-// cetan izin Kajur
-Route::get('cetak_izin/word-export/{id}', [IzinController::class, 'wordExport']);
+// cetak izin Kajur
+// Route::get('kajur/cetak_izin/word-export1/{id}', [IzinController::class, 'wordExport1']);
+// Route::get('kajur/cetak_izin/word-export/{id}', [IzinController::class, 'wordExport']);
+// Route::get('kajur/cetak_izin/word-export3/{id}', [PengajuanSelesaiController::class, 'wordExport3']);
+// Route::get('kajur/cetak_izin/word-export2/{id}', [PengajuanAktifController::class, 'wordExport2']);
 
-// cetan izin kepegawaian
-Route::get('cetak_izin/word-export/{id}', [KepegawaianIzinController::class, 'wordExport']);
+// cetak izin kepegawaian
+Route::get('kepegawaian/cetak_izin/word-export3/{id}', [KepegawaianPengajuanSelesaiController::class, 'wordExport3']);
+Route::get('kepegawaian/cetak_izin/word-export2/{id}', [KepegawaianIzinController::class, 'wordExport2']);
 
 
 // login

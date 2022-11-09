@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Kajur;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kajur\Sakit;
-use App\Models\Pegawai\Sakit as PegawaiSakit;
+use App\Models\PengajuanSakit\Sakit;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class SakitController extends Controller
 {
@@ -13,6 +13,13 @@ class SakitController extends Controller
         $data['list_sakit'] = Sakit::all();
         $data['pegawai'] = auth()->user();
         return view('kajur.sakit.index', $data);
+    }
+
+    public function show($id)
+    {
+        return view('kajur.sakit.show', [
+            'sakit' => Sakit::findOrFail($id)
+        ]);
     }
 
     public function store()
@@ -29,19 +36,52 @@ class SakitController extends Controller
         return redirect('kajur/sakit')->with('success', 'Berhasil Menambahkan Pengajuan');
     }
 
-    public function setuju($id)
+    public function update(Sakit $sakit)
     {
-        $sakit = sakit::find($id);
-        $sakit->status = 2;
+        $sakit->keterangan = request('keterangan');
+        $sakit->status = request('status');
+        $sakit->qr_kj = request('qr_kj');
         $sakit->save();
-        return redirect('kajur/sakit')->with('success', 'Data Disetujui');
+
+        $sakit->handleUploadFotoKajur();
+
+        return redirect('kajur/izin');
     }
 
-    public function tolak($id)
+    public function wordExport1($id)
     {
-        $sakit = sakit::find($id);
-        $sakit->status = 3;
-        $sakit->save();
-        return redirect('kajur/sakit')->with('danger', 'Data Ditolak');
+        $sakit = sakit::findOrFail($id);
+        $templateProcessor = new TemplateProcessor('word-template/sakit/sakit_pegawai.docx');
+        $templateProcessor->setValue('nama', $sakit->nama);
+        $templateProcessor->setValue('nip', $sakit->nip);
+        $templateProcessor->setValue('jabatan', $sakit->jabatan);
+        $templateProcessor->setValue('perihal', $sakit->perihal);
+        $templateProcessor->setValue('dari_tanggal', $sakit->dari_tanggal_string);
+        $templateProcessor->setValue('sampai_tanggal', $sakit->sampai_tanggal_string);
+        $qrdata = ["path" => $sakit->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
+        $templateProcessor->setImageValue('qr', $qrdata);
+        $templateProcessor->setImageValue('lampiran', ["path" => $sakit->lampiran, 'width' => 600, 'height' => 400, 'ratio' => false]);
+        $fileName = $sakit->nama;
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
+    }
+
+    public function wordExport2($id)
+    {
+        $sakit = sakit::findOrFail($id);
+        $templateProcessor = new TemplateProcessor('word-template/sakit/sakit_kajur.docx');
+        $templateProcessor->setValue('nama', $sakit->nama);
+        $templateProcessor->setValue('nip', $sakit->nip);
+        $templateProcessor->setValue('jabatan', $sakit->jabatan);
+        $templateProcessor->setValue('perihal', $sakit->perihal);
+        $templateProcessor->setValue('dari_tanggal', $sakit->dari_tanggal_string);
+        $templateProcessor->setValue('sampai_tanggal', $sakit->sampai_tanggal_string);
+        $qrdata = ["path" => $sakit->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
+        $templateProcessor->setImageValue('qr', $qrdata);
+        $templateProcessor->setImageValue('lampiran', ["path" => $sakit->lampiran, 'width' => 600, 'height' => 400, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr_kj', ["path" => $sakit->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $fileName = $sakit->nama;
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
 }

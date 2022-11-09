@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Kepegawaian;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kepegawaian\Izin;
+use App\Models\Kajur\Sakit;
+use App\Models\PengajuanIzin\Izin;
 use PhpOffice\PhpWord\TemplateProcessor;
-use App\Models\Pegawai\izin as PegawaiSakit;
-use PDF;
 
 class IzinController extends Controller
 {
     public function index()
     {
         $data['list_izin'] = Izin::all();
+        $data['list_sakit'] = Sakit::all();
         $data['pegawai'] = auth()->user();
         return view('kepegawaian.izin.index', $data);
     }
@@ -36,7 +36,7 @@ class IzinController extends Controller
         $izin->qr_ak = request('qr_ak');
         $izin->save();
 
-        $izin->handleUploadFoto();
+        $izin->handleUploadFotoKepegawaian();
 
         return redirect('kepegawaian/izin');
     }
@@ -71,23 +71,23 @@ class IzinController extends Controller
         return redirect('kepegawaian/izin')->with('danger', 'Data Ditolak');
     }
 
-    public function wordExport($id)
+    public function wordExport2($id)
     {
         $izin = Izin::findOrFail($id);
-        $templateProcessor = new TemplateProcessor('word-template/inim.docx');
+        $templateProcessor = new TemplateProcessor('word-template/Izin_kajur2.docx');
         $templateProcessor->setValue('nama', $izin->nama);
         $templateProcessor->setValue('nip', $izin->nip);
         $templateProcessor->setValue('jabatan', $izin->jabatan);
         $templateProcessor->setValue('perihal', $izin->perihal);
-        $templateProcessor->setValue('dari_tanggal', $izin->dari_tanggal);
-        $templateProcessor->setValue('sampai_tanggal', $izin->sampai_tanggal);
+        $templateProcessor->setValue('dari_tanggal', $izin->dari_tanggal_string);
+        $templateProcessor->setValue('sampai_tanggal', $izin->sampai_tanggal_string);
         $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
         // if (request('qr')) $templateProcessor->setImageValue('qr', $qrdata);
         // if (request('qr_kj')) $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
         // if (request('path')) $templateProcessor->setImageValue('qr_ak', ["path" => $izin->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);
         $templateProcessor->setImageValue('qr', $qrdata);
         $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
-        $templateProcessor->setImageValue('qr_ak', ["path" => $izin->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr_ak', ["path" => 'app/SiMantapQR/kepegawaian/97b1a178-352e-4772-9f32-fb5e7cfc8e3b-1667892419-7pzoM.png', 'width' => 100, 'height' => 100, 'ratio' => false]);
         // $templateProcessor->setImageValue('qr', '');
         $fileName = $izin->nama;
         $templateProcessor->saveAs($fileName . '.docx');

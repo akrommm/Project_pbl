@@ -40,7 +40,7 @@
 
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-dark float-right"><i class="far fa-save"> Tambah</i></button>
+                            <button class="btn btn-dark float-right"><i class="far fa-save"></i> Tambah</button>
                         </div>
                     </form>
                 </div>
@@ -48,10 +48,10 @@
                     <br>
                     <table id="data-table" class="table table-datatable table-bordered">
                         <thead class="bg-dark">
-                            <th class="text-center" style="color: white;" width="10px">No</th>
-                            <th class="text-center" style="color: white;" width="100px">Aksi</th>
-                            <th class="text-center" style="color: white;">Nama</th>
-                            <th class="text-center" style="color: white;">Jabatan</th>
+                            <th class="text-center" style="color: white;" width="10px">NO</th>
+                            <th class="text-center" style="color: white;" width="100px">AKSI</th>
+                            <th class="text-center" style="color: white;">NAMA PEGAWAI</th>
+                            <th class="text-center" style="color: white;">JABATAN</th>
                         </thead>
                         <tbody>
                             @foreach ($unitkerja->unitdetail as $unitdetail)
@@ -59,9 +59,7 @@
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <x-template.button.info-button url="" id="" />
-                                        <x-template.button.edit-button url="" id="" />
-                                        <a href="{{ url('admin/master-data/unitkerja/delete-unit', $unitdetail->id) }}" class="btn btn-danger btn-tone"><i class="fas fa-trash"></i></a>
+                                        <a href="{{ url('admin/master-data/unitkerja/delete-unit', $unitdetail->id) }}" class="btn btn-danger btn-tone"><i class="fas fa-trash"></i> Hapus</a>
                                     </div>
                                 </td>
                                 <td>{{ $unitdetail->pegawai->nama }}, {{ $unitdetail->pegawai->gelar_belakang }}</td>

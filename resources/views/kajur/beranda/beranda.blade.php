@@ -1,9 +1,8 @@
 <x-module.kajur>
-    <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="font-size: 30px"> Selamat Datang, {{ auth()->user()->nama }},{{ auth()->user()->gelar_belakang }}
+    <div class="card-header">
+        <h5 class="m-0 font-weight-bold text-dark" style="font-size: 30px"> SELAMAT DATANG, {{ auth()->user()->nama }},{{ auth()->user()->gelar_belakang }}
         </h5>
     </div>
-
     <div class="row mt-5">
         <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -22,7 +21,6 @@
             </div>
         </div>
         <!-- ./col -->
-
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -52,12 +50,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <dl class="row" style="color:black;">
-                            <dt class="col-2">Nama Lengkap</dt>
+                            <dt class="col-2">Nama</dt>
                             <dd class="col-10">: {{ auth()->user()->nama }}</dd>
                             <dt class="col-2">NIP</dt>
                             <dd class="col-10">: {{ auth()->user()->nip }}</dd>
-                            <dt class="col-2">Kelas Jabatan</dt>
-                            <dd class="col-10">: Mentri</dd>
+                            <dt class="col-2">Jabatan</dt>
+                            <dd class="col-10">: {{ auth()->user()->jabatan }}</dd>
                             <!-- <dt class="col-2">Jenis Kelamin</dt>
                             <dd class="col-10">: </dd>
                             <dt class="col-2">Tempat Lahir</dt>

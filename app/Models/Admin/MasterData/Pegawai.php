@@ -14,6 +14,11 @@ class Pegawai extends ModelAuthenticate
 
     public $fillable = ['nama', 'email'];
 
+    public function unitkerja()
+    {
+        return $this->belongsTo(Unitkerja::class, 'id_unitkerja');
+    }
+
     public function unitdetail()
     {
         return $this->hasMany(Unitdetail::class, 'id_pegawai');

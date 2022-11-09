@@ -29,13 +29,23 @@ class Izin extends ModelAuthenticate
         $this->handleDelete();
         if (request()->hasFile('qr_ak')) {
             $qr_ak = request()->file('qr_ak');
-            $destination = "images/pegawai/qr/kepegawaian";
+            $destination = "SiMantapQR/kepegawaian";
             $randomStr = Str::random(5);
             $filename = $this->id . "-" . time() . "-" . $randomStr . "." . $qr_ak->extension();
             $url = $qr_ak->storeAs($destination, $filename);
             $this->qr_ak = "app/" . $url;
             $this->save();
         }
+    }
+
+    public function getDariTanggalStringAttribute()
+    {
+        return Carbon::parse($this->attributes['dari_tanggal'])->translatedFormat('d F Y');
+    }
+
+    public function getSampaiTanggalStringAttribute()
+    {
+        return Carbon::parse($this->attributes['sampai_tanggal'])->translatedFormat('d F Y');
     }
 
     function handleDelete()
