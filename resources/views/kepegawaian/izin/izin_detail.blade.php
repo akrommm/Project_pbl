@@ -4,7 +4,7 @@
         </h5>
     </div>
 
-    <a href="{{ url('kepegawaian/izin') }}" class="btn btn-dark btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
+    <a href="{{ url('kepegawaian/izin') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
     <div class="card">
         <div class="card-body">
             <form action="{{ url('kepegawaian/izin', $izin->id) }}" method="post" enctype="multipart/form-data">
@@ -12,7 +12,7 @@
                 @method("PUT")
                 <div class="row">
                     <div class="col-md-6">
-                        <dt class="font-weight-bold">Nama Pengaju</dt>
+                        <dt class="font-weight-bold">NAMA PENGAJU</dt>
                         <dd>{{ $izin->nama }}</dd>
                     </div>
                     <div class="col-md-6">
@@ -20,15 +20,15 @@
                         <dd>{{ $izin->nip }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <dt class="font-weight-bold">Jabatan</dt>
+                        <dt class="font-weight-bold">JABATAN</dt>
                         <dd>{{ $izin->jabatan }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <dt class="font-weight-bold">Perihal</dt>
+                        <dt class="font-weight-bold">PERIHAL</dt>
                         <dd>{{ $izin->perihal }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <dt class="font-weight-bold">Periode Izin</dt>
+                        <dt class="font-weight-bold">PERIODE IZIN</dt>
                         <dd>{{ $izin->dari_tanggal }} - {{ $izin->sampai_tanggal }}</dd>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group float-right">
-                            <button class="btn btn-success btn-tone" name="status" value="3"><span class="fa fa-check"></span> Terima</button>
+                            <button class="btn btn-success btn-tone"><span class="fa fa-check"></span> Terima</button>
                             <button class="btn btn-danger ml-4 btn-tone" name="status" value="5"><span class="fa fa-times"></span> Tolak</button>
                         </div>
                     </div>

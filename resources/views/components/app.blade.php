@@ -36,7 +36,7 @@
 
 
                 <!-- Content Wrapper START -->
-                <div class="main-content" style="background-image: url('{{ url('/')}}/assets/images/others/login-3.png')">
+                <div class="main-content" style="background-image: url('{{ url('/')}}/assets/images/others/bg2.jpg')">
                     <div class="container-fluid pt-4">
                         <div class="row">
                             <div class="col-md-12">

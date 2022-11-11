@@ -51,7 +51,7 @@ class ModuleController extends Controller
         $module->url = request('url');
         $module->save();
 
-        return redirect('admin/master-data/module')->with('success', 'Data berhasil ditambahkan');
+        return redirect('admin/master-data/module')->with('success', 'Module Berhasil Ditambahkan');
     }
 
     /**
@@ -100,7 +100,7 @@ class ModuleController extends Controller
         $module->url = request('url');
         $module->save();
 
-        return redirect('admin/master-data/module')->with('success', 'Data berhasil diedit');
+        return redirect('admin/master-data/module')->with('success', 'Module Berhasil Diedit');
     }
 
     /**
@@ -120,7 +120,7 @@ class ModuleController extends Controller
 
         $module->delete();
 
-        return redirect('admin/master-data/module')->with('danger', 'Data berhasil dihapus');
+        return redirect('admin/master-data/module')->with('danger', 'Module Berhasil Dihapus');
     }
 
     public function addRole()
@@ -130,13 +130,13 @@ class ModuleController extends Controller
         $role->id_module = request('id_module');
         $role->save();
 
-        return back()->with('success', 'Data berhasil ditambahkan');
+        return back()->with('success', 'Data Berhasil Ditambahkan');
     }
 
     public function deleteRole(Role $role)
     {
         $role->delete();
 
-        return back()->with('danger', 'Data berhasil dihapus');
+        return back()->with('danger', 'Data Berhasil Dihapus');
     }
 }

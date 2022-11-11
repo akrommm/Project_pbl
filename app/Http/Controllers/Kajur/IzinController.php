@@ -42,7 +42,7 @@ class IzinController extends Controller
         $data = [
             'nomor_surat' =>  request('nomor_surat'),
             'tanggal_surat' => request('tanggal_surat'),
-            'perihal' => request('perihal'),
+            'perihal' => $izin->perihal,
             'keterangan' => request('keterangan'),
             'nama' => $izin->nama,
             'dari_tanggal' => $izin->dari_tanggal_string,
@@ -54,7 +54,7 @@ class IzinController extends Controller
 
         $ttd = request()->user()->nama;
 
-        $output_file = "$izin->nama.png";
+        $output_file = request()->user()->nama . ".png";
 
         $qrlogo = $this->generateQrcode($output_file, $data, $ttd);
         $izin->qr_kj = $qrlogo;
@@ -98,10 +98,7 @@ perihal : " . $data['perihal'];
         $label = Label::create($ttd)
             ->setTextColor(new Color(0, 0, 0));
 
-
         $result = $writer->write($qrCode, $logo, $label);
-        // $result->saveToFile(public_path("JneSurat/qr/$output_file.png"));
-        // $result->saveToFile(public_path('SiMantapQR/qr/kajur'), $output_file);
         $result->saveToFile("app/SiMantapQR/kajur/" . $output_file);
 
         return "app/SiMantapQR/kajur/$output_file";

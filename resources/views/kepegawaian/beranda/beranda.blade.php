@@ -1,6 +1,6 @@
 <x-module.kepegawaian>
-    <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="font-size: 30px"> Selamat Datang, {{ auth()->user()->nama }},{{ auth()->user()->gelar_belakang }}
+    <div class="card-header">
+        <h5 class="m-0 font-weight-bold text-dark" style="font-size: 30px"> SELAMAT DATANG, {{ auth()->user()->nama }},{{ auth()->user()->gelar_belakang }}
         </h5>
     </div>
 

@@ -39,28 +39,30 @@
             </div>
         </div>
     </div>
-    <div class="col-md-7">
-        <div class="card">
-            <div class="card-header" style="background-color: #ffff">
-                <div class="card-title float-center">
-                    <h5 class="font-weight-bold" style="color:black;" style="font-size: 21px"> Deskripsi</h5>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header" style="background-color: #ffff">
+                    <div class="card-title float-center">
+                        <h5 class="font-weight-bold" style="color:black;" style="font-size: 21px"> Deskripsi</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body" style="background-color: #ffff">
-                <div class="row">
-                    <div class="col-md-12">
-                        <dl class="row" style="color:black;">
-                            <dt class="col-2">Nama</dt>
-                            <dd class="col-10">: {{ auth()->user()->nama }}</dd>
-                            <dt class="col-2">NIP</dt>
-                            <dd class="col-10">: {{ auth()->user()->nip }}</dd>
-                            <dt class="col-2">Jabatan</dt>
-                            <dd class="col-10">: {{ auth()->user()->jabatan }}</dd>
-                            <!-- <dt class="col-2">Jenis Kelamin</dt>
-                            <dd class="col-10">: </dd>
-                            <dt class="col-2">Tempat Lahir</dt>
-                            <dd class="col-10">: </dd> -->
-                        </dl>
+                <div class="card-body" style="background-color: #ffff">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <dl class="row" style="color:black;">
+                                <dt class="col-2">Nama</dt>
+                                <dd class="col-10">: {{ auth()->user()->nama }}</dd>
+                                <dt class="col-2">NIP</dt>
+                                <dd class="col-10">: {{ auth()->user()->nip }}</dd>
+                                <dt class="col-2">Jabatan</dt>
+                                <dd class="col-10">: {{ auth()->user()->jabatan }}</dd>
+                                <!-- <dt class="col-2">Jenis Kelamin</dt>
+                                <dd class="col-10">: </dd>
+                                <dt class="col-2">Tempat Lahir</dt>
+                                <dd class="col-10">: </dd> -->
+                            </dl>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@ class AbsensiController extends Controller
         $absensi->jumlah_libur = request('jumlah_libur');
         $absensi->save();
 
-        return redirect('kajur/absensi')->with('success', 'Berhasil Rekap Data');
+        return redirect('kajur/absensi')->with('success', 'Berhasil Rekap Absensi');
     }
 
     public function show(Absensi $absensi)
@@ -43,6 +43,6 @@ class AbsensiController extends Controller
     function destroy(Absensi $absensi)
     {
         $absensi->delete();
-        return redirect('kajur/absensi')->with('danger', 'berhasil di hapus');
+        return redirect('kajur/absensi')->with('danger', 'Berhasil Dihapus');
     }
 }

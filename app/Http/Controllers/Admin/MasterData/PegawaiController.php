@@ -44,7 +44,7 @@ class PegawaiController extends Controller
 
         $pegawai->handleUploadFoto();
 
-        return redirect('admin/master-data/pegawai')->with('success', 'Data berhasil ditambahkan');
+        return redirect('admin/master-data/pegawai')->with('success', 'Data Pegawai Berhasil Ditambahkan');
     }
 
     public function show(Pegawai $pegawai)
@@ -77,7 +77,7 @@ class PegawaiController extends Controller
 
         if (request('foto')) $pegawai->handleUploadFoto();
 
-        return redirect('admin/master-data/pegawai')->with('success', 'Data berhasil diedit');
+        return redirect('admin/master-data/pegawai')->with('success', 'Data Pegawai Berhasil Diedit');
     }
 
     public function destroy(Pegawai $pegawai)
@@ -93,6 +93,6 @@ class PegawaiController extends Controller
 
         $pegawai->delete();
 
-        return redirect('admin/master-data/pegawai')->with('danger', 'Data berhasil dihapus');
+        return redirect('admin/master-data/pegawai')->with('danger', 'Data Pegawai Berhasil Dihapus');
     }
 }

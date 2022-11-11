@@ -33,6 +33,6 @@ class PegawaiProfileController extends Controller
 
         if (request('foto')) $pegawai->handleUploadFoto();
 
-        return redirect('profile/pegawai')->with('success', 'Data berhasil diedit');
+        return redirect('profile/pegawai')->with('success', 'Data Berhasil Diedit');
     }
 }

@@ -1,13 +1,13 @@
 <x-module.admin>
     <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> Detail Module
+        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> DETAIL MODULE
         </h5>
     </div>
     <br>
     <x-template.button.back-button url="admin/master-data/module" />
     <div class="card">
         <div class="card-header">
-            <a href="{{ url('admin/master-data/module', $module->id) }}/edit" class="btn btn-warning btn-sm float-right"><i class="fas fa-edit"></i> Edit</a>
+            <a href="{{ url('admin/master-data/module', $module->id) }}/edit" class="btn btn-warning btn-tone btn-sm mt-3 float-right"><i class="fas fa-edit"></i> Edit</a>
             <div class="card-title">
                 Detail Module
             </div>
@@ -72,7 +72,7 @@
                             </select> -->
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-dark float-right"><i class="far fa-save"> Simpan</i></button>
+                            <button class="btn btn-dark float-right"><i class="far fa-save"></i> Simpan</button>
                         </div>
                     </form>
                 </div>

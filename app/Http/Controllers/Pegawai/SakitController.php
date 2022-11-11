@@ -44,7 +44,7 @@ class SakitController extends Controller
         $sakit->handleUploadFoto();
         $sakit->handleUploadLampiran();
 
-        return redirect('pegawai/sakit')->with('success', 'Berhasil Menambahkan Pengajuan Sakit');
+        return redirect('pegawai/sakit')->with('success', 'Berhasil Menambahkan Pengajuan');
     }
 
     function destroy(sakit $sakit)
@@ -54,23 +54,7 @@ class SakitController extends Controller
         $sakit->handleDeleteKepegawaian();
         $sakit->handleDeleteLampiran();
         $sakit->delete();
-        return redirect('pegawai/sakit')->with('danger', 'Data Berhasil Dihapus');
-    }
-
-    public function setuju($id)
-    {
-        $sakit = sakit::find($id);
-        $sakit->status = 2;
-        $sakit->save();
-        return redirect('admin/master-data/sakit')->with('success', 'Data Disetujui');
-    }
-
-    public function tolak($id)
-    {
-        $sakit = sakit::find($id);
-        $sakit->status = 3;
-        $sakit->save();
-        return redirect('admin/master-data/sakit')->with('danger', 'Data Ditolak');
+        return redirect('pegawai/sakit')->with('danger', 'Pengajuan Berhasil Dihapus');
     }
 
     public function wordExport($id)

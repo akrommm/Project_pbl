@@ -78,6 +78,7 @@ class IzinController extends Controller
         $izin = Izin::findOrFail($id);
         $templateProcessor = new TemplateProcessor('word-template/Izin_pegawai.docx');
         $templateProcessor->setValue('nama', $izin->nama);
+        $templateProcessor->setValue('alasan', $izin->alasan);
         $templateProcessor->setValue('nip', $izin->nip);
         $templateProcessor->setValue('jabatan', $izin->jabatan);
         $templateProcessor->setValue('perihal', $izin->perihal);

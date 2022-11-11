@@ -14,11 +14,11 @@
             <a href="{{ url('pegawai/sakit/create') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
             <table id="data-table" class="table table-bordered">
                 <thead class="bg-dark">
-                    <th style="width: 1%;color: white;">No</th>
-                    <th class="text-center" style="color: white;">Perihal</th>
-                    <th class="text-center" style="color: white;">Periode</th>
-                    <th class="text-center" style="color: white;" width="120px">Aksi</th>
-                    <th class="text-center" style="color: white;" width="230px">Status</th>
+                    <th style="width: 1%;color: white;">NO</th>
+                    <th class="text-center" style="color: white;">PERIHAL</th>
+                    <th class="text-center" style="color: white;">PERIODE</th>
+                    <th class="text-center" style="color: white;" width="120px">AKSI</th>
+                    <th class="text-center" style="color: white;" width="230px">STATUS</th>
                 </thead>
                 <tbody>
                     @php
@@ -70,17 +70,17 @@
         <br>
         <div class="card-header">
             <div class="card-title">
-                Pengajuan Disetujui
+                PENGAJUAN DISETUJUI
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-bordered">
+            <table id="data-table" class="table table-bordered">
                 <thead class="bg-dark">
-                    <th style="width: 1%;color: white;">No</th>
-                    <th class="text-center" style="color: white;">Perihal</th>
-                    <th class="text-center" style="color: white;">Periode</th>
-                    <th class="text-center" style="color: white;" width="120px">Aksi</th>
-                    <th class="text-center" style="color: white;" width="230px">Status</th>
+                    <th style="width: 1%;color: white;">NO</th>
+                    <th class="text-center" style="color: white;">PERIHAL</th>
+                    <th class="text-center" style="color: white;">PERIODE</th>
+                    <th class="text-center" style="color: white;" width="120px">AKSI</th>
+                    <th class="text-center" style="color: white;" width="230px">STATUS</th>
                 </thead>
                 <tbody>
                     @php
@@ -132,17 +132,17 @@
         <br>
         <div class="card-header">
             <div class="card-title">
-                Pengajuan Ditolak
+                PENGAJUAN DITOLAK
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-bordered">
+            <table id="data-table" class="table table-bordered">
                 <thead class="bg-dark">
-                    <th style="width: 1%;color: white;">No</th>
-                    <th class="text-center" style="color: white;">Perihal</th>
-                    <th class="text-center" style="color: white;">Periode</th>
-                    <th class="text-center" style="color: white;" width="120px">Aksi</th>
-                    <th class="text-center" style="color: white;" width="230px">Status</th>
+                    <th style="width: 1%;color: white;">NO</th>
+                    <th class="text-center" style="color: white;">PERIHAL</th>
+                    <th class="text-center" style="color: white;">PERIODE</th>
+                    <th class="text-center" style="color: white;" width="120px">AKSI</th>
+                    <th class="text-center" style="color: white;" width="230px">STATUS</th>
                 </thead>
                 <tbody>
                     @php

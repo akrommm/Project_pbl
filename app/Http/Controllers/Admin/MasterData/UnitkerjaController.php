@@ -27,7 +27,7 @@ class UnitkerjaController extends Controller
         $unitkerja->nama_unit = request('nama_unit');
         $unitkerja->save();
 
-        return redirect('admin/master-data/unitkerja')->with('success', 'Data berhasil ditambahkan');
+        return redirect('admin/master-data/unitkerja')->with('success', 'Unit Kerja Berhasil Ditambahkan');
     }
 
     public function show(Unitkerja $unitkerja)
@@ -43,7 +43,7 @@ class UnitkerjaController extends Controller
 
         $unitkerja->delete();
 
-        return redirect('admin/master-data/unitkerja')->with('danger', 'Data berhasil dihapus');
+        return redirect('admin/master-data/unitkerja')->with('danger', 'Unit Kerja Berhasil Dihapus');
     }
 
     public function addUnit()
@@ -54,13 +54,13 @@ class UnitkerjaController extends Controller
         $unit->jabatan = request('jabatan');
         $unit->save();
 
-        return back()->with('success', 'Data berhasil ditambahkan');
+        return back()->with('success', 'Data Berhasil Ditambahkan');
     }
 
     public function deleteUnit(Unitdetail $unit)
     {
         $unit->delete();
 
-        return back()->with('danger', 'Data berhasil dihapus');
+        return back()->with('danger', 'Data Berhasil Dihapus');
     }
 }

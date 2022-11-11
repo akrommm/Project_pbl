@@ -13,13 +13,13 @@
         </a>
         <ul class="dropdown-menu">
             <li class="{{request()->is('admin/master-data/pegawai') ? 'active' : ''}} ">
-                <a href="{{ url('admin/master-data/pegawai') }}"><i class="far fa-user"></i> Pegawai</a>
+                <a href="{{ url('admin/master-data/pegawai') }}"><i class="far fa-user"></i> PEGAWAI</a>
             </li>
             <li class="{{request()->is('admin/master-data/module') ? 'active' : ''}} ">
-                <a href="{{ url('admin/master-data/module') }}"><i class="far fa-clone"></i> Module</a>
+                <a href="{{ url('admin/master-data/module') }}"><i class="far fa-clone"></i> MODULE</a>
             </li>
             <li class="{{request()->is('admin/master-data/unitkerja') ? 'active' : ''}} ">
-                <a href="{{ url('admin/master-data/unitkerja') }}"><i class="fas fa-university"></i> Unit Kerja</a>
+                <a href="{{ url('admin/master-data/unitkerja') }}"><i class="fas fa-university"></i> UNIT KERJA</a>
             </li>
         </ul>
     </li>
