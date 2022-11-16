@@ -81,18 +81,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
-                                <label for="" class="control-label mt-2">QR PENGAJUAN</label>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="file" class="custom-file-input  @error('qr') is-invalid @enderror" name="qr" accept=".jpg, .png">
-                                    <label class="custom-file-label">Choose file</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-primary btn-tone float-right"><i class="fa fa-save"></i> Simpan</button>
                             </div>

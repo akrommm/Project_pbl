@@ -30,6 +30,11 @@ class PengajuanSelesai extends ModelAuthenticate
         return Carbon::parse($this->attributes['dari_tanggal'])->translatedFormat('d F Y');
     }
 
+    public function getTanggalSuratStringAttribute()
+    {
+        return Carbon::parse($this->attributes['tanggal_surat'])->translatedFormat('d F Y');
+    }
+
     public function getSampaiTanggalStringAttribute()
     {
         return Carbon::parse($this->attributes['sampai_tanggal'])->translatedFormat('d F Y');

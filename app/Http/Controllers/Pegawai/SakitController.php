@@ -5,6 +5,16 @@ namespace App\Http\Controllers\Pegawai;
 use App\Http\Controllers\Controller;
 use App\Models\PengajuanSakit\Sakit;
 use PhpOffice\PhpWord\TemplateProcessor;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentLeft;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\LabelAlignment;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
 
 class SakitController extends Controller
 {
@@ -29,22 +39,81 @@ class SakitController extends Controller
     public function store()
     {
         $sakit = new Sakit();
+        $sakit->id_pegawai = request()->user()->id;
+        $sakit->id_unitkerja = request()->user()->unitkerja->id;
         $sakit->perihal = request('perihal');
-        $sakit->qr = request('qr');
+        $sakit->lampiran = request('lampiran');
         $sakit->dari_tanggal = request('dari_tanggal');
         $sakit->sampai_tanggal = request('sampai_tanggal');
-        $sakit->lampiran = request('lampiran');
-        $sakit->id_pegawai = request()->user()->id;
         $sakit->nama = request()->user()->nama;
         $sakit->nip = request()->user()->nip;
         $sakit->jabatan = request()->user()->jabatan;
+        $sakit->qr = request('qr');
         $sakit->status = 1;
         $sakit->save();
 
-        $sakit->handleUploadFoto();
         $sakit->handleUploadLampiran();
 
+        $data = [
+            'nomor_surat' =>  request('nomor_surat'),
+            'tanggal_surat' => request('tanggal_surat'),
+            'perihal' => $sakit->perihal,
+            'keterangan' => request('keterangan'),
+            'nama' => $sakit->nama,
+            'dari_tanggal' => $sakit->dari_tanggal_string,
+            'sampai_tanggal' => $sakit->sampai_tanggal_string,
+            'nip' => $sakit->nip,
+            'jabatan' => $sakit->jabatan,
+
+        ];
+
+        $ttd = request()->user()->nama;
+
+        $output_file = request()->user()->nama . ".png";
+
+        $qrlogo = $this->generateQrcode($output_file, $data, $ttd);
+        $sakit->qr = $qrlogo;
+        $sakit->save();
+
         return redirect('pegawai/sakit')->with('success', 'Berhasil Menambahkan Pengajuan');
+    }
+
+    function generateQrcode($output_file, $data, $ttd)
+    {
+        $logo =  public_path('assets/images/logo/inim.png');
+        $isi_text = "
+Digital Signature
+" . request()->user()->nama . "
+NIP/NIK. " . request()->user()->nip . "
+        
+        
+Tanda Tangan Digital untuk Pengajuan Surat Izin Sakit Pada :
+perihal : " . $data['perihal'];
+
+        $writer = new PngWriter();
+
+        // Create QR code
+        $qrCode = QrCode::create($isi_text)
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+            ->setSize(300)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->setForegroundColor(new Color(0, 0, 0))
+            ->setBackgroundColor(new Color(255, 255, 255));
+
+        // Create generic logo
+        $logo = Logo::create($logo)
+            ->setResizeToWidth(50);
+
+        // Create generic label
+        $label = Label::create($ttd)
+            ->setTextColor(new Color(0, 0, 0));
+
+        $result = $writer->write($qrCode, $logo, $label);
+        $result->saveToFile("app/SiMantapQR/pegawai/" . $output_file);
+
+        return "app/SiMantapQR/pegawai/$output_file";
     }
 
     function destroy(sakit $sakit)

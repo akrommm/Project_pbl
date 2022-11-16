@@ -87,21 +87,25 @@
                         <td class="text-center">{{ $sakit->nama}} </td>
                         <td class="text-center">{{ $sakit->perihal }}</td>
                         <td class="text-center">
-                            @if ($sakit->status == 1)
+                            @if ($izin->status == 1)
                             <h4><span class="badge badge-warning">Pengajuan Baru</span></h4>
                             @endif
 
-                            @if ($sakit->status == 2)
-                            <h4><span class="badge badge-success">Pengajuan Disetujui</span></h4>
+                            @if ($izin->status == 2)
+                            <h4><span class="badge badge-success">Disetujui Ketua Jurusan</span></h4>
                             @endif
 
-                            @if ($sakit->status == 4)
+                            @if ($izin->status == 3)
+                            <h4><span class="badge badge-success">Disetujui Admin Kepegawaian</span></h4>
+                            @endif
+
+                            @if ($izin->status == 4)
                             <h4><span class="badge badge-danger">Pengajuan Ditolak</span></h4>
                             @endif
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="{{ url('kajur/pengajuan-selesai', $sakit->id) }}/edit" class="btn btn-primary btn-tone"><i class="fa fa-eye"> Detail</i></a>
+                                <a href="{{ url('kajur/pengajuan-selesai1', $sakit->id) }}" class="btn btn-primary btn-tone"><i class="fa fa-eye"> Detail</i></a>
                             </div>
                         </td>
                     </tr>

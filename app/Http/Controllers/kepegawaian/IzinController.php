@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Kepegawaian;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kajur\Sakit;
 use App\Models\PengajuanIzin\Izin;
+use App\Models\PengajuanSakit\Sakit;
 use PhpOffice\PhpWord\TemplateProcessor;
 use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
@@ -33,10 +33,10 @@ class IzinController extends Controller
         return view('kepegawaian.izin.izin_detail', $data);
     }
 
-    public function edit(Izin $izin)
+    public function edit(Sakit $sakit)
     {
-        $data['izin'] = $izin;
-        return view('kepegawaian.izin.izin_detail', $data);
+        $data['sakit'] = $sakit;
+        return view('kepegawaian.sakit.show', $data);
     }
 
     public function update(Izin $izin)

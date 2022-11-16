@@ -5,6 +5,16 @@ namespace App\Http\Controllers\Pegawai;
 use App\Http\Controllers\Controller;
 use App\Models\PengajuanIzin\Izin;
 use PhpOffice\PhpWord\TemplateProcessor;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentLeft;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\LabelAlignment;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
 
 class IzinController extends Controller
 {
@@ -27,7 +37,6 @@ class IzinController extends Controller
         $izin->id_unitkerja = request()->user()->unitkerja->id;
         $izin->perihal = request('perihal');
         $izin->alasan = request('alasan');
-        $izin->qr = request('qr');
         $izin->dari_tanggal = request('dari_tanggal');
         $izin->sampai_tanggal = request('sampai_tanggal');
         $izin->nama = request()->user()->nama;
@@ -36,9 +45,67 @@ class IzinController extends Controller
         $izin->status = 1;
         $izin->save();
 
-        $izin->handleUploadFoto();
+        $data = [
+            'nomor_surat' =>  request('nomor_surat'),
+            'tanggal_surat' => request('tanggal_surat'),
+            'perihal' => $izin->perihal,
+            'keterangan' => request('keterangan'),
+            'nama' => $izin->nama,
+            'dari_tanggal' => $izin->dari_tanggal_string,
+            'sampai_tanggal' => $izin->sampai_tanggal_string,
+            'nip' => $izin->nip,
+            'jabatan' => $izin->jabatan,
+
+        ];
+
+        $ttd = request()->user()->nama;
+
+        $output_file = request()->user()->nama . ".png";
+
+        $qrlogo = $this->generateQrcode($output_file, $data, $ttd);
+        $izin->qr = $qrlogo;
+        $izin->save();
+
 
         return redirect('pegawai/izin')->with('success', 'Berhasil Menambahkan Pengajuan');
+    }
+
+    function generateQrcode($output_file, $data, $ttd)
+    {
+        $logo =  public_path('assets/images/logo/inim.png');
+        $isi_text = "
+Digital Signature
+" . request()->user()->nama . "
+NIP/NIK. " . request()->user()->nip . "
+        
+        
+Tanda Tangan Digital untuk Pengajuan Surat Izin Pada :
+perihal : " . $data['perihal'];
+
+        $writer = new PngWriter();
+
+        // Create QR code
+        $qrCode = QrCode::create($isi_text)
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+            ->setSize(300)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->setForegroundColor(new Color(0, 0, 0))
+            ->setBackgroundColor(new Color(255, 255, 255));
+
+        // Create generic logo
+        $logo = Logo::create($logo)
+            ->setResizeToWidth(50);
+
+        // Create generic label
+        $label = Label::create($ttd)
+            ->setTextColor(new Color(0, 0, 0));
+
+        $result = $writer->write($qrCode, $logo, $label);
+        $result->saveToFile("app/SiMantapQR/kajur/" . $output_file);
+
+        return "app/SiMantapQR/kajur/$output_file";
     }
 
     public function update(Izin $izin)

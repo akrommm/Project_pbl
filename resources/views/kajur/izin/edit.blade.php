@@ -4,7 +4,7 @@
         </h5>
     </div>
 
-    <a href="{{ url('kajur/izin') }}" class="btn btn-dark btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
+    <a href="{{ url('kajur/izin') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
     <div class="card">
         <div class="card-body">
             <form action="{{ url('kajur/izin', $izin->id) }}" method="post" enctype="multipart/form-data">
@@ -64,10 +64,6 @@
                 <div class="form-grup">
                     <label for="" class="control-label">Keterangan</label>
                     <textarea name="keterangan" id="deskripsi" class="form-control"></textarea>
-                </div>
-                <br>
-                <div class="row col-3">
-
                 </div>
                 <br>
                 <br>

@@ -24,6 +24,13 @@ class PengajuanSelesaiController extends Controller
         ]);
     }
 
+    public function show1($id)
+    {
+        return view('kepegawaian.pengajuan-selesai.show-sakit', [
+            'sakit' => Sakit::findOrFail($id)
+        ]);
+    }
+
     public function wordExport3($id)
     {
         $izin = Izin::findOrFail($id);

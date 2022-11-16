@@ -92,7 +92,11 @@
                             @endif
 
                             @if ($sakit->status == 2)
-                            <h4><span class="badge badge-success">Pengajuan Disetujui</span></h4>
+                            <h4><span class="badge badge-success">Disetujui Ketua Jurusan</span></h4>
+                            @endif
+
+                            @if ($sakit->status == 3)
+                            <h4><span class="badge badge-success">Disetujui Admin Kepegawaian</span></h4>
                             @endif
 
                             @if ($sakit->status == 4)
@@ -101,7 +105,7 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="{{ url('kepegawaian/sakit', $sakit->id) }}/edit" class="btn btn-primary btn-tone"><i class="fa fa-eye"> Detail</i></a>
+                                <a href="{{ url('kepegawaian/pengajuan-selesai1', $sakit->id) }}" class="btn btn-primary btn-tone"><i class="fa fa-eye"> Detail</i></a>
                             </div>
                         </td>
                     </tr>

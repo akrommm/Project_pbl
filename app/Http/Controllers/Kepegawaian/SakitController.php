@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Kajur;
+namespace App\Http\Controllers\Kepegawaian;
 
 use App\Http\Controllers\Controller;
 use App\Models\PengajuanSakit\Sakit;
@@ -18,41 +18,18 @@ use Endroid\QrCode\Writer\PngWriter;
 
 class SakitController extends Controller
 {
-    public function index()
-    {
-        $data['list_sakit'] = Sakit::all();
-        $data['pegawai'] = auth()->user();
-        return view('kajur.sakit.index', $data);
-    }
-
     public function show($id)
     {
-        return view('kajur.sakit.show', [
+        return view('kepegawaian.sakit.show', [
             'sakit' => Sakit::findOrFail($id)
         ]);
     }
 
-    public function store()
-    {
-        $sakit = new sakit();
-        $sakit->sakit = request('sakit');
-        $sakit->file = request('file');
-        $sakit->id_pegawai = request()->user()->id;
-        $sakit->status = 1;
-        $sakit->save();
-
-        $sakit->handleUploadFile();
-
-        return redirect('kajur/sakit')->with('success', 'Berhasil Menambahkan Pengajuan');
-    }
-
     public function update(Sakit $sakit)
     {
-        $sakit->nomor_surat = request('nomor_surat');
-        $sakit->tanggal_surat = request('tanggal_surat');
-        $sakit->nama_kj = auth()->user()->nama;
         $sakit->keterangan = request('keterangan');
-        $sakit->status = 2;
+        $sakit->status = 3;
+        $sakit->nama_ak = auth()->user()->nama;
         $sakit->save();
 
         $data = [
@@ -73,10 +50,10 @@ class SakitController extends Controller
         $output_file = request()->user()->nama . ".png";
 
         $qrlogo = $this->generateQrcode($output_file, $data, $ttd);
-        $sakit->qr_kj = $qrlogo;
+        $sakit->qr_ak = $qrlogo;
         $sakit->save();
 
-        return redirect('kajur/pengajuan-aktif')->with('success', 'Pengajuan Berhasil Diteruskan');
+        return redirect('kepegawaian/pengajuan-selesai');
     }
 
     function generateQrcode($output_file, $data, $ttd)
@@ -88,7 +65,7 @@ Digital Signature
 NIP/NIK. " . request()->user()->nip . "
         
         
-Tanda Tangan Digital untuk Persetujuan Surat Izin Pada :
+Tanda Tangan Digital untuk Persetujuan Surat Izin Sakit Pada :
 nomor surat : " . $data['nomor_surat'] . "
 tanggal surat : " . $data['tanggal_surat'] . "
 perihal : " . $data['perihal'];
@@ -114,24 +91,30 @@ perihal : " . $data['perihal'];
             ->setTextColor(new Color(0, 0, 0));
 
         $result = $writer->write($qrCode, $logo, $label);
-        $result->saveToFile("app/SiMantapQR/kajur/" . $output_file);
+        $result->saveToFile("app/SiMantapQR/kepegawaian/" . $output_file);
 
-        return "app/SiMantapQR/kajur/$output_file";
+        return "app/SiMantapQR/kepegawaian/$output_file";
     }
 
     public function wordExport1($id)
     {
         $sakit = sakit::findOrFail($id);
-        $templateProcessor = new TemplateProcessor('word-template/sakit/sakit_pegawai.docx');
+        $templateProcessor = new TemplateProcessor('word-template/sakit/sakit_kepegawaian.docx');
         $templateProcessor->setValue('nama', $sakit->nama);
         $templateProcessor->setValue('nip', $sakit->nip);
+        $templateProcessor->setValue('nama_kj', $sakit->nama_kj);
+        $templateProcessor->setValue('nama_ak', $sakit->nama_ak);
         $templateProcessor->setValue('jabatan', $sakit->jabatan);
         $templateProcessor->setValue('perihal', $sakit->perihal);
+        $templateProcessor->setValue('nomor_surat', $sakit->nomor_surat);
+        $templateProcessor->setValue('tanggal_surat', $sakit->tanggal_surat_string);
         $templateProcessor->setValue('dari_tanggal', $sakit->dari_tanggal_string);
         $templateProcessor->setValue('sampai_tanggal', $sakit->sampai_tanggal_string);
         $qrdata = ["path" => $sakit->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
         $templateProcessor->setImageValue('qr', $qrdata);
         $templateProcessor->setImageValue('lampiran', ["path" => $sakit->lampiran, 'width' => 600, 'height' => 400, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr_kj', ["path" => $sakit->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr_ak', ["path" => $sakit->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);
         $fileName = $sakit->nama;
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
@@ -154,30 +137,6 @@ perihal : " . $data['perihal'];
         $templateProcessor->setImageValue('qr', $qrdata);
         $templateProcessor->setImageValue('lampiran', ["path" => $sakit->lampiran, 'width' => 600, 'height' => 400, 'ratio' => false]);
         $templateProcessor->setImageValue('qr_kj', ["path" => $sakit->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
-        $fileName = $sakit->nama;
-        $templateProcessor->saveAs($fileName . '.docx');
-        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
-    }
-
-    public function wordExport3($id)
-    {
-        $sakit = sakit::findOrFail($id);
-        $templateProcessor = new TemplateProcessor('word-template/sakit/sakit_kepegawaian.docx');
-        $templateProcessor->setValue('nama', $sakit->nama);
-        $templateProcessor->setValue('nip', $sakit->nip);
-        $templateProcessor->setValue('nama_kj', $sakit->nama_kj);
-        $templateProcessor->setValue('nama_ak', $sakit->nama_ak);
-        $templateProcessor->setValue('jabatan', $sakit->jabatan);
-        $templateProcessor->setValue('perihal', $sakit->perihal);
-        $templateProcessor->setValue('nomor_surat', $sakit->nomor_surat);
-        $templateProcessor->setValue('tanggal_surat', $sakit->tanggal_surat_string);
-        $templateProcessor->setValue('dari_tanggal', $sakit->dari_tanggal_string);
-        $templateProcessor->setValue('sampai_tanggal', $sakit->sampai_tanggal_string);
-        $qrdata = ["path" => $sakit->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
-        $templateProcessor->setImageValue('qr', $qrdata);
-        $templateProcessor->setImageValue('lampiran', ["path" => $sakit->lampiran, 'width' => 600, 'height' => 400, 'ratio' => false]);
-        $templateProcessor->setImageValue('qr_kj', ["path" => $sakit->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
-        $templateProcessor->setImageValue('qr_ak', ["path" => $sakit->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);
         $fileName = $sakit->nama;
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);

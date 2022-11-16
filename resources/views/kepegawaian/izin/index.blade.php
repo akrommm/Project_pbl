@@ -90,7 +90,7 @@
                             <h4><span class="badge badge-warning">Pengajuan Baru</span></h4>
                             @endif
 
-                            @if ($izin->status == 2)
+                            @if ($sakit->status == 2)
                             <h4><span class="badge badge-success">Pengajuan Disetujui Jurusan</span></h4>
                             @endif
 
@@ -100,7 +100,7 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="{{ url('kepegawaian/sakit', $izin->id) }}/edit" class="btn btn-primary btn-tone"><i class="fa fa-eye"> Detail</i></a>
+                                <a href="{{ url('kepegawaian/sakit', $sakit->id) }}" class="btn btn-primary btn-tone"><i class="fa fa-eye"> Detail</i></a>
                             </div>
                         </td>
                     </tr>
