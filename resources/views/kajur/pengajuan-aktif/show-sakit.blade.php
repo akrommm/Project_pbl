@@ -9,7 +9,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <dt class="font-weight-bold">Nama Pengaju</dt>
+                    <dt class="font-weight-bold">NAMA PENGAJU</dt>
                     <dd>{{ $sakit->nama }}</dd>
                 </div>
                 <div class="col-md-6">
@@ -17,15 +17,15 @@
                     <dd>{{ $sakit->nip }}</dd>
                 </div>
                 <div class="col-md-6">
-                    <dt class="font-weight-bold">Jabatan</dt>
+                    <dt class="font-weight-bold">JABATAN</dt>
                     <dd>{{ $sakit->jabatan }}</dd>
                 </div>
                 <div class="col-md-6">
-                    <dt class="font-weight-bold">Perihal</dt>
+                    <dt class="font-weight-bold">PERIHAL</dt>
                     <dd>{{ $sakit->perihal }}</dd>
                 </div>
                 <div class="col-md-6">
-                    <dt class="font-weight-bold">Periode sakit</dt>
+                    <dt class="font-weight-bold">PERIODE SAKIT</dt>
                     <dd>{{ $sakit->dari_tanggal_string }} - {{ $sakit->sampai_tanggal_string }}</dd>
                 </div>
             </div>
