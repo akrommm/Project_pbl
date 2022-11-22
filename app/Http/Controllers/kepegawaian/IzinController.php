@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Kepegawaian;
 
 use App\Http\Controllers\Controller;
 use App\Models\PengajuanIzin\Izin;
+use Illuminate\Support\Str;
 use App\Models\PengajuanSakit\Sakit;
 use PhpOffice\PhpWord\TemplateProcessor;
 use Endroid\QrCode\Color\Color;
@@ -27,17 +28,23 @@ class IzinController extends Controller
         return view('kepegawaian.izin.index', $data);
     }
 
-    public function show(Izin $izin)
+    // public function show(Izin $izin)
+    // {
+    //     $data['list_izin'] = Izin::where('id', $izin->id)->get();
+    //     return view('kepegawaian.izin.izin_detail', $data);
+    // }
+
+    public function edit(Izin $izin)
     {
-        $data['list_izin'] = Izin::where('id', $izin->id)->get();
+        $data['izin'] = $izin;
         return view('kepegawaian.izin.izin_detail', $data);
     }
 
-    public function edit(Sakit $sakit)
-    {
-        $data['sakit'] = $sakit;
-        return view('kepegawaian.sakit.show', $data);
-    }
+    // public function edit(Sakit $sakit)
+    // {
+    //     $data['sakit'] = $sakit;
+    //     return view('kepegawaian.sakit.show', $data);
+    // }
 
     public function update(Izin $izin)
     {
@@ -61,7 +68,8 @@ class IzinController extends Controller
 
         $ttd = request()->user()->nama;
 
-        $output_file = request()->user()->nama . ".png";
+        $randomStr = Str::random(5);
+        $output_file = $randomStr . ".png";
 
         $qrlogo = $this->generateQrcode($output_file, $data, $ttd);
         $izin->qr_ak = $qrlogo;
@@ -105,9 +113,9 @@ perihal : " . $data['perihal'];
             ->setTextColor(new Color(0, 0, 0));
 
         $result = $writer->write($qrCode, $logo, $label);
-        $result->saveToFile("app/SiMantapQR/kepegawaian/" . $output_file);
+        $result->saveToFile("app/SiMantapQR/kepegawaian/izin/" . $output_file);
 
-        return "app/SiMantapQR/kepegawaian/$output_file";
+        return "app/SiMantapQR/kepegawaian/izin/$output_file";
     }
 
     public function store()

@@ -1,6 +1,6 @@
 <div class="header">
     <div class="logo logo-dark">
-        <a href="index.html">
+        <a href="">
             <img src="{{ url('/') }}/assets/images/logo/simantap1.png" alt="Logo" width="175" height="47" class="mt-2">
             <img class="logo-fold" src="{{ url('/') }}/assets/images/logo/simantap3.png" alt="Logo" width="70" height="57" class="">
         </a>

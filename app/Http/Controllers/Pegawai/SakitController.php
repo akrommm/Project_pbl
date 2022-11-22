@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pegawai;
 
 use App\Http\Controllers\Controller;
 use App\Models\PengajuanSakit\Sakit;
+use Illuminate\Support\Str;
 use PhpOffice\PhpWord\TemplateProcessor;
 use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
@@ -68,8 +69,8 @@ class SakitController extends Controller
         ];
 
         $ttd = request()->user()->nama;
-
-        $output_file = request()->user()->nama . ".png";
+        $randomStr = Str::random(5);
+        $output_file = $randomStr . ".png";
 
         $qrlogo = $this->generateQrcode($output_file, $data, $ttd);
         $sakit->qr = $qrlogo;
@@ -111,9 +112,9 @@ perihal : " . $data['perihal'];
             ->setTextColor(new Color(0, 0, 0));
 
         $result = $writer->write($qrCode, $logo, $label);
-        $result->saveToFile("app/SiMantapQR/pegawai/" . $output_file);
+        $result->saveToFile("app/SiMantapQR/pegawai/sakit/" . $output_file);
 
-        return "app/SiMantapQR/pegawai/$output_file";
+        return "app/SiMantapQR/pegawai/sakit/$output_file";
     }
 
     function destroy(sakit $sakit)

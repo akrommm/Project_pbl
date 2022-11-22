@@ -14,8 +14,8 @@
                             <div class="col-md-6">
                                 <input type="hidden" name="id_unitkerja" value="{{ $unitkerja->id }}">
                                 <div class="form-group">
-                                    <label for="" class="control-label">Pegawai</label>
-                                    <select class="form-control select2bs4" class="" name="id_pegawai" style="width: 100%;">
+                                    <label for="" class="control-label">PEGAWAI</label>
+                                    <select class="select2" name="id_pegawai" style="width: 100%;">
                                         <option selected="selected">Pilih Nama Pegawai</option>
                                         @foreach ($list_pegawai as $pegawai)
                                         <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
@@ -30,11 +30,18 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="" class="control-label">Jabatan</label>
-                                    @if ($errors->has('Jabatan'))
-                                    <label for="" class="label text-danger">{{ $errors->get('Jabatan')[0] }}</label>
-                                    @endif
-                                    <input type="text" name="jabatan" class="form-control">
+                                    <label for="" class="control-label">JABATAN</label>
+                                    <select class="select2" name="jabatan" style="width: 100%;">
+                                        <option selected="selected">Pilih Jabatan</option>
+                                        <option value="Ketua Jurusan">Ketua Jurusan</option>
+                                        <option value="Sekretaris Jurusan">Sekretaris Jurusan</option>
+                                        <option value="Koordinator Prodi">Koordinator Prodi</option>
+                                        <option value="Kepala Lab">Kepala Lab</option>
+                                        <option value="Dosen">Dosen</option>
+                                        <option value="Administrasi">Administrasi</option>
+                                        <option value="Teknisi Laboratorium">Teknisi Laboratorium</option>
+                                        <option value="Teknisi">Teknisi</option>
+                                    </select>
                                 </div>
                             </div>
 

@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">PERIODE IZIN</dt>
-                        <dd>{{ $izin->dari_tanggal }} - {{ $izin->sampai_tanggal }}</dd>
+                        <dd>{{ $izin->dari_tanggal_string }} - {{ $izin->sampai_tanggal_string }}</dd>
                     </div>
                 </div>
                 <br>
@@ -44,16 +44,6 @@
                 </a>
                 @endif
                 <hr>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="" class="control-label">QR Persetujuan</label>
-                        @if ($errors->has('qr_ak'))
-                        <label for="" class="label text-danger">{{ $errors->get('qr_ak')[0] }}</label>
-                        @endif
-                        <input type="file" name="qr_ak" accept=".jpg, .png, .jpeg" class="form-control">
-                    </div>
-                </div>
-                <br>
                 <div class="form-grup">
                     <label for="" class="control-label">Keterangan</label>
                     <textarea name="keterangan" id="deskripsi" class="form-control"></textarea>

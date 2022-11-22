@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Kajur;
 
 use App\Http\Controllers\Controller;
 use App\Models\PengajuanSakit\Sakit;
+use Illuminate\Support\Str;
 use PhpOffice\PhpWord\TemplateProcessor;
 use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
@@ -70,7 +71,8 @@ class SakitController extends Controller
 
         $ttd = request()->user()->nama;
 
-        $output_file = request()->user()->nama . ".png";
+        $randomStr = Str::random(5);
+        $output_file = $randomStr . ".png";
 
         $qrlogo = $this->generateQrcode($output_file, $data, $ttd);
         $sakit->qr_kj = $qrlogo;
@@ -114,9 +116,9 @@ perihal : " . $data['perihal'];
             ->setTextColor(new Color(0, 0, 0));
 
         $result = $writer->write($qrCode, $logo, $label);
-        $result->saveToFile("app/SiMantapQR/kajur/" . $output_file);
+        $result->saveToFile("app/SiMantapQR/kajur/sakit/" . $output_file);
 
-        return "app/SiMantapQR/kajur/$output_file";
+        return "app/SiMantapQR/kajur/sakit/$output_file";
     }
 
     public function wordExport1($id)

@@ -54,7 +54,8 @@ class IzinController extends Controller
 
         $ttd = request()->user()->nama;
 
-        $output_file = request()->user()->nama . ".png";
+        $randomStr = Str::random(5);
+        $output_file = $randomStr . ".png";
 
         $qrlogo = $this->generateQrcode($output_file, $data, $ttd);
         $izin->qr_kj = $qrlogo;
@@ -99,9 +100,9 @@ perihal : " . $data['perihal'];
             ->setTextColor(new Color(0, 0, 0));
 
         $result = $writer->write($qrCode, $logo, $label);
-        $result->saveToFile("app/SiMantapQR/kajur/" . $output_file);
+        $result->saveToFile("app/SiMantapQR/kajur/izin/" . $output_file);
 
-        return "app/SiMantapQR/kajur/$output_file";
+        return "app/SiMantapQR/kajur/izin/$output_file";
     }
 
     public function edit(Izin $izin)

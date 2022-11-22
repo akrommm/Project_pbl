@@ -4,13 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SI MANTAP - {{$title}}</title>
+    <title>SIMANTAP - {{$title}}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('/') }}/assets/images/logo/simantap.png" width="70" height="57">
+    <link rel="shortcut icon" href="{{ url('/') }}/assets/images/logo/wkwk.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- page css -->
+    <link href="{{ url('/') }}/assets/vendors/select2/select2.css" rel="stylesheet">
     <link href="{{ url('/') }}/assets/vendors/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="{{ url('/') }}/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
 
@@ -171,6 +172,7 @@
     <script src="{{ url('/') }}/assets/js/vendors.min.js"></script>
 
     <!-- page js -->
+    <script src="{{ url('/') }}/assets/vendors/select2/select2.min.js"></script>
     <script src="{{ url('/') }}/assets/vendors/chartjs/Chart.min.js"></script>
     <script src="{{ url('/') }}/assets/js/pages/dashboard-default.js"></script>
     <script src="{{ url('/') }}/assets/vendors/datatables/jquery.dataTables.min.js"></script>
@@ -181,6 +183,18 @@
     <script src="{{ url('/') }}/assets/js/app.min.js"></script>
     <script>
         $('#data-table').DataTable();
+    </script>
+    <script>
+        $('.select2').select2();
+    </script>
+    <script>
+        $('#trigger-loading-1').on('click', function(e) {
+            $(this).addClass("is-loading");
+            setTimeout(function() {
+                $("#trigger-loading-1").removeClass("is-loading");
+            }, 4000);
+            e.preventDefault();
+        });
     </script>
     <script>
         $(function() {

@@ -9,7 +9,7 @@
         <div class="card-header">
             <a href="{{ url('admin/master-data/module', $module->id) }}/edit" class="btn btn-warning btn-tone btn-sm mt-3 float-right"><i class="fas fa-edit"></i> Edit</a>
             <div class="card-title">
-                Detail Module
+                DETAIL MODULE
             </div>
         </div>
         <div class="card-body">
@@ -48,7 +48,7 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title">
-                Pegawai
+                PEGAWAI
             </div>
         </div>
         <div class="card-body">
@@ -58,8 +58,7 @@
                         @csrf
                         <input type="hidden" name="id_module" value="{{ $module->id }}">
                         <div class="form-group">
-                            <label for="" class="control-label">Pegawai</label>
-                            <select class="form-control select2bs4" class="" name="id_pegawai" style="width: 100%;">
+                            <select class="select2" name="id_pegawai" style="width: 100%;">
                                 <option selected="selected">Pilih Nama Pegawai</option>
                                 @foreach ($list_pegawai as $pegawai)
                                 <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>

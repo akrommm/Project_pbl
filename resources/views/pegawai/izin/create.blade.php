@@ -72,17 +72,22 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-3">
+                                <label for="" class="control-label mt-3">ALASAN IZIN
+                                    :</label>
+                            </div>
+                            <div class="col-md-9">
                                 <div class="form-group">
-                                    <label for="" class="control-label mt-3">ALASAN IZIN
-                                        :</label>
                                     <textarea name="alasan" id="" cols="20" rows="3" class="form-control @error('alasan') is-invalid @enderror"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-primary btn-tone float-right"><i class="fa fa-save"></i> Simpan</button>
+                                <button class="btn btn-primary btn-tone float-right">
+                                    <i class="fa fa-save"></i>
+                                    <span> Simpan</span>
+                                </button>
                             </div>
                         </div>
                     </form>

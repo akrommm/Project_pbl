@@ -9,30 +9,44 @@
             <div class="card">
                 <div class="card-body">
                     <div class="media align-items-center">
-                        <div class="avatar avatar-icon avatar-lg avatar-cyan">
-                            <i class="anticon anticon-profile"></i>
-                        </div>
-                        <div class="m-l-15">
-                            <h2 class="m-b-0">89,9%</h2>
-                            <p class="m-b-0 text-muted">Absensi</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ./col -->
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="card">
-                <div class="card-body">
-                    <div class="media align-items-center">
                         <div class="avatar avatar-icon avatar-lg avatar-blue">
                             <i class="anticon anticon-dollar"></i>
                         </div>
                         <div class="m-l-15">
                             <h2 class="m-b-0">Rp. 200.000</h2>
                             <p class="m-b-0 text-muted">Uang Makan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="media align-items-center">
+                        <div class="avatar avatar-icon avatar-lg avatar-cyan">
+                            <i class="anticon anticon-profile"></i>
+                        </div>
+                        <div class="m-l-15">
+                            <h2 class="m-b-0">{{$izin}}</h2>
+                            <p class="m-b-0 text-muted">Pengajuan Izin Baru</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="media align-items-center">
+                        <div class="avatar avatar-icon avatar-lg avatar-blue">
+                            <i class="anticon anticon-profile"></i>
+                        </div>
+                        <div class="m-l-15">
+                            <h2 class="m-b-0">{{$sakit}}</h2>
+                            <p class="m-b-0 text-muted">Pengajuan Izin Sakit Baru</p>
                         </div>
                     </div>
                 </div>
