@@ -40,8 +40,11 @@
             <li class="{{request()->is('pegawai/izin') ? 'active' : ''}} ">
                 <a href="{{ url('pegawai/izin') }}"><i class="fas fa-file-word"></i> PENGAJUAN IZIN</a>
             </li>
-            <li class="{{request()->is('pegawai/sakit') ? 'active' : ''}} ">
-                <a href="{{ url('pegawai/sakit') }}"><i class="fas fa-file-medical-alt"></i> PENGAJUAN SAKIT</a>
+            <li class="{{request()->is('pegawai/cuti') ? 'active' : ''}} ">
+                <a href="{{ url('pegawai/cuti') }}"><i class="fas fa-file-word"></i> PENGAJUAN CUTI</a>
+            </li>
+            <li class="{{request()->is('pegawai/dinas') ? 'active' : ''}} ">
+                <a href="{{ url('pegawai/dinas') }}"><i class="fas fa-file-word"></i> DINAS LUAR</a>
             </li>
         </ul>
     </li>

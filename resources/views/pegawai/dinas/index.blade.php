@@ -1,61 +1,59 @@
 <x-module.pegawai>
     <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> PENGAJUAN IZIN
+        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> PENGAJUAN IZIN PERJALANAN DINAS LUAR
         </h5>
     </div>
     <br>
     <div class="card">
         <div class="card-header">
             <div class="card-title text-center">
-                Form ini digunakan untuk mengajukan surat izin.
+                Form ini digunakan untuk mengajukan pengajuan izin dinas luar.
             </div>
         </div>
         <div class="card-body">
-            <a href="{{ url('pegawai/izin/create') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
+            <a href="{{ url('pegawai/dinas/create') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Tambah Data</a>
             <table id="data-table" class="table table-bordered">
                 <thead class="bg-dark">
                     <th style="width: 1%;color: white;">NO</th>
                     <th class="text-center" style="color: white;" width="120px">AKSI</th>
-                    <th class="text-center" style="color: white;">PERIHAL IZIN</th>
-                    <th class="text-center" style="color: white;">PADA HARI</th>
+                    <th class="text-center" style="color: white;">PERIHAL</th>
                     <th class="text-center" style="color: white;" width="230px">STATUS</th>
                 </thead>
                 <tbody>
                     @php
                     $no = 1;
                     @endphp
-                    @foreach ($list_izin as $izin)
-                    @if ($pegawai->id == $izin->id_pegawai)
-                    @if ($izin->status == 1)
+                    @foreach ($list_dinas as $dinas)
+                    @if ($pegawai->id == $dinas->id_pegawai)
+                    @if ($dinas->status == 1)
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <x-template.button.info-button url="pegawai/izin" id="{{ $izin->id }}" />
-                                <x-template.button.edit-button url="pegawai/izin" id="{{ $izin->id }}" />
-                                <x-template.button.delete-button url="pegawai/izin" id="{{ $izin->id }}" />
+                                <x-template.button.info-button url="pegawai/dinas" id="{{ $dinas->id }}" />
+                                <x-template.button.edit-button url="pegawai/dinas" id="{{ $dinas->id }}" />
+                                <x-template.button.delete-button url="pegawai/dinas" id="{{ $dinas->id }}" />
                             </div>
                         </td>
-                        <td class="text-center">{{ $izin->perihal }}</td>
-                        <td class="text-center">{{ $izin->waktu_string }}</td>
+                        <td class="text-center">{{ $dinas->perihal }}</td>
                         <td class="text-center">
-                            @if ($izin->status == 1)
+                            @if ($dinas->status == 1)
                             <label class="btn btn-warning">Pengajuan Baru</label>
                             @endif
 
-                            @if ($izin->status == 2)
+                            @if ($dinas->status == 2)
                             <label class="btn btn-success">Disetujui Ketua Jurusan</label>
                             @endif
 
-                            @if ($izin->status == 3)
+                            @if ($dinas->status == 3)
                             <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
                             @endif
 
-                            @if ($izin->status == 4)
+                            @if ($dinas->status == 4)
                             <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
                             @endif
 
-                            @if ($izin->status == 5)
+                            @if ($dinas->status == 5)
                             <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
                             @endif
                         </td>
@@ -78,46 +76,44 @@
                 <thead class="bg-dark">
                     <th style="width: 1%;color: white;">NO</th>
                     <th class="text-center" style="color: white;" width="120px">AKSI</th>
-                    <th class="text-center" style="color: white;">PERIHAL IZIN</th>
-                    <th class="text-center" style="color: white;">PADA HARI</th>
+                    <th class="text-center" style="color: white;">PERIHAL</th>
                     <th class="text-center" style="color: white;" width="230px">STATUS</th>
                 </thead>
                 <tbody>
                     @php
                     $no = 1;
                     @endphp
-                    @foreach ($list_izin as $izin)
-                    @if ($pegawai->id == $izin->id_pegawai)
-                    @if ($izin->status == '2' || $izin->status == '3')
+                    @foreach ($list_dinas as $dinas)
+                    @if ($pegawai->id == $dinas->id_pegawai)
+                    @if ($dinas->status == '2' || $dinas->status == '3')
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <x-template.button.info-button url="pegawai/izin" id="{{ $izin->id }}" />
-                                <x-template.button.edit-button url="pegawai/izin" id="{{ $izin->id }}" />
-                                <x-template.button.delete-button url="pegawai/izin" id="{{ $izin->id }}" />
+                                <x-template.button.info-button url="pegawai/dinas" id="{{ $dinas->id }}" />
+                                <x-template.button.edit-button url="pegawai/dinas" id="{{ $dinas->id }}" />
+                                <x-template.button.delete-button url="pegawai/dinas" id="{{ $dinas->id }}" />
                             </div>
                         </td>
-                        <td class="text-center">{{ $izin->perihal }}</td>
-                        <td class="text-center">{{ $izin->waktu_string }}</td>
+                        <td class="text-center">Izin Perjalanan Dinas Luar</td>
                         <td class="text-center">
-                            @if ($izin->status == 1)
+                            @if ($dinas->status == 1)
                             <label class="btn btn-warning">Pengajuan Baru</label>
                             @endif
 
-                            @if ($izin->status == 2)
+                            @if ($dinas->status == 2)
                             <label class="btn btn-success">Disetujui Ketua Jurusan</label>
                             @endif
 
-                            @if ($izin->status == 3)
+                            @if ($dinas->status == 3)
                             <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
                             @endif
 
-                            @if ($izin->status == 4)
+                            @if ($dinas->status == 4)
                             <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
                             @endif
 
-                            @if ($izin->status == 5)
+                            @if ($dinas->status == 5)
                             <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
                             @endif
                         </td>
@@ -140,46 +136,44 @@
                 <thead class="bg-dark">
                     <th style="width: 1%;color: white;">NO</th>
                     <th class="text-center" style="color: white;" width="120px">AKSI</th>
-                    <th class="text-center" style="color: white;">PERIHAL IZIN</th>
-                    <th class="text-center" style="color: white;">PADA HARI</th>
+                    <th class="text-center" style="color: white;">PERIHAL</th>
                     <th class="text-center" style="color: white;" width="230px">STATUS</th>
                 </thead>
                 <tbody>
                     @php
                     $no = 1;
                     @endphp
-                    @foreach ($list_izin as $izin)
-                    @if ($pegawai->id == $izin->id_pegawai)
-                    @if ($izin->status == '4' || $izin->status == '5')
+                    @foreach ($list_dinas as $dinas)
+                    @if ($pegawai->id == $dinas->id_pegawai)
+                    @if ($dinas->status == '4' || $dinas->status == '5')
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <x-template.button.info-button url="pegawai/izin" id="{{ $izin->id }}" />
-                                <x-template.button.edit-button url="pegawai/izin" id="{{ $izin->id }}" />
-                                <x-template.button.delete-button url="pegawai/izin" id="{{ $izin->id }}" />
+                                <x-template.button.info-button url="pegawai/dinas" id="{{ $dinas->id }}" />
+                                <x-template.button.edit-button url="pegawai/dinas" id="{{ $dinas->id }}" />
+                                <x-template.button.delete-button url="pegawai/dinas" id="{{$dinas->id}}" />
                             </div>
                         </td>
-                        <td class="text-center">{{ $izin->perihal }}</td>
-                        <td class="text-center">{{ $izin->waktu_string }}</td>
+                        <td class="text-center">Izin Perjalanan Dinas Luar</td>
                         <td class="text-center">
-                            @if ($izin->status == 1)
+                            @if ($dinas->status == 1)
                             <label class="btn btn-warning">Pengajuan Baru</label>
                             @endif
 
-                            @if ($izin->status == 2)
+                            @if ($dinas->status == 2)
                             <label class="btn btn-success">Disetujui Ketua Jurusan</label>
                             @endif
 
-                            @if ($izin->status == 3)
+                            @if ($dinas->status == 3)
                             <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
                             @endif
 
-                            @if ($izin->status == 4)
+                            @if ($dinas->status == 4)
                             <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
                             @endif
 
-                            @if ($izin->status == 5)
+                            @if ($dinas->status == 5)
                             <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
                             @endif
                         </td>

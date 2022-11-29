@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Kajur;
 
 use App\Http\Controllers\Controller;
+use App\Models\PengajuanCuti\Cuti;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\PengajuanIzin\Izin;
@@ -24,7 +25,7 @@ class IzinController extends Controller
     public function index()
     {
         $data['list_izin'] = Izin::all();
-        $data['list_sakit'] = Sakit::all();
+        $data['list_cuti'] = Cuti::all();
         $data['pegawai'] = auth()->user();
         return view('kajur.izin.index', $data);
     }
@@ -140,8 +141,9 @@ perihal : " . $data['perihal'];
         $templateProcessor->setValue('nip', $izin->nip);
         $templateProcessor->setValue('jabatan', $izin->jabatan);
         $templateProcessor->setValue('perihal', $izin->perihal);
-        $templateProcessor->setValue('dari_tanggal', $izin->dari_tanggal_string);
-        $templateProcessor->setValue('sampai_tanggal', $izin->sampai_tanggal_string);
+        $templateProcessor->setValue('waktu', $izin->waktu_string);
+        $templateProcessor->setValue('unitkerja', request()->user()->unitkerja->nama_unit);
+        $templateProcessor->setValue('selama', $izin->selama);
         $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
         $templateProcessor->setImageValue('qr', $qrdata);
         $fileName = $izin->nama;

@@ -1,3 +1,3 @@
-<x-app menu="menu.pegawai" header="Pegawai Profile" title="Pegawai">
+<x-app menu="menu.pegawai" header="PROFILE" title="Pegawai">
     {{ $slot }}
 </x-app>

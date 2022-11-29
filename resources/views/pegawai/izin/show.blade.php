@@ -4,7 +4,7 @@
         </h5>
     </div>
 
-    <a href="{{ url('pegawai/izin') }}" class="btn btn-dark btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
+    <a href="{{ url('pegawai/izin') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
     <div class="card">
         <div class="card-body">
             <form action="{{ url('pegawai/izin', $izin->id) }}" method="post">
@@ -12,7 +12,7 @@
                 @method("PUT")
                 <div class="row">
                     <div class="col-md-6">
-                        <dt class="font-weight-bold">Nama Pengaju</dt>
+                        <dt class="font-weight-bold">NAMA PENGAJU</dt>
                         <dd>{{ $izin->nama }}</dd>
                     </div>
                     <div class="col-md-6">
@@ -20,20 +20,20 @@
                         <dd>{{ $izin->nip }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <dt class="font-weight-bold">Jabatan</dt>
+                        <dt class="font-weight-bold">JABATAN</dt>
                         <dd>{{ $izin->jabatan }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <dt class="font-weight-bold">Perihal</dt>
+                        <dt class="font-weight-bold">PERIHAL</dt>
                         <dd>{{ $izin->perihal }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <dt class="font-weight-bold">Periode Izin</dt>
-                        <dd>{{ $izin->dari_tanggal_string }} - {{ $izin->sampai_tanggal_string }}</dd>
+                        <dt class="font-weight-bold">PADA HARI</dt>
+                        <dd>{{ $izin->waktu_string }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <dt class="font-weight-bold">Keterangan</dt>
-                        <dd>{{ $izin->keterangan }}</dd>
+                        <dt class="font-weight-bold">ALASAN IZIN</dt>
+                        <dd>{{ $izin->alasan }}</dd>
                     </div>
                 </div>
                 <br>

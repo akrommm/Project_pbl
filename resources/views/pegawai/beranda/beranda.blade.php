@@ -10,11 +10,11 @@
                 <div class="card-body">
                     <div class="media align-items-center">
                         <div class="avatar avatar-icon avatar-lg avatar-blue">
-                            <i class="anticon anticon-dollar"></i>
+                            <i class="anticon anticon-calendar"></i>
                         </div>
                         <div class="m-l-15">
-                            <h2 class="m-b-0">Rp. 200.000</h2>
-                            <p class="m-b-0 text-muted">Uang Makan</p>
+                            <h2 class="m-b-0">89.9 %</h2>
+                            <p class="m-b-0 text-muted">Absensi</p>
                         </div>
                     </div>
                 </div>

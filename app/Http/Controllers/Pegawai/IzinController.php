@@ -37,9 +37,10 @@ class IzinController extends Controller
         $izin->id_pegawai = request()->user()->id;
         $izin->id_unitkerja = request()->user()->unitkerja->id;
         $izin->perihal = request('perihal');
+        $izin->pangkat = request('pangkat');
         $izin->alasan = request('alasan');
-        $izin->dari_tanggal = request('dari_tanggal');
-        $izin->sampai_tanggal = request('sampai_tanggal');
+        $izin->waktu = request('waktu');
+        $izin->selama = request('selama');
         $izin->nama = request()->user()->nama;
         $izin->nip = request()->user()->nip;
         $izin->jabatan = request()->user()->jabatan;
@@ -49,13 +50,14 @@ class IzinController extends Controller
         $data = [
             'nomor_surat' =>  request('nomor_surat'),
             'tanggal_surat' => request('tanggal_surat'),
-            'perihal' => $izin->perihal,
+            'tanggal' => $izin->created_at_string,
             'keterangan' => request('keterangan'),
             'nama' => $izin->nama,
-            'dari_tanggal' => $izin->dari_tanggal_string,
-            'sampai_tanggal' => $izin->sampai_tanggal_string,
+            'waktu' => $izin->waktu_string,
+            'selama' => $izin->selama,
             'nip' => $izin->nip,
             'jabatan' => $izin->jabatan,
+            'pangkat' => $izin->pangkat,
 
         ];
 
@@ -74,7 +76,7 @@ class IzinController extends Controller
 
     function generateQrcode($output_file, $data, $ttd)
     {
-        $logo =  public_path('assets/images/logo/inim.png');
+        $logo =  public_path('assets/images/logo/politap.jpg');
         $isi_text = "
 Digital Signature
 " . request()->user()->nama . "
@@ -82,7 +84,7 @@ NIP/NIK. " . request()->user()->nip . "
         
         
 Tanda Tangan Digital untuk Pengajuan Surat Izin Pada :
-perihal : " . $data['perihal'];
+Tanggal : " . $data['tanggal'];
 
         $writer = new PngWriter();
 
@@ -98,7 +100,7 @@ perihal : " . $data['perihal'];
 
         // Create generic logo
         $logo = Logo::create($logo)
-            ->setResizeToWidth(50);
+            ->setResizeToWidth(100);
 
         // Create generic label
         $label = Label::create($ttd)
@@ -151,8 +153,10 @@ perihal : " . $data['perihal'];
         $templateProcessor->setValue('nip', $izin->nip);
         $templateProcessor->setValue('jabatan', $izin->jabatan);
         $templateProcessor->setValue('perihal', $izin->perihal);
-        $templateProcessor->setValue('dari_tanggal', $izin->dari_tanggal_string);
-        $templateProcessor->setValue('sampai_tanggal', $izin->sampai_tanggal_string);
+        $templateProcessor->setValue('waktu', $izin->waktu_string);
+        $templateProcessor->setValue('unitkerja', request()->user()->unitkerja->nama_unit);
+        $templateProcessor->setValue('selama', $izin->selama);
+        $templateProcessor->setValue('pangkat', $izin->pangkat);
         $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
         $templateProcessor->setImageValue('qr', $qrdata);
         $fileName = $izin->nama;
@@ -167,13 +171,11 @@ perihal : " . $data['perihal'];
         $templateProcessor->setValue('nama', $izin->nama);
         $templateProcessor->setValue('nama_kj', $izin->nama_kj);
         $templateProcessor->setValue('alasan', $izin->alasan);
-        $templateProcessor->setValue('nomor_surat', $izin->nomor_surat);
-        $templateProcessor->setValue('tanggal_surat', $izin->tanggal_surat_string);
         $templateProcessor->setValue('nip', $izin->nip);
         $templateProcessor->setValue('jabatan', $izin->jabatan);
         $templateProcessor->setValue('perihal', $izin->perihal);
-        $templateProcessor->setValue('dari_tanggal', $izin->dari_tanggal_string);
-        $templateProcessor->setValue('sampai_tanggal', $izin->sampai_tanggal_string);
+        $templateProcessor->setValue('waktu', $izin->waktu_string);
+        $templateProcessor->setValue('selama', $izin->selama);
         $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
         $templateProcessor->setImageValue('qr', $qrdata);
         $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
@@ -187,11 +189,12 @@ perihal : " . $data['perihal'];
         $izin = Izin::findOrFail($id);
         $templateProcessor = new TemplateProcessor('word-template/Izin_kepegawaian.docx');
         $templateProcessor->setValue('nama', $izin->nama);
+        $templateProcessor->setValue('alasan', $izin->alasan);
         $templateProcessor->setValue('nip', $izin->nip);
         $templateProcessor->setValue('jabatan', $izin->jabatan);
         $templateProcessor->setValue('perihal', $izin->perihal);
-        $templateProcessor->setValue('dari_tanggal', $izin->dari_tanggal_string);
-        $templateProcessor->setValue('sampai_tanggal', $izin->sampai_tanggal_string);
+        $templateProcessor->setValue('waktu', $izin->waktu_string);
+        $templateProcessor->setValue('selama', $izin->selama);
         $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
         $templateProcessor->setImageValue('qr', $qrdata);
         $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);

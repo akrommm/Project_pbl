@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Models\PengajuanIzin;
+namespace App\Models\PengajuanCuti;
 
 use App\Models\ModelAuthenticate;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use App\Models\Admin\MasterData\Pegawai;
 
-class Izin extends ModelAuthenticate
+class Cuti extends ModelAuthenticate
 {
-    protected $table = 'admin__izin';
+    protected $table = 'admin__cuti';
     protected $primaryKey = 'id';
 
     public function pegawai()
@@ -24,12 +24,17 @@ class Izin extends ModelAuthenticate
 
     public function getCreatedAtStringAttribute()
     {
-        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y');
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('d F Y');
     }
 
-    public function getWaktuStringAttribute()
+    public function getDariTanggalStringAttribute()
     {
-        return Carbon::parse($this->attributes['waktu'])->translatedFormat('l, d F Y');
+        return Carbon::parse($this->attributes['dari_tanggal'])->translatedFormat('d F Y');
+    }
+
+    public function getSampaiTanggalStringAttribute()
+    {
+        return Carbon::parse($this->attributes['sampai_tanggal'])->translatedFormat('d F Y');
     }
 
     function handleUploadFoto()
@@ -51,6 +56,32 @@ class Izin extends ModelAuthenticate
         $qr = $this->qr;
         if ($qr) {
             $path = public_path($qr);
+            if (file_exists($path)) {
+                unlink($path);
+            }
+            return true;
+        }
+    }
+
+    function handleUploadLampiran()
+    {
+        $this->handleDeleteLampiran();
+        if (request()->hasFile('lampiran')) {
+            $lampiran = request()->file('lampiran');
+            $destination = "SiMantapQR/lampiran";
+            $randomStr = Str::random(5);
+            $filename = $this->id . "-" . time() . "-" . $randomStr . "." . $lampiran->extension();
+            $url = $lampiran->storeAs($destination, $filename);
+            $this->lampiran = "app/" . $url;
+            $this->save();
+        }
+    }
+
+    function handleDeleteLampiran()
+    {
+        $lampiran = $this->lampiran;
+        if ($lampiran) {
+            $path = public_path($lampiran);
             if (file_exists($path)) {
                 unlink($path);
             }

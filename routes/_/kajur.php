@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Kajur\AbsensiController;
 use App\Http\Controllers\Kajur\BerandaController;
+use App\Http\Controllers\Kajur\CutiController;
 use App\Http\Controllers\Kajur\IzinController;
 use App\Http\Controllers\Kajur\PengajuanAktifController;
 use App\Http\Controllers\Kajur\PengajuanSelesaiController;
@@ -15,6 +16,7 @@ Route::resource('pengajuan-aktif', PengajuanAktifController::class);
 Route::resource('pengajuan-selesai', PengajuanSelesaiController::class);
 Route::resource('sakit', SakitController::class);
 Route::resource('izin', IzinController::class);
+Route::resource('cuti', CutiController::class);
 Route::get('izin_detail/{id}', [IzinController::class, 'izin_detail']);
 
 Route::get('pengajuan-aktif1/{id}', [PengajuanAktifController::class, 'show1']);
