@@ -3,10 +3,9 @@
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> TAMBAH PENGAJUAN IZIN
         </h5>
     </div>
-    <br>
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ url('pegawai/izin') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
+            <a href="{{ url('pegawai/izin') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"></i> kembali</a>
             <div class="card">
                 <div class="card-body">
                     <form action="{{ url('pegawai/izin') }}" method="post" enctype="multipart/form-data">

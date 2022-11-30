@@ -40,7 +40,7 @@
                         <td class="text-center">{{ $izin->waktu_string }}</td>
                         <td class="text-center">
                             @if ($izin->status == 1)
-                            <label class="btn btn-warning">Pengajuan Baru</label>
+                            <label class="btn btn-warning">Diproses..</label>
                             @endif
 
                             @if ($izin->status == 2)
@@ -164,7 +164,7 @@
                         <td class="text-center">{{ $izin->waktu_string }}</td>
                         <td class="text-center">
                             @if ($izin->status == 1)
-                            <label class="btn btn-warning">Pengajuan Baru</label>
+                            <label class="btn btn-warning">Diproses..</label>
                             @endif
 
                             @if ($izin->status == 2)
