@@ -1,49 +1,46 @@
 <x-module.kepegawaian>
     <div class="card-header py-2">
-        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> DETAIL PENGAJUAN IZIN
+        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> DETAIL PENGAJUAN IZIN PERJALANAN DINAS LUAR
         </h5>
     </div>
 
     <a href="{{ url('kepegawaian/izin') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"></i> Kembali</a>
     <div class="card">
         <div class="card-body">
-            <form action="{{ url('kepegawaian/izin', $izin->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('kepegawaian/dinas', $dinas->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method("PUT")
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NAMA PENGAJU</dt>
-                        <dd>{{ $izin->nama }}</dd>
+                        <dd>{{ $dinas->nama }}</dd>
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NIP/NIK</dt>
-                        <dd>{{ $izin->nip }}</dd>
+                        <dd>{{ $dinas->nip }}</dd>
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">JABATAN</dt>
-                        <dd>{{ $izin->jabatan }}</dd>
+                        <dd>{{ $dinas->jabatan }}</dd>
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">PERIHAL</dt>
-                        <dd>{{ $izin->perihal }}</dd>
-                    </div>
-                    <div class="col-md-6">
-                        <dt class="font-weight-bold">PADA HARI</dt>
-                        <dd>{{ $izin->waktu_string }}</dd>
-                    </div>
-                    <div class="col-md-6">
-                        <dt class="font-weight-bold">ALASAN IZIN</dt>
-                        <dd>{{ $izin->alasan }}</dd>
+                        <dd>{{ $dinas->perihal }}</dd>
                     </div>
                 </div>
                 <br>
-                @if ($izin->status == 2)
-                <a href="{{ url('kepegawaian/cetak_izin/word-export2', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
-                    <span><i class="fas fa-download"></i> Download Dokumen</span>
+                @if ($dinas->status == 1)
+                <a href="{{ url('kepegawaian/cetak_dinas/word-export2', $dinas->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <i class=" fas fa-download "></i><span> Download Dokumen</span>
                 </a>
                 @endif
-                @if ($izin->status == 3)
-                <a href="{{ url('kepegawaian/cetak_izin/word-export3', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
+                @if ($dinas->status == 'Menyetujui')
+                <a href="{{ url('kepegawaian/cetak_dinas/word-export1', $dinas->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
+                    <span> Download Dokumen</span>
+                </a>
+                @endif
+                @if ($dinas->status == 'Tidak Menyetujui')
+                <a href="{{ url('kepegawaian/cetak_dinas/word-export1', $dinas->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
                     <span> Download Dokumen</span>
                 </a>
                 @endif
@@ -67,7 +64,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </x-module.kepegawaian>

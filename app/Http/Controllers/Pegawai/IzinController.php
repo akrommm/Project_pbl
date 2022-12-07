@@ -44,7 +44,7 @@ class IzinController extends Controller
         $izin->nama = request()->user()->nama;
         $izin->nip = request()->user()->nip;
         $izin->jabatan = request()->user()->jabatan;
-        $izin->status = 1;
+        $izin->status = 2;
         $izin->save();
 
         $data = [
@@ -189,16 +189,20 @@ Tanggal : " . $data['tanggal'];
         $izin = Izin::findOrFail($id);
         $templateProcessor = new TemplateProcessor('word-template/Izin_kepegawaian.docx');
         $templateProcessor->setValue('nama', $izin->nama);
+        $templateProcessor->setValue('nama_ak', $izin->nama_ak);
         $templateProcessor->setValue('alasan', $izin->alasan);
         $templateProcessor->setValue('nip', $izin->nip);
+        $templateProcessor->setValue('nip_ak', $izin->nip_ak);
         $templateProcessor->setValue('jabatan', $izin->jabatan);
+        $templateProcessor->setValue('unitkerja', request()->user()->unitkerja->nama_unit);
+        $templateProcessor->setValue('pangkat', $izin->pangkat);
         $templateProcessor->setValue('perihal', $izin->perihal);
         $templateProcessor->setValue('waktu', $izin->waktu_string);
         $templateProcessor->setValue('selama', $izin->selama);
+        $templateProcessor->setValue('status', $izin->status);
         $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
         $templateProcessor->setImageValue('qr', $qrdata);
-        $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
-        $templateProcessor->setImageValue('qr_ak', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr_ak', ["path" => $izin->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);
         $fileName = $izin->nama;
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);

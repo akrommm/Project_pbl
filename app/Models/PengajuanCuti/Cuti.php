@@ -37,6 +37,11 @@ class Cuti extends ModelAuthenticate
         return Carbon::parse($this->attributes['sampai_tanggal'])->translatedFormat('d F Y');
     }
 
+    public function getWaktuStringAttribute()
+    {
+        return Carbon::parse($this->attributes['waktu'])->translatedFormat('l, d F Y');
+    }
+
     function handleUploadFoto()
     {
         $this->handleDelete();

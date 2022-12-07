@@ -40,23 +40,7 @@
                         <td class="text-center">{{ $cuti->dari_tanggal_string }} - {{ $cuti->sampai_tanggal_string }}</td>
                         <td class="text-center">
                             @if ($cuti->status == 1)
-                            <label class="btn btn-warning">Pengajuan Baru</label>
-                            @endif
-
-                            @if ($cuti->status == 2)
-                            <label class="btn btn-success">Disetujui Ketua Jurusan</label>
-                            @endif
-
-                            @if ($cuti->status == 3)
-                            <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
-                            @endif
-
-                            @if ($cuti->status == 4)
-                            <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
-                            @endif
-
-                            @if ($cuti->status == 5)
-                            <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
+                            <h4><span class="badge badge-warning">Diproses...</span></h4>
                             @endif
                         </td>
                     </tr>
@@ -101,24 +85,12 @@
                         <td class="text-center"></td>
                         <td class="text-center"></td>
                         <td class="text-center">
-                            @if ($cuti->status == 1)
-                            <label class="btn btn-warning">Pengajuan Baru</label>
-                            @endif
-
                             @if ($cuti->status == 2)
-                            <label class="btn btn-success">Disetujui Ketua Jurusan</label>
+                            <h4><span class="badge badge-success">Disetujui Ketua Jurusan</span></h4>
                             @endif
 
                             @if ($cuti->status == 3)
-                            <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
-                            @endif
-
-                            @if ($cuti->status == 4)
-                            <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
-                            @endif
-
-                            @if ($cuti->status == 5)
-                            <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
+                            <h4><span class="badge badge-success">Disetujui Admin Kepegawaian</span></h4>
                             @endif
                         </td>
                     </tr>
@@ -163,24 +135,12 @@
                         <td class="text-center"></td>
                         <td class="text-center"></td>
                         <td class="text-center">
-                            @if ($cuti->status == 1)
-                            <label class="btn btn-warning">Pengajuan Baru</label>
-                            @endif
-
-                            @if ($cuti->status == 2)
-                            <label class="btn btn-success">Disetujui Ketua Jurusan</label>
-                            @endif
-
-                            @if ($cuti->status == 3)
-                            <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
-                            @endif
-
                             @if ($cuti->status == 4)
-                            <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
+                            <h4><span class="badge badge-danger">Ditolak Ketua Jurusan</span></h4>
                             @endif
 
                             @if ($cuti->status == 5)
-                            <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
+                            <h4><span class="badge badge-success">Ditolak Admin Kepegawaian</span></h4>
                             @endif
                         </td>
                     </tr>

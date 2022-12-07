@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Kepegawaian;
 
 use App\Http\Controllers\Controller;
+use App\Models\PengajuanDinas\Dinas;
 use App\Models\PengajuanSakit\Sakit;
 use Illuminate\Support\Str;
 use PhpOffice\PhpWord\TemplateProcessor;
@@ -17,85 +18,30 @@ use Endroid\QrCode\Logo\Logo;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 
-class SakitController extends Controller
+class DinasController extends Controller
 {
     public function show($id)
     {
-        return view('kepegawaian.sakit.show', [
-            'sakit' => Sakit::findOrFail($id)
+        return view('kepegawaian.dinas.show', [
+            'dinas' => Dinas::findOrFail($id)
         ]);
     }
 
-    public function update(Sakit $sakit)
+    public function edit($id)
     {
-        $sakit->keterangan = request('keterangan');
-        $sakit->status = 3;
-        $sakit->nama_ak = auth()->user()->nama;
-        $sakit->save();
-
-        $data = [
-            'nomor_surat' =>  request('nomor_surat'),
-            'tanggal_surat' => request('tanggal_surat'),
-            'perihal' => $sakit->perihal,
-            'keterangan' => request('keterangan'),
-            'nama' => $sakit->nama,
-            'dari_tanggal' => $sakit->dari_tanggal_string,
-            'sampai_tanggal' => $sakit->sampai_tanggal_string,
-            'nip' => $sakit->nip,
-            'jabatan' => $sakit->jabatan,
-
-        ];
-
-        $ttd = request()->user()->nama;
-
-        $randomStr = Str::random(5);
-        $output_file = $randomStr . ".png";
-
-        $qrlogo = $this->generateQrcode($output_file, $data, $ttd);
-        $sakit->qr_ak = $qrlogo;
-        $sakit->save();
-
-        return redirect('kepegawaian/pengajuan-selesai');
+        return view('kepegawaian.dinas.edit', [
+            'dinas' => Dinas::findOrFail($id)
+        ]);
     }
 
-    function generateQrcode($output_file, $data, $ttd)
+    public function update($id)
     {
-        $logo =  public_path('assets/images/logo/inim.png');
-        $isi_text = "
-Digital Signature
-" . request()->user()->nama . "
-NIP/NIK. " . request()->user()->nip . "
-        
-        
-Tanda Tangan Digital untuk Persetujuan Surat Izin Sakit Pada :
-nomor surat : " . $data['nomor_surat'] . "
-tanggal surat : " . $data['tanggal_surat'] . "
-perihal : " . $data['perihal'];
+        $dinas = Dinas::findOrFail($id);
+        $dinas->keterangan = request('keterangan');
+        $dinas->status = request('status');
+        $dinas->save();
 
-        $writer = new PngWriter();
-
-        // Create QR code
-        $qrCode = QrCode::create($isi_text)
-            ->setEncoding(new Encoding('UTF-8'))
-            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
-            ->setSize(300)
-            ->setMargin(10)
-            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
-            ->setForegroundColor(new Color(0, 0, 0))
-            ->setBackgroundColor(new Color(255, 255, 255));
-
-        // Create generic logo
-        $logo = Logo::create($logo)
-            ->setResizeToWidth(50);
-
-        // Create generic label
-        $label = Label::create($ttd)
-            ->setTextColor(new Color(0, 0, 0));
-
-        $result = $writer->write($qrCode, $logo, $label);
-        $result->saveToFile("app/SiMantapQR/kepegawaian/" . $output_file);
-
-        return "app/SiMantapQR/kepegawaian/$output_file";
+        return redirect('kepegawaian/pengajuan-selesai');
     }
 
     public function wordExport1($id)

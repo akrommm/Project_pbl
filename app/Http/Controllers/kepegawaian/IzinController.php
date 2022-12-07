@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Kepegawaian;
 
 use App\Http\Controllers\Controller;
+use App\Models\PengajuanCuti\Cuti;
+use App\Models\PengajuanDinas\Dinas;
 use App\Models\PengajuanIzin\Izin;
 use Illuminate\Support\Str;
 use App\Models\PengajuanSakit\Sakit;
@@ -23,7 +25,8 @@ class IzinController extends Controller
     public function index()
     {
         $data['list_izin'] = Izin::all();
-        $data['list_sakit'] = Sakit::all();
+        $data['list_dinas'] = Dinas::all();
+        $data['list_cuti'] = Cuti::all();
         $data['pegawai'] = auth()->user();
         return view('kepegawaian.izin.index', $data);
     }
@@ -49,18 +52,15 @@ class IzinController extends Controller
     public function update(Izin $izin)
     {
         $izin->keterangan = request('keterangan');
-        $izin->status = 3;
+        $izin->status = request('status');
         $izin->nama_ak = auth()->user()->nama;
         $izin->save();
 
         $data = [
-            'nomor_surat' =>  $izin->nomor_surat,
-            'tanggal_surat' => $izin->tanggal_surat_string,
-            'perihal' => $izin->perihal,
+
             'keterangan' => request('keterangan'),
             'nama' => $izin->nama,
-            'dari_tanggal' => $izin->dari_tanggal_string,
-            'sampai_tanggal' => $izin->sampai_tanggal_string,
+            'perihal' => $izin->perihal,
             'nip' => $izin->nip,
             'jabatan' => $izin->jabatan,
 
@@ -80,7 +80,7 @@ class IzinController extends Controller
 
     function generateQrcode($output_file, $data, $ttd)
     {
-        $logo =  public_path('assets/images/logo/inim.png');
+        $logo =  public_path('assets/images/logo/politap.jpg');
         $isi_text = "
 Digital Signature
 " . request()->user()->nama . "
@@ -88,8 +88,6 @@ NIP/NIK. " . request()->user()->nip . "
         
         
 Tanda Tangan Digital untuk Persetujuan Surat Izin Pada :
-nomor surat : " . $data['nomor_surat'] . "
-tanggal surat : " . $data['tanggal_surat'] . "
 perihal : " . $data['perihal'];
 
         $writer = new PngWriter();
@@ -106,7 +104,7 @@ perihal : " . $data['perihal'];
 
         // Create generic logo
         $logo = Logo::create($logo)
-            ->setResizeToWidth(50);
+            ->setResizeToWidth(100);
 
         // Create generic label
         $label = Label::create($ttd)
@@ -135,21 +133,18 @@ perihal : " . $data['perihal'];
     public function wordExport2($id)
     {
         $izin = Izin::findOrFail($id);
-        $templateProcessor = new TemplateProcessor('word-template/Izin_kajur.docx');
+        $templateProcessor = new TemplateProcessor('word-template/Izin_pegawai.docx');
         $templateProcessor->setValue('nama', $izin->nama);
-        $templateProcessor->setValue('nip', $izin->nip);
         $templateProcessor->setValue('alasan', $izin->alasan);
-        $templateProcessor->setValue('nama_kj', $izin->nama_kj);
-        $templateProcessor->setValue('tanggal_surat', $izin->tanggal_surat_string);
-        $templateProcessor->setValue('nomor_surat', $izin->nomor_surat);
+        $templateProcessor->setValue('nip', $izin->nip);
         $templateProcessor->setValue('jabatan', $izin->jabatan);
         $templateProcessor->setValue('perihal', $izin->perihal);
-        $templateProcessor->setValue('dari_tanggal', $izin->dari_tanggal_string);
-        $templateProcessor->setValue('sampai_tanggal', $izin->sampai_tanggal_string);
+        $templateProcessor->setValue('waktu', $izin->waktu_string);
+        $templateProcessor->setValue('unitkerja', request()->user()->unitkerja->nama_unit);
+        $templateProcessor->setValue('selama', $izin->selama);
+        $templateProcessor->setValue('pangkat', $izin->pangkat);
         $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
         $templateProcessor->setImageValue('qr', $qrdata);
-        $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
-        // $templateProcessor->setImageValue('qr', '');
         $fileName = $izin->nama;
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);

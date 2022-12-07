@@ -4,7 +4,7 @@
         </h5>
     </div>
 
-    <a href="{{ url('pegawai/izin') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
+    <a href="{{ url('pegawai/izin') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"></i> Kembali</a>
     <div class="card">
         <div class="card-body">
             <form action="{{ url('pegawai/izin', $izin->id) }}" method="post">
@@ -37,19 +37,19 @@
                     </div>
                 </div>
                 <br>
-                @if ($izin->status == 1)
-                <a href="{{ url('pegawai/cetak_izin/word-export', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
-                </a>
-                @endif
                 @if ($izin->status == 2)
-                <a href="{{ url('pegawai/cetak_izin/word-export2', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
+                <a href="{{ url('pegawai/cetak_izin/word-export', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
                 </a>
                 @endif
-                @if ($izin->status == 3)
-                <a href="{{ url('pegawai/cetak_izin/word-export3', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
+                @if ($izin->status == 'Menyetujui')
+                <a href="{{ url('pegawai/cetak_izin/word-export2', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
+                </a>
+                @endif
+                @if ($izin->status == 'Tidak Menyetujui')
+                <a href="{{ url('pegawai/cetak_izin/word-export3', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
                 </a>
                 @endif
                 <br>

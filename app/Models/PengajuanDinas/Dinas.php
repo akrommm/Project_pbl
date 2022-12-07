@@ -12,6 +12,12 @@ class Dinas extends ModelAuthenticate
     protected $table = 'admin__dinas';
     protected $primaryKey = 'id';
 
+    protected $fillable = [
+        'id',
+        'nama',
+        'nip'
+    ];
+
     public function pegawai()
     {
         return $this->belongsTo(Pegawai::class, 'id_pegawai');

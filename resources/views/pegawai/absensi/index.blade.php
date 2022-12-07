@@ -21,10 +21,13 @@
                     <th class="text-center" style="color: white;">PERSENTASE KEHADIRAN</th>
                 </thead>
                 <tbody>
+                    @php
+                    $no = 1;
+                    @endphp
                     @foreach ($list_absensi->sortByDesc('created_at')->values() as $absensi)
                     @if ($pegawai->id == $absensi->id_pegawai)
                     <tr>
-                        <td class="text-center">{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
                             <div class="btn-group">
                                 <x-template.button.info-button url="pegawai/absensi" id="{{ $absensi->id }}" />

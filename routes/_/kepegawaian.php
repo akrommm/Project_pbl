@@ -1,15 +1,17 @@
 <?php
 
 use App\Http\Controllers\Kepegawaian\BerandaController;
+use App\Http\Controllers\Kepegawaian\DinasController;
 use App\Http\Controllers\Kepegawaian\IzinController;
 use App\Http\Controllers\Kepegawaian\PengajuanSelesaiController;
 use App\Http\Controllers\Kepegawaian\QrController;
 use App\Http\Controllers\Kepegawaian\SakitController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Row;
 
 Route::get('beranda', BerandaController::class);
 Route::resource('izin', IzinController::class);
-Route::resource('sakit', SakitController::class);
+Route::resource('dinas', DinasController::class);
 
 Route::get('cetak_izin/word-export/{id}', [IzinController::class, 'wordExport']);
 Route::get('izin_detail/{id}', [IzinController::class, 'izin_detail']);

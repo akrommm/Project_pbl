@@ -26,7 +26,7 @@
                     @endphp
                     @foreach ($list_izin as $izin)
                     @if ($pegawai->id == $izin->id_pegawai)
-                    @if ($izin->status == 1)
+                    @if ($izin->status == 2)
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
@@ -39,24 +39,8 @@
                         <td class="text-center">{{ $izin->perihal }}</td>
                         <td class="text-center">{{ $izin->waktu_string }}</td>
                         <td class="text-center">
-                            @if ($izin->status == 1)
-                            <label class="btn btn-warning">Diproses..</label>
-                            @endif
-
                             @if ($izin->status == 2)
-                            <label class="btn btn-success">Disetujui Ketua Jurusan</label>
-                            @endif
-
-                            @if ($izin->status == 3)
-                            <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
-                            @endif
-
-                            @if ($izin->status == 4)
-                            <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
-                            @endif
-
-                            @if ($izin->status == 5)
-                            <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
+                            <h4><span class="badge badge-warning">Diproses...</span></h4>
                             @endif
                         </td>
                     </tr>
@@ -88,7 +72,7 @@
                     @endphp
                     @foreach ($list_izin as $izin)
                     @if ($pegawai->id == $izin->id_pegawai)
-                    @if ($izin->status == '2' || $izin->status == '3')
+                    @if ($izin->status == 'Menyetujui')
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
@@ -101,24 +85,8 @@
                         <td class="text-center">{{ $izin->perihal }}</td>
                         <td class="text-center">{{ $izin->waktu_string }}</td>
                         <td class="text-center">
-                            @if ($izin->status == 1)
-                            <label class="btn btn-warning">Pengajuan Baru</label>
-                            @endif
-
-                            @if ($izin->status == 2)
-                            <label class="btn btn-success">Disetujui Ketua Jurusan</label>
-                            @endif
-
-                            @if ($izin->status == 3)
-                            <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
-                            @endif
-
-                            @if ($izin->status == 4)
-                            <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
-                            @endif
-
-                            @if ($izin->status == 5)
-                            <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
+                            @if ($izin->status == 'Menyetujui')
+                            <h4><span class="badge badge-success">Disetujui</span></h4>
                             @endif
                         </td>
                     </tr>
@@ -132,7 +100,7 @@
         <br>
         <div class="card-header">
             <div class="card-title">
-                PENGAJUAN DITOLAK
+                PENGAJUAN TIDAK DISETUJUI
             </div>
         </div>
         <div class="card-body">
@@ -150,7 +118,7 @@
                     @endphp
                     @foreach ($list_izin as $izin)
                     @if ($pegawai->id == $izin->id_pegawai)
-                    @if ($izin->status == '4' || $izin->status == '5')
+                    @if ($izin->status == 'Tidak Menyetujui')
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
@@ -163,24 +131,8 @@
                         <td class="text-center">{{ $izin->perihal }}</td>
                         <td class="text-center">{{ $izin->waktu_string }}</td>
                         <td class="text-center">
-                            @if ($izin->status == 1)
-                            <label class="btn btn-warning">Diproses..</label>
-                            @endif
-
-                            @if ($izin->status == 2)
-                            <label class="btn btn-success">Disetujui Ketua Jurusan</label>
-                            @endif
-
-                            @if ($izin->status == 3)
-                            <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
-                            @endif
-
-                            @if ($izin->status == 4)
-                            <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
-                            @endif
-
-                            @if ($izin->status == 5)
-                            <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
+                            @if ($izin->status == 'Tidak Menyetujui')
+                            <h4><span class="badge badge-danger">Tidak Disetujui</span></h4>
                             @endif
                         </td>
                     </tr>

@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Kajur;
 use App\Http\Controllers\Controller;
 use App\Models\Kajur\Izin;
 use App\Models\Kajur\Sakit;
+use App\Models\PengajuanCuti\Cuti;
 use PhpOffice\PhpWord\TemplateProcessor;
 
 class PengajuanSelesaiController extends Controller
 {
     public function index()
     {
-        $data['list_izin'] = Izin::all();
+        $data['list_cuti'] = Cuti::all();
         $data['list_sakit'] = Sakit::all();
         $data['pegawai'] = auth()->user();
         return view('kajur.pengajuan-selesai.index', $data);

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Kepegawaian;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kajur\Izin;
 use App\Models\Kajur\Sakit;
+use App\Models\Kepegawaian\Izin;
+use App\Models\PengajuanCuti\Cuti;
+use App\Models\PengajuanDinas\Dinas;
+use App\Models\PengajuanIzin\Izin as PengajuanIzinIzin;
 use PhpOffice\PhpWord\TemplateProcessor;
 
 class PengajuanSelesaiController extends Controller
@@ -12,7 +15,8 @@ class PengajuanSelesaiController extends Controller
     public function index()
     {
         $data['list_izin'] = Izin::all();
-        $data['list_sakit'] = Sakit::all();
+        $data['list_cuti'] = Cuti::all();
+        $data['list_dinas'] = Dinas::all();
         $data['pegawai'] = auth()->user();
         return view('kepegawaian.pengajuan-selesai.index', $data);
     }

@@ -4,12 +4,12 @@
         </h5>
     </div>
 
-    <a href="{{ url('kepegawaian/pengajuan-selesai') }}" class="btn btn-dark btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
+    <a href="{{ url('kepegawaian/pengajuan-selesai') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"></i> Kembali</a>
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <dt class="font-weight-bold">Nama Pengaju</dt>
+                    <dt class="font-weight-bold">NAMA PENGAJU</dt>
                     <dd>{{ $izin->nama }}</dd>
                 </div>
                 <div class="col-md-6">
@@ -17,16 +17,20 @@
                     <dd>{{ $izin->nip }}</dd>
                 </div>
                 <div class="col-md-6">
-                    <dt class="font-weight-bold">Jabatan</dt>
+                    <dt class="font-weight-bold">JABATAN</dt>
                     <dd>{{ $izin->jabatan }}</dd>
                 </div>
                 <div class="col-md-6">
-                    <dt class="font-weight-bold">Perihal</dt>
+                    <dt class="font-weight-bold">PERIHAL</dt>
                     <dd>{{ $izin->perihal }}</dd>
                 </div>
                 <div class="col-md-6">
-                    <dt class="font-weight-bold">Periode Izin</dt>
-                    <dd>{{ $izin->dari_tanggal_string }} - {{ $izin->sampai_tanggal_string }}</dd>
+                    <dt class="font-weight-bold">PADA HARI</dt>
+                    <dd>{{ $izin->waktu_string}}</dd>
+                </div>
+                <div class="col-md-6">
+                    <dt class="font-weight-bold">ALASAN IZIN</dt>
+                    <dd>{{ $izin->alasan }}</dd>
                 </div>
             </div>
             <br>
@@ -35,12 +39,12 @@
                 <span> Download Dokumen</span>
             </a>
             @endif
-            @if ($izin->status == 2)
-            <a href="{{ url('kepegawaian/cetak_izin', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                <span> Download Dokumen</span>
+            @if ($izin->status == 'Menyetujui')
+            <a href="{{ url('kepegawaian/cetak_izin', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                <span><i class=" fas fa-download "></i> Download Dokumen</span>
             </a>
             @endif
-            @if ($izin->status == 3)
+            @if ($izin->status == 'Tidak Menyetujui')
             <a href="{{ url('kepegawaian/cetak_izin/word-export3', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
                 <span> Download Dokumen</span>
             </a>

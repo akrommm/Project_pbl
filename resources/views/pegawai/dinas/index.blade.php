@@ -38,23 +38,7 @@
                         <td class="text-center">{{ $dinas->perihal }}</td>
                         <td class="text-center">
                             @if ($dinas->status == 1)
-                            <label class="btn btn-warning">Pengajuan Baru</label>
-                            @endif
-
-                            @if ($dinas->status == 2)
-                            <label class="btn btn-success">Disetujui Ketua Jurusan</label>
-                            @endif
-
-                            @if ($dinas->status == 3)
-                            <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
-                            @endif
-
-                            @if ($dinas->status == 4)
-                            <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
-                            @endif
-
-                            @if ($dinas->status == 5)
-                            <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
+                            <label class="btn btn-warning">Diproses...</label>
                             @endif
                         </td>
                     </tr>
@@ -85,7 +69,7 @@
                     @endphp
                     @foreach ($list_dinas as $dinas)
                     @if ($pegawai->id == $dinas->id_pegawai)
-                    @if ($dinas->status == '2' || $dinas->status == '3')
+                    @if ($dinas->status == 'Menyetujui')
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
@@ -97,24 +81,8 @@
                         </td>
                         <td class="text-center">Izin Perjalanan Dinas Luar</td>
                         <td class="text-center">
-                            @if ($dinas->status == 1)
-                            <label class="btn btn-warning">Pengajuan Baru</label>
-                            @endif
-
-                            @if ($dinas->status == 2)
-                            <label class="btn btn-success">Disetujui Ketua Jurusan</label>
-                            @endif
-
-                            @if ($dinas->status == 3)
-                            <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
-                            @endif
-
-                            @if ($dinas->status == 4)
-                            <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
-                            @endif
-
-                            @if ($dinas->status == 5)
-                            <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
+                            @if ($dinas->status == 'Menyetujui')
+                            <h4><span class="badge badge-success">Disetujui</span></h4>
                             @endif
                         </td>
                     </tr>
@@ -145,7 +113,7 @@
                     @endphp
                     @foreach ($list_dinas as $dinas)
                     @if ($pegawai->id == $dinas->id_pegawai)
-                    @if ($dinas->status == '4' || $dinas->status == '5')
+                    @if ($dinas->status == 'Tidak Menyetujui')
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
@@ -157,24 +125,8 @@
                         </td>
                         <td class="text-center">Izin Perjalanan Dinas Luar</td>
                         <td class="text-center">
-                            @if ($dinas->status == 1)
-                            <label class="btn btn-warning">Pengajuan Baru</label>
-                            @endif
-
-                            @if ($dinas->status == 2)
-                            <label class="btn btn-success">Disetujui Ketua Jurusan</label>
-                            @endif
-
-                            @if ($dinas->status == 3)
-                            <label class="btn btn-success">Disetujui Admin Kepegawaian</label>
-                            @endif
-
-                            @if ($dinas->status == 4)
-                            <label class="btn btn-danger">Ditolak Ketua Jurusan</label>
-                            @endif
-
-                            @if ($dinas->status == 5)
-                            <label class="btn btn-danger">Ditolak Admin Kepegawaian</label>
+                            @if ($dinas->status == 'Tidak Menyetujui')
+                            <label class="btn btn-danger">Tidak Menyetujui</label>
                             @endif
                         </td>
                     </tr>

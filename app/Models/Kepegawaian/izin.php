@@ -48,6 +48,11 @@ class Izin extends ModelAuthenticate
         return Carbon::parse($this->attributes['sampai_tanggal'])->translatedFormat('d F Y');
     }
 
+    public function getWaktuStringAttribute()
+    {
+        return Carbon::parse($this->attributes['waktu'])->translatedFormat('l, d F Y');
+    }
+
     function handleDelete()
     {
         $qr_ak = $this->qr_ak;
