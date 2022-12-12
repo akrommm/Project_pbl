@@ -25,7 +25,7 @@
                     $no = 1;
                     @endphp
                     @foreach ($list_cuti as $cuti)
-                    @if ($cuti->status == 3)
+                    @if ($cuti->status == 3 || $cuti->status)
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">

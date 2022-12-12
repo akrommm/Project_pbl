@@ -7,7 +7,7 @@
     <title>SIMANTAP - {{$title}}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('/') }}/assets/images/logo/wkwk.png">
+    <link rel="shortcut icon" href="{{ url('/') }}/assets/images/logo/baru.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- page css -->

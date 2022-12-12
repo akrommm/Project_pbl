@@ -6,7 +6,7 @@
     <br>
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ url('pegawai/dinas') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
+            <a href="{{ url('pegawai/dinas') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"></i> Kembali</a>
             <div class="card">
                 <div class="card-body">
                     <form action="{{ url('pegawai/dinas') }}" method="post" enctype="multipart/form-data">

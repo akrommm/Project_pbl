@@ -1,5 +1,5 @@
 <x-module.pegawai>
-    <div class="card-header py-2">
+    <div class="card-header">
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> DETAIL PENGAJUAN IZIN
         </h5>
     </div>

@@ -1,14 +1,14 @@
 <div class="header">
     <div class="logo logo-dark">
         <a href="">
-            <img src="{{ url('/') }}/assets/images/logo/simantap1.png" alt="Logo" width="175" height="47" class="mt-2">
-            <img class="logo-fold" src="{{ url('/') }}/assets/images/logo/simantap3.png" alt="Logo" width="70" height="57" class="">
+            <img src="{{ url('/') }}/assets/images/logo/ini.png" alt="Logo" width="150" height="47" class="mt-2">
+            <img class="logo-fold mt-2" src="{{ url('/') }}/assets/images/logo/test.png" alt="Logo" width="74" height="51">
         </a>
     </div>
     <div class="logo logo-white">
         <a href="index.html">
             <img src="{{ url('/') }}/assets/images/logo/logo-white.png" alt="Logo">
-            <img class="logo-fold" src="{{ url('/') }}/assets/images/logo/logo-fold-white.png" alt="Logo">
+            <img class="logo-fold p-4" src="{{ url('/') }}/assets/images/logo/logo-fold-white.png" alt="Logo">
         </a>
     </div>
     <div class="nav-wrap">

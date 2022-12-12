@@ -7,7 +7,7 @@
     <title>SIMANTAP - LOGIN</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('/')}}/assets/images/logo/simantap.png">
+    <link rel="shortcut icon" href="{{ url('/')}}/assets/images/logo/baru.png">
 
     <!-- page css -->
 
@@ -26,7 +26,7 @@
                             <div class="card shadow-lg">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center justify-content-between m-b-30">
-                                        <img class="img-fluid" alt="" src="{{ url('/')}}/assets/images/logo/simantap1.png" width="175" height="47">
+                                        <img class="img-fluid" alt="" src="{{ url('/')}}/assets/images/logo/ini.png" width="175" height="47">
                                         <h2 class="m-b-0 mt-3">Login</h2>
                                     </div>
                                     <form action="{{ url('/login') }}" method="post">

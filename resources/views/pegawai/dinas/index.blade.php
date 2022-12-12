@@ -126,7 +126,7 @@
                         <td class="text-center">Izin Perjalanan Dinas Luar</td>
                         <td class="text-center">
                             @if ($dinas->status == 'Tidak Menyetujui')
-                            <label class="btn btn-danger">Tidak Menyetujui</label>
+                            <h4><span class="badge badge-danger">Tidak Disetujui</span></h4>
                             @endif
                         </td>
                     </tr>

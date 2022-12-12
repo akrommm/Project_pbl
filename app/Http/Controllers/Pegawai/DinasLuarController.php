@@ -26,6 +26,20 @@ class DinasLuarController extends Controller
         return view('pegawai.dinas.index', $data);
     }
 
+    public function show($id)
+    {
+        return view('pegawai.dinas.show', [
+            'dinas' => Dinas::findOrFail($id)
+        ]);
+    }
+
+    public function edit($id)
+    {
+        return view('pegawai.dinas.edit', [
+            'dinas' => Dinas::findOrFail($id)
+        ]);
+    }
+
     public function create()
     {
         return view('pegawai.dinas.create');

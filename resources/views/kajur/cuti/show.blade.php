@@ -63,7 +63,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group float-right">
-                            <button class="btn btn-success btn-tone"><span class="fa fa-check"></span> Terima</button>
+                            <button class="btn btn-success btn-tone" name="status" value="2"><span class="fa fa-check"></span> Terima</button>
                             <button class="btn btn-danger ml-4 btn-tone" name="status" value="4"><span class="fa fa-times"></span> Tolak</button>
                         </div>
                     </div>

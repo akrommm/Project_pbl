@@ -42,7 +42,7 @@ class CutiController extends Controller
     {
         $cuti->nama_kj = auth()->user()->nama;
         $cuti->keterangan = request('keterangan');
-        $cuti->status = 2;
+        $cuti->status = request('status');
         $cuti->save();
 
         $filepath = 'word-template/Izin_kajur.docx';

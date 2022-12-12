@@ -13,7 +13,7 @@
                             <i class="anticon anticon-profile"></i>
                         </div>
                         <div class="m-l-15">
-                            <h2 class="m-b-0">{{$sakit}}</h2>
+                            <h2 class="m-b-0">{{$cuti}}</h2>
                             <p class="m-b-0 text-muted">Pengajuan Cuti Baru</p>
                         </div>
                     </div>

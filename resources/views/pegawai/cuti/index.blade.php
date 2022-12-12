@@ -82,8 +82,8 @@
                                 <x-template.button.delete-button url="pegawai/cuti" id="{{$cuti->id}}" />
                             </div>
                         </td>
-                        <td class="text-center"></td>
-                        <td class="text-center"></td>
+                        <td class="text-center">{{ $cuti->jenis_cuti }}</td>
+                        <td class="text-center">{{ $cuti->dari_tanggal_string }} - {{ $cuti->sampai_tanggal_string }}</td>
                         <td class="text-center">
                             @if ($cuti->status == 2)
                             <h4><span class="badge badge-success">Disetujui Ketua Jurusan</span></h4>
@@ -132,8 +132,8 @@
                                 <x-template.button.delete-button url="pegawai/cuti" id="{{$cuti->id}}" />
                             </div>
                         </td>
-                        <td class="text-center"></td>
-                        <td class="text-center"></td>
+                        <td class="text-center">{{ $cuti->jenis_cuti }}</td>
+                        <td class="text-center">{{ $cuti->dari_tanggal_string }} - {{ $cuti->sampai_tanggal_string }}</td>
                         <td class="text-center">
                             @if ($cuti->status == 4)
                             <h4><span class="badge badge-danger">Ditolak Ketua Jurusan</span></h4>
