@@ -31,28 +31,52 @@ class PengajuanSelesaiController extends Controller
     public function show1($id)
     {
         return view('kepegawaian.pengajuan-selesai.show-sakit', [
-            'sakit' => Sakit::findOrFail($id)
+            'cuti' => Cuti::findOrFail($id)
         ]);
     }
 
-    public function wordExport3($id)
+    public function wordExport10($id)
     {
         $izin = Izin::findOrFail($id);
-        $templateProcessor = new TemplateProcessor('word-template/Izin_kepegawaian.docx');
+        $templateProcessor = new TemplateProcessor('word-template/izin_kepegawaian.docx');
         $templateProcessor->setValue('nama', $izin->nama);
-        $templateProcessor->setValue('nama_kj', $izin->nama_kj);
-        $templateProcessor->setValue('nama_ak', $izin->nama_ak);
         $templateProcessor->setValue('alasan', $izin->alasan);
         $templateProcessor->setValue('nip', $izin->nip);
         $templateProcessor->setValue('jabatan', $izin->jabatan);
         $templateProcessor->setValue('perihal', $izin->perihal);
-        $templateProcessor->setValue('nomor_surat', $izin->nomor_surat);
-        $templateProcessor->setValue('tanggal_surat', $izin->tanggal_surat_string);
-        $templateProcessor->setValue('dari_tanggal', $izin->dari_tanggal_string);
-        $templateProcessor->setValue('sampai_tanggal', $izin->sampai_tanggal_string);
+        $templateProcessor->setValue('waktu', $izin->waktu_string);
+        $templateProcessor->setValue('unitkerja', request()->user()->unitkerja->nama_unit);
+        $templateProcessor->setValue('selama', $izin->selama);
+        $templateProcessor->setValue('pangkat', $izin->pangkat);
+        $templateProcessor->setValue('nama_ak', $izin->nama_ak);
+        $templateProcessor->setValue('status', $izin->status);
+        $templateProcessor->setValue('nip_ak', $izin->nip_ak);
         $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
         $templateProcessor->setImageValue('qr', $qrdata);
-        $templateProcessor->setImageValue('qr_kj', ["path" => $izin->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $templateProcessor->setImageValue('qr_ak', ["path" => $izin->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);
+        $fileName = $izin->nama;
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
+    }
+
+    public function wordExport11($id)
+    {
+        $izin = Izin::findOrFail($id);
+        $templateProcessor = new TemplateProcessor('word-template/izin_kepegawaian.docx');
+        $templateProcessor->setValue('nama', $izin->nama);
+        $templateProcessor->setValue('alasan', $izin->alasan);
+        $templateProcessor->setValue('nip', $izin->nip);
+        $templateProcessor->setValue('jabatan', $izin->jabatan);
+        $templateProcessor->setValue('perihal', $izin->perihal);
+        $templateProcessor->setValue('waktu', $izin->waktu_string);
+        $templateProcessor->setValue('unitkerja', request()->user()->unitkerja->nama_unit);
+        $templateProcessor->setValue('selama', $izin->selama);
+        $templateProcessor->setValue('pangkat', $izin->pangkat);
+        $templateProcessor->setValue('nama_ak', $izin->nama_ak);
+        $templateProcessor->setValue('status', $izin->status);
+        $templateProcessor->setValue('nip_ak', $izin->nip_ak);
+        $qrdata = ["path" => $izin->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
+        $templateProcessor->setImageValue('qr', $qrdata);
         $templateProcessor->setImageValue('qr_ak', ["path" => $izin->qr_ak, 'width' => 100, 'height' => 100, 'ratio' => false]);
         $fileName = $izin->nama;
         $templateProcessor->saveAs($fileName . '.docx');

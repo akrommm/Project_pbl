@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b28975fca4e0592fa88b58c3eae89df1",
+    "content-hash": "d9ad440718437671e6a98b1222cc7e9c",
     "packages": [
         {
             "name": "arrazy/simadu-data",

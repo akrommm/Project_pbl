@@ -2,6 +2,7 @@
 
 namespace App\Models\Pegawai;
 
+use App\Models\Admin\MasterData\Pegawai;
 use App\Models\ModelAuthenticate;
 use Illuminate\Database\Eloquent\Model;
 

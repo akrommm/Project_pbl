@@ -21,7 +21,9 @@
             </span>
         </a>
         <ul class="dropdown-menu">
-            <x-template.menu.menu-item title="REKAP ABSENSI" url="kepegawaian/absensi" icon="file-alt" />
+            <li class="{{request()->is('kepegawaian/absensi') ? 'active' : ''}} ">
+                <a href="{{ url('kepegawaian/absensi') }}"><i class="fas fa-clipboard-list"></i> REKAP ABSENSI</a>
+            </li>
         </ul>
     </li>
     <li class="nav-item dropdown">

@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NAMA PENGAJU</dt>
-                        <dd>{{ $izin->nama }}</dd>
+                        <dd>{{ $izin->nama }}, {{$izin->pegawai->gelar_belakang}}</dd>
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NIP/NIK</dt>
@@ -22,6 +22,10 @@
                     <div class="col-md-6">
                         <dt class="font-weight-bold">JABATAN</dt>
                         <dd>{{ $izin->jabatan }}</dd>
+                    </div>
+                    <div class="col-md-6">
+                        <dt class="font-weight-bold">UNIT KERJA</dt>
+                        <dd>{{ $izin->pegawai->unitkerja->nama_unit }}</dd>
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">PERIHAL</dt>
@@ -40,11 +44,6 @@
                 @if ($izin->status == 2)
                 <a href="{{ url('kepegawaian/cetak_izin/word-export2', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
                     <span><i class="fas fa-download"></i> Download Dokumen</span>
-                </a>
-                @endif
-                @if ($izin->status == 3)
-                <a href="{{ url('kepegawaian/cetak_izin/word-export3', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
                 </a>
                 @endif
                 <hr>

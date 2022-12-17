@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NAMA PENGAJU</dt>
-                        <dd>{{ $izin->nama }}</dd>
+                        <dd>{{ $izin->nama }}, {{$izin->pegawai->gelar_belakang }}</dd>
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NIP/NIK</dt>
@@ -37,18 +37,18 @@
                     </div>
                 </div>
                 <br>
-                @if ($izin->status == 2)
+                @if ($izin->status == '2')
                 <a href="{{ url('pegawai/cetak_izin/word-export', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
                     <span><i class="fas fa-download"></i> Download Dokumen</span>
                 </a>
                 @endif
                 @if ($izin->status == 'Menyetujui')
-                <a href="{{ url('pegawai/cetak_izin/word-export2', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                <a href="{{ url('pegawai/cetak_izin/word-export10', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
                     <span><i class="fas fa-download"></i> Download Dokumen</span>
                 </a>
                 @endif
                 @if ($izin->status == 'Tidak Menyetujui')
-                <a href="{{ url('pegawai/cetak_izin/word-export3', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                <a href="{{ url('pegawai/cetak_izin/word-export11', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
                     <span><i class="fas fa-download"></i> Download Dokumen</span>
                 </a>
                 @endif

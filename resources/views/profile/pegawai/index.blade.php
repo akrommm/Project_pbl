@@ -4,13 +4,6 @@
         </h5>
     </div>
     <br>
-    <button onclick="goBack()" class="btn btn-sm btn-primary btn-tone"><i class="fas fa-arrow-left"></i>
-        Kembali</button>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
     <div class="row">
         <div class="col-md-3">
             <div class="card">
@@ -31,23 +24,29 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-12">
-                            <dl class="row">
-                                <dt class="col-2">NAMA LENGKAP</dt>
-                                <dd class="col-10">: {{ $pegawai->nama }}</dd>
-                                <dt class="col-2">NIP</dt>
-                                <dd class="col-10">: {{ $pegawai->nip }}</dd>
-                                <dt class="col-2">JENIS KELAMIN</dt>
-                                <dd class="col-10">: {{ $pegawai->jenis_kelamin }}</dd>
-                                <dt class="col-2">TEMPAT LAHIR</dt>
-                                <dd class="col-10">: {{ $pegawai->tempat_lahir }}</dd>
-                                <dt class="col-2">TANGGAL LAHIR</dt>
-                                <dd class="col-10">: {{ $pegawai->tanggal_lahir_string }}</dd>
-                                <dt class="col-2">USERNAMA</dt>
-                                <dd class="col-10">: {{ $pegawai->username }}</dd>
-                                <dt class="col-2">EMAIL</dt>
-                                <dd class="col-10">: {{ $pegawai->email }}</dd>
-                            </dl>
+                        <div class="col-md-6">
+                            <dt class="font-weight-bold">NAMA LENGKAP</dt>
+                            <dd>{{ $pegawai->nama }}, {{ $pegawai->gelar_belakang }}</dd>
+                        </div>
+                        <div class="col-md-6">
+                            <dt class="font-weight-bold">NIP/NIK</dt>
+                            <dd>{{ $pegawai->nip }}</dd>
+                        </div>
+                        <div class="col-md-6">
+                            <dt class="font-weight-bold">JENIS KELAMIN</dt>
+                            <dd>{{ $pegawai->jenis_kelamin }}</dd>
+                        </div>
+                        <div class="col-md-6">
+                            <dt class="font-weight-bold">TEMPAT LAHIR</dt>
+                            <dd>{{ $pegawai->tempat_lahir }}</dd>
+                        </div>
+                        <div class="col-md-6">
+                            <dt class="font-weight-bold">USERNAME</dt>
+                            <dd>{{ $pegawai->username }}</dd>
+                        </div>
+                        <div class="col-md-6">
+                            <dt class="font-weight-bold">EMAIL</dt>
+                            <dd>{{ $pegawai->email }}</dd>
                         </div>
                     </div>
                 </div>

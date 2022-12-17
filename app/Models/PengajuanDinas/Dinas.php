@@ -40,7 +40,7 @@ class Dinas extends ModelAuthenticate
 
     function handleUploadLampiran()
     {
-        $this->handleDelete();
+        $this->handleDeleteLampiran();
         if (request()->hasFile('surat')) {
             $surat = request()->file('surat');
             $destination = "SiMantapsurat/pegawai";
@@ -52,7 +52,7 @@ class Dinas extends ModelAuthenticate
         }
     }
 
-    function handleDelete()
+    function handleDeleteLampiran()
     {
         $surat = $this->surat;
         if ($surat) {

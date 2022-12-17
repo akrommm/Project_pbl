@@ -1,10 +1,10 @@
 <x-module.kajur>
-    <div class="card-header py-2">
+    <div class="card-header">
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> DETAIL PENGAJUAN CUTI
         </h5>
     </div>
 
-    <a href="{{ url('kajur/cuti') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"> Kembali</i></a>
+    <a href="{{ url('kajur/izin') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"></i> Kembali</a>
     <div class="card">
         <div class="card-body">
             <form action="{{ url('kajur/cuti', $cuti->id) }}" method="post">
@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NAMA PENGAJU</dt>
-                        <dd>{{ $cuti->nama }}</dd>
+                        <dd>{{ $cuti->nama }}, {{ $cuti->pegawai->gelar_belakang }}</dd>
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NIP/NIK</dt>
@@ -28,7 +28,7 @@
                         <dd>{{ $cuti->jenis_cuti }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <dt class="font-weight-bold">Periode cuti</dt>
+                        <dt class="font-weight-bold">PERIODE CUTI</dt>
                         <dd>{{ $cuti->dari_tanggal_string }} - {{ $cuti->sampai_tanggal_string }}</dd>
                     </div>
                     <div class="col-md-6">
@@ -38,18 +38,8 @@
                 </div>
                 <br>
                 @if ($cuti->status == 1)
-                <a href="{{ url('kajur/cetak_cuti/word-export', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
-                </a>
-                @endif
-                @if ($cuti->status == 2)
-                <a href="{{ url('kajur/cetak_cuti/word-export2', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
-                </a>
-                @endif
-                @if ($cuti->status == 3)
-                <a href="{{ url('kajur/cetak_cuti/word-export3', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
+                <a href="{{ url('kajur/cetak_cuti/word-export1', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
                 </a>
                 @endif
                 <hr>
@@ -63,8 +53,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group float-right">
-                            <button class="btn btn-success btn-tone" name="status" value="2"><span class="fa fa-check"></span> Terima</button>
-                            <button class="btn btn-danger ml-4 btn-tone" name="status" value="4"><span class="fa fa-times"></span> Tolak</button>
+                            <button class="btn btn-success btn-tone" name="status_kj" value="SETUJUI"><span class="fa fa-check"></span> Setujui</button>
+                            <button class="btn btn-warning  btn-tone" name="status_kj" value="PERUBAHAN"><span class="fa fa-edit"></span> Perubahan</button>
+                            <button class="btn btn-primary btn-tone" name="status_kj" value="DITANGGUHKAN"><span class="fa fa-clock"></span> Ditangguhkan</button>
+                            <button class="btn btn-danger btn-tone" name="status_kj" value="TIDAK DISETUJUI"><span class="fa fa-times"></span> Tolak</button>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <x-module.pegawai>
-    <div class="card-header py-2">
+    <div class="card-header">
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> REKAP ABSENSI
         </h5>
     </div>
@@ -13,6 +13,7 @@
         <div class="card-body">
             <a href="{{ url('pegawai/absensi/create') }}" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Rekap Absen</a>
             <table id="data-table" class="table table-bordered">
+                
                 <thead class="bg-dark">
                     <th style="width: 1%;color: white;">NO</th>
                     <th width="90px" class="text-center" style="color: white;">AKSI</th>
@@ -38,7 +39,7 @@
                         <td class="text-center">{{ $absensi->bulan }}</td>
                         <td class="text-center">{{ $absensi->jumlah_kehadiran }} Hari</td>
                         <td class="text-center">
-                            {{ number_format(($absensi->jumlah_kehadiran / 21) * 100, 2) }}
+                            {{ number_format(($absensi->jumlah_kehadiran / $absensi->jumlah_kerja) * 100, 2) }}
                             %
                         </td>
                     </tr>

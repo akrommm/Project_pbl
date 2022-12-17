@@ -11,182 +11,38 @@
                     <h4 class="card-title text-center">Sistem generate tanda tangan digital</h4>
                 </div>
                 <div class="card-body">
-                    <!-- Nav tabs -->
-                    <div class="default-tab ">
-                        <ul class="nav nav-tabs justify-content-center" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#home">
-                                    Pengajuan Izin</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#profile">
-                                    Persetujuan Izin</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#contact">
-                                    Pengajuan Sakit</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#message">
-                                    Persetujuan Sakit</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel">
-                                <div class="pt-4">
-                                    <h4>Qr Generate </h4>
-                                    <br>
-                                    <form action="{{ url('simantap/pengajuan-izin') }}" method="post">
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>PERIHAL</h5>
-                                                    <input type="text" class="form-control input-rounded @error('perihal') is-invalid @enderror" name="perihal">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>DEVISI</h5>
-                                                    <input type="text" class="form-control input-rounded @error('devisi') is-invalid @enderror" name="devisi">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>TANGGAL PENGAJUAN</h5>
-                                                    <input type="date" class="form-control input-rounded @error('tanggal') is-invalid @enderror" name="tanggal">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <button class="btn btn-dark float-right"><i class="fas fa-qrcode"></i> Generate</button>
-
-                                    </form>
+                    <div class="">
+                        <form action="{{ url('simantap/qr-generator') }}" method="post">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <h5>JENIS TANDA TANGAN</h5>
+                                        <select name="ttd" id="" class="form-control">
+                                            <option disabled selected> Pilih Jenis Tanda Tangan</option>
+                                            <option value="Pengajuan Surat">Pengajuan Surat</option>
+                                            <option value="Persetujuan Surat">Persetujuan Surat</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <h5>TANGGAL SURAT</h5>
+                                        <input type="date" class="form-control input-rounded @error('tanggal') is-invalid @enderror" name="tanggal">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="profile">
-                                <div class="pt-4">
-                                    <h4>Qr Generate </h4>
-                                    <br>
-                                    <form action="{{ url('simantap/persetujuan-izin') }}" method="post">
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>PEGAWAI YANG DISETUJUI</h5>
-                                                    <input type="text" class="form-control input-rounded @error('nama') is-invalid @enderror" name="nama">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>UNIT KERJA</h5>
-                                                    <input type="text" class="form-control input-rounded @error('devisi') is-invalid @enderror" name="devisi">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>PERIHAL</h5>
-                                                    <input type="text" class="form-control input-rounded @error('perihal') is-invalid @enderror" name="perihal">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>TANGGAL PERSETUJUAN</h5>
-                                                    <input type="date" class="form-control input-rounded @error('tanggal') is-invalid @enderror" name="tanggal">
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <button class="btn btn-dark float-right"><i class="fas fa-qrcode"></i> Generate</button>
-
-                                    </form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <h5>PERIHAL</h5>
+                                        <input type="text" class="form-control input-rounded @error('perihal') is-invalid @enderror" name="perihal">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="contact">
-                                <div class="pt-4">
-                                    <h4>Qr generate </h4>
-                                    <br>
-                                    <form action="{{ url('simantap/pengajuan-barang') }}" method="post">
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Nama</h5>
-                                                    <input type="text" class="form-control input-rounded @error('nama') is-invalid @enderror" name="nama">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Jabatan</h5>
-                                                    <input type="text" class="form-control input-rounded @error('jabatan') is-invalid @enderror" name="jabatan">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Devisi</h5>
-                                                    <input type="text" class="form-control input-rounded @error('devisi') is-invalid @enderror" name="devisi">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Tanggal pengajuan</h5>
-                                                    <input type="date" class="form-control input-rounded @error('tanggal') is-invalid @enderror" name="tanggal">
-                                                </div>
-                                            </div>
-                                        </div>
+                            <button class="btn btn-primary btn-tone float-right"><i class="fas fa-qrcode"></i> Generate</button>
 
-                                        <button class="btn btn-dark float-right"><i class="fas fa-qrcode"></i> Generate</button>
-
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="message">
-                                <div class="pt-4">
-                                    <h4>Qr generate </h4>
-                                    <br>
-                                    <form action="{{ url('simantap/persetujuan-barang') }}" method="post">
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Nama</h5>
-                                                    <input type="text" class="form-control input-rounded @error('tanggal_spb') is-invalid @enderror" name="tanggal_spb">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Jabatan</h5>
-                                                    <input type="text" class="form-control input-rounded @error('jabatan') is-invalid @enderror" name="keperluan_devisi">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Divisi</h5>
-                                                    <input type="text" class="form-control input-rounded @error('divisi') is-invalid @enderror" name="lokasi_kantor">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Tanggal Persetujuan</h5>
-                                                    <input type="date" class="form-control input-rounded @error('tanggal_izin') is-invalid @enderror" name="tanggal_izin">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-dark float-right"><i class="fas fa-qrcode"></i> Generate</button>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

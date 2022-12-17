@@ -89,7 +89,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    <a href="{{ url('admin/master-data/module/delete-role', $role->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"> Hapus</i></a>
+                                    <a href="{{ url('admin/master-data/module/delete-role', $role->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</a>
                                 </td>
                                 <td>{{ $role->pegawai->nip }}</td>
                                 <td>{{ $role->pegawai->nama }}</td>

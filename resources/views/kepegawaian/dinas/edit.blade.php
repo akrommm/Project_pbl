@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NAMA PENGAJU</dt>
-                        <dd>{{ $dinas->nama }}</dd>
+                        <dd>{{ $dinas->nama }}, {{ $dinas->pegawai->gelar_belakang }}</dd>
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NIP/NIK</dt>
@@ -27,23 +27,13 @@
                         <dt class="font-weight-bold">PERIHAL</dt>
                         <dd>{{ $dinas->perihal }}</dd>
                     </div>
+                    <div class="col-md-6">
+                        <dt class="font-weight-bold">UNIT KERJA</dt>
+                        <dd>{{ $dinas->pegawai->unitkerja->nama_unit }}</dd>
+                    </div>
                 </div>
                 <br>
-                @if ($dinas->status == 1)
-                <a href="{{ url('kepegawaian/cetak_dinas/word-export2', $dinas->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
-                    <i class=" fas fa-download "></i><span> Download Dokumen</span>
-                </a>
-                @endif
-                @if ($dinas->status == 'Menyetujui')
-                <a href="{{ url('kepegawaian/cetak_dinas/word-export1', $dinas->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
-                </a>
-                @endif
-                @if ($dinas->status == 'Tidak Menyetujui')
-                <a href="{{ url('kepegawaian/cetak_dinas/word-export1', $dinas->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
-                </a>
-                @endif
+                <a href="{{ url($dinas->surat) }}" class="text-white btn btn-block btn-dark col-md-2" target="blank_"><i class="fas fa-download"></i> Download Dokumen</a>
                 <hr>
                 <div class="form-grup">
                     <label for="" class="control-label">Keterangan</label>

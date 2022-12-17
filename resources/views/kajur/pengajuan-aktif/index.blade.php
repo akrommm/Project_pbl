@@ -25,28 +25,36 @@
                     $no = 1;
                     @endphp
                     @foreach ($list_cuti as $cuti)
-                    @if ($cuti->status == 2)
+                    @if ($cuti->status_kj == 'SETUJUI' || $cuti->status_kj == 'PERUBAHAN' || $cuti->status_kj == 'DITANGGUHKAN' || $cuti->status_kj == 'TIDAK DISETUJUI')
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="{{ url('kajur/pengajuan-aktif', $cuti->id) }}" class="btn btn-primary btn-tone"><i class="fa fa-eye"> Detail</i></a>
+                                <a href="{{ url('kajur/pengajuan-aktif', $cuti->id) }}" class="btn btn-primary btn-tone"><i class="fa fa-eye"></i> Detail</a>
                             </div>
                         </td>
                         <td class="text-center">{{ $cuti->nip }}</td>
                         <td class="text-center">{{ $cuti->nama}}, {{$cuti->pegawai->gelar_belakang}} </td>
                         <td class="text-center">{{ $cuti->jenis_cuti }}</td>
                         <td class="text-center">
-                            @if ($cuti->status == 1)
+                            @if ($cuti->status_kj == 1)
                             <h4><span class="badge badge-warning">Pengajuan Baru</span></h4>
                             @endif
 
-                            @if ($cuti->status == 2)
+                            @if ($cuti->status_kj == 'SETUJUI')
                             <h4><span class="badge badge-success">Disetujui Ketua Jurusan</span></h4>
                             @endif
 
-                            @if ($cuti->status == 4)
-                            <h4><span class="badge badge-danger">Pengajuan Ditolak</span></h4>
+                            @if ($cuti->status_kj == 'PERUBAHAN')
+                            <h4><span class="badge badge-warning">PERUBAHAN</span></h4>
+                            @endif
+
+                            @if ($cuti->status_kj == 'DITANGGUHKAN')
+                            <h4><span class="badge badge-primary"> Ditangguhkan Ketua Jurusan</span></h4>
+                            @endif
+
+                            @if ($cuti->status_kj == 'TIDAK DISETUJUI')
+                            <h4><span class="badge badge-danger">Tidak Disetujui Ketua Jurusan</span></h4>
                             @endif
                         </td>
                     </tr>

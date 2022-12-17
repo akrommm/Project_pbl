@@ -54,7 +54,7 @@
         <br>
         <div class="card-header">
             <div class="card-title">
-                PENGAJUAN DISETUJUI
+                PENGAJUAN AKTIF
             </div>
         </div>
         <div class="card-body">
@@ -72,12 +72,12 @@
                     @endphp
                     @foreach ($list_cuti as $cuti)
                     @if ($pegawai->id == $cuti->id_pegawai)
-                    @if ($cuti->status == '2' || $cuti->status == '3')
+                    @if ($cuti->status_kj == 'PERUBAHAN' || $cuti->status_kj == 'DITANGGUHKAN' || $cuti->status_kj == 'TIDAK DISETUJUI' || $cuti->status_ak == 'PERUBAHAN' || $cuti->status_ak == 'DITANGGUHKAN' || $cuti->status_kj == 'SETUJUI')
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <x-template.button.info-button url="pegawai/cuti" id="{{$cuti->id}}" />
+                                <x-template.button.info-button url="pegawai/pengajuan-aktif" id="{{$cuti->id}}" />
                                 <x-template.button.edit-button url="pegawai/cuti" id="{{$cuti->id}}" />
                                 <x-template.button.delete-button url="pegawai/cuti" id="{{$cuti->id}}" />
                             </div>
@@ -85,12 +85,28 @@
                         <td class="text-center">{{ $cuti->jenis_cuti }}</td>
                         <td class="text-center">{{ $cuti->dari_tanggal_string }} - {{ $cuti->sampai_tanggal_string }}</td>
                         <td class="text-center">
-                            @if ($cuti->status == 2)
+                            @if ($cuti->status_kj == 'SETUJUI')
                             <h4><span class="badge badge-success">Disetujui Ketua Jurusan</span></h4>
                             @endif
 
-                            @if ($cuti->status == 3)
-                            <h4><span class="badge badge-success">Disetujui Admin Kepegawaian</span></h4>
+                            @if ($cuti->status_kj == 'PERUBAHAN')
+                            <h4><span class="badge badge-warning">PERUBAHAN</span></h4>
+                            @endif
+
+                            @if ($cuti->status_kj == 'DITANGGUHKAN')
+                            <h4><span class="badge badge-primary">DITANGGUHKAN Ketua Jurusan</span></h4>
+                            @endif
+
+                            @if ($cuti->status_kj == 'TIDAK DISETUJUI')
+                            <h4><span class="badge badge-danger">Tidak Disetujui Ketua Jurusan</span></h4>
+                            @endif
+
+                            @if ($cuti->status_ak == 'DITANGGUHKAN')
+                            <h4><span class="badge badge-primary">DITANGGUHKAN Admin Kepegawaian</span></h4>
+                            @endif
+
+                            @if ($cuti->status_ak == 'PERUBAHAN')
+                            <h4><span class="badge badge-warning">PERUBAHAN</span></h4>
                             @endif
                         </td>
                     </tr>
@@ -104,7 +120,7 @@
         <br>
         <div class="card-header">
             <div class="card-title">
-                PENGAJUAN DITOLAK
+                PENGAJUAN SELESAI
             </div>
         </div>
         <div class="card-body">
@@ -121,13 +137,13 @@
                     $no = 1;
                     @endphp
                     @foreach ($list_cuti as $cuti)
-                    @if ($pegawai->id == $cuti->id_pegawai)
-                    @if ($cuti->status == '4' || $cuti->status == '5')
+                    @if ($cuti->id_unitkerja == $pegawai->id_unitkerja)
+                    @if ($cuti->status_ak == 'SETUJUI.' || $cuti->status_ak == 'TIDAK DISETUJUI.')
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <x-template.button.info-button url="pegawai/cuti" id="{{$cuti->id}}" />
+                                <x-template.button.info-button url="pegawai/pengajuan-selesai" id="{{$cuti->id}}" />
                                 <x-template.button.edit-button url="pegawai/cuti" id="{{$cuti->id}}" />
                                 <x-template.button.delete-button url="pegawai/cuti" id="{{$cuti->id}}" />
                             </div>
@@ -135,12 +151,12 @@
                         <td class="text-center">{{ $cuti->jenis_cuti }}</td>
                         <td class="text-center">{{ $cuti->dari_tanggal_string }} - {{ $cuti->sampai_tanggal_string }}</td>
                         <td class="text-center">
-                            @if ($cuti->status == 4)
-                            <h4><span class="badge badge-danger">Ditolak Ketua Jurusan</span></h4>
+                            @if ($cuti->status_ak == 'SETUJUI.')
+                            <h4><span class="badge badge-success">Disetujui Admin Kepegawaian</span></h4>
                             @endif
 
-                            @if ($cuti->status == 5)
-                            <h4><span class="badge badge-success">Ditolak Admin Kepegawaian</span></h4>
+                            @if ($cuti->status_ak == 'TIDAK DISETUJUI.')
+                            <h4><span class="badge badge-danger">Tidak Disetujui Admin Kepegawaian</span></h4>
                             @endif
                         </td>
                     </tr>

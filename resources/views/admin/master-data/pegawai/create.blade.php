@@ -56,7 +56,7 @@
                             @if ($errors->has('gelar_depan'))
                             <label for="" class="label text-danger">{{ $errors->get('gelar_depan')[0] }}</label>
                             @endif
-                            <input type="number" name="gelar_depan" class="form-control">
+                            <input type="text" name="gelar_depan" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -168,7 +168,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <button class="btn btn-dark float-right"><i class="far fa-save"></i> Simpan</button>
+                        <button class="btn btn-primary btn-tone float-right"><i class="far fa-save"></i> Simpan</button>
                     </div>
                 </div>
             </form>

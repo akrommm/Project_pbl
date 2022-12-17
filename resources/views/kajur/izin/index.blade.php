@@ -7,7 +7,7 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title">
-                Pengajuan Cuti Baru
+                PENGAJUAN CUTI BARU
             </div>
         </div>
         <div class="card-body">
@@ -25,6 +25,7 @@
                     $no = 1;
                     @endphp
                     @foreach ($list_cuti as $cuti)
+                    @if ($pegawai->id_unitkerja == $cuti->id_unitkerja)
                     @if ($cuti->status == 1)
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
@@ -40,16 +41,9 @@
                             @if ($cuti->status == 1)
                             <h4><span class="badge badge-warning">Pengajuan Baru</span></h4>
                             @endif
-
-                            @if ($cuti->status == 2)
-                            <h4><span class="badge badge-success">Pengajuan Disetujui</span></h4>
-                            @endif
-
-                            @if ($cuti->status == 4)
-                            <h4><span class="badge badge-danger">Pengajuan Ditolak</span></h4>
-                            @endif
                         </td>
                     </tr>
+                    @endif
                     @endif
                     @endforeach
                 </tbody>

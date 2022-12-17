@@ -14,7 +14,6 @@ Route::get('beranda', BerandaController::class);
 Route::resource('absensi', AbsensiController::class);
 Route::resource('pengajuan-aktif', PengajuanAktifController::class);
 Route::resource('pengajuan-selesai', PengajuanSelesaiController::class);
-Route::resource('sakit', SakitController::class);
 Route::resource('izin', IzinController::class);
 Route::resource('cuti', CutiController::class);
 Route::get('izin_detail/{id}', [IzinController::class, 'izin_detail']);
@@ -31,3 +30,8 @@ Route::get('cetak_izin/word-export2/{id}', [PengajuanAktifController::class, 'wo
 Route::get('cetak_sakit/word-export1/{id}', [SakitController::class, 'wordExport1']);
 Route::get('cetak_sakit/word-export2/{id}', [SakitController::class, 'wordExport2']);
 Route::get('cetak_sakit/word-export3/{id}', [SakitController::class, 'wordExport3']);
+
+// pengajuan cuti
+Route::get('cetak_cuti/word-export1/{id}', [PengajuanSelesaiController::class, 'wordExport1']);
+Route::get('cetak_cuti/word-export2/{id}', [PengajuanAktifController::class, 'wordExport2']);
+Route::get('cetak_cuti/word-export3/{id}', [PengajuanAktifController::class, 'wordExport3']);

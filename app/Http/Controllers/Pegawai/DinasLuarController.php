@@ -63,10 +63,20 @@ class DinasLuarController extends Controller
         return redirect('pegawai/dinas')->with('success', 'Berhasil Menambahkan Pengajuan');
     }
 
+    public function update($id)
+    {
+        $dinas = Dinas::find($id);
+        if (request('perihal')) $dinas->perihal = request('perihal');
+        $dinas->save();
+        if (request('surat')) $dinas->handleUploadLampiran();
+
+        return redirect('pegawai/dinas')->with('success', 'Berhasil Edit Pengajuan');
+    }
+
     function destroy($id)
     {
         $dinas = Dinas::find($id);
-        $dinas->handleDelete();
+        $dinas->handleDeleteLampiran();
         $dinas->delete();
         return redirect('pegawai/dinas')->with('danger', 'Pengajuan Berhasil Dihapus');
     }

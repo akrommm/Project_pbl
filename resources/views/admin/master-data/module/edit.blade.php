@@ -73,7 +73,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <button class="btn btn-dark float-right"><i class="far fa-save"></i> Simpan</button>
+                        <button class="btn btn-primary btn-tone float-right"><i class="far fa-save"></i> Simpan</button>
                     </div>
                 </div>
             </form>

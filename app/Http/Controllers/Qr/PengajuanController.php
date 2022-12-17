@@ -18,7 +18,7 @@ use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 
 
-class PengajuanController extends Controller
+class QController extends Controller
 {
 
     public function generateizin(Request $request)

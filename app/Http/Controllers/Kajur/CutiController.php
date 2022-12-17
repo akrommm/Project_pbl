@@ -42,7 +42,9 @@ class CutiController extends Controller
     {
         $cuti->nama_kj = auth()->user()->nama;
         $cuti->keterangan = request('keterangan');
-        $cuti->status = request('status');
+        $cuti->status_kj = request('status_kj');
+        $cuti->status = 0;
+        $cuti->nip_kj = auth()->user()->nip;
         $cuti->save();
 
         $filepath = 'word-template/Izin_kajur.docx';
@@ -74,7 +76,7 @@ class CutiController extends Controller
 
     function generateQrcode($output_file, $data, $ttd)
     {
-        $logo =  public_path('assets/images/logo/inim.png');
+        $logo =  public_path('assets/images/logo/politap.jpg');
         $isi_text = "
 Digital Signature
 " . request()->user()->nama . "
@@ -121,42 +123,31 @@ perihal : " . $data['perihal'];
         return redirect('kajur/cuti')->with('danger', 'Pengajuan Berhasil Dihapus');
     }
 
-    public function wordExport($id)
+    
+    public function wordExport2($id)
     {
         $cuti = cuti::findOrFail($id);
         $templateProcessor = new TemplateProcessor('word-template/cuti/cuti_kajur.docx');
         $templateProcessor->setValue('nama', $cuti->nama);
+        $templateProcessor->setValue('nama_kj', $cuti->nama_kj);
+        $templateProcessor->setValue('nip_kj', $cuti->nip_kj);
         $templateProcessor->setValue('nip', $cuti->nip);
         $templateProcessor->setValue('jabatan', $cuti->jabatan);
         $templateProcessor->setValue('alasan', $cuti->alasan);
         $templateProcessor->setValue('jenis_cuti', $cuti->jenis_cuti);
         $templateProcessor->setValue('masa_kerja', $cuti->masa_kerja);
         $templateProcessor->setValue('lamanya_cuti', $cuti->lamanya_cuti);
+        $templateProcessor->setValue('unitkerja', $cuti->pegawai->unitkerja->nama_unit);
         $templateProcessor->setValue('alamat', $cuti->alamat);
+        $templateProcessor->setValue('pangkat', $cuti->pangkat);
         $templateProcessor->setValue('telp', $cuti->telp);
+        $templateProcessor->setValue('status_kj', $cuti->status_kj);
         $templateProcessor->setValue('created_at', $cuti->created_at_string);
+        $templateProcessor->setValue('keterangan', $cuti->keterangan);
         $templateProcessor->setValue('dari_tanggal', $cuti->dari_tanggal_string);
         $templateProcessor->setValue('sampai_tanggal', $cuti->sampai_tanggal_string);
         $qrdata = ["path" => $cuti->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
         $templateProcessor->setImageValue('qr', $qrdata);
-        $fileName = $cuti->nama;
-        $templateProcessor->saveAs($fileName . '.docx');
-        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
-    }
-
-    public function wordExport2($id)
-    {
-        $cuti = cuti::findOrFail($id);
-        $templateProcessor = new TemplateProcessor('word-template/cuti_kajur.docx');
-        $templateProcessor->setValue('nama', $cuti->nama);
-        $templateProcessor->setValue('nip', $cuti->nip);
-        $templateProcessor->setValue('jabatan', $cuti->jabatan);
-        $templateProcessor->setValue('perihal', $cuti->perihal);
-        $templateProcessor->setValue('dari_tanggal', $cuti->dari_tanggal_string);
-        $templateProcessor->setValue('sampai_tanggal', $cuti->sampai_tanggal_string);
-        $qrdata = ["path" => $cuti->qr, 'width' => 100, 'height' => 100, 'ratio' => false];
-        $templateProcessor->setImageValue('qr', $qrdata);
-        $templateProcessor->setImageValue('lampiran', ["path" => $cuti->lampiran, 'width' => 600, 'height' => 400, 'ratio' => false]);
         $templateProcessor->setImageValue('qr_kj', ["path" => $cuti->qr_kj, 'width' => 100, 'height' => 100, 'ratio' => false]);
         $fileName = $cuti->nama;
         $templateProcessor->saveAs($fileName . '.docx');

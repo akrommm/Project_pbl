@@ -47,3 +47,7 @@ Route::prefix('kepegawaian')->middleware('auth')->group(function () {
 Route::prefix('simantap')->middleware('auth')->group(function () {
     include "_/qr.php";
 });
+
+Route::prefix('unit')->middleware('auth')->group(function () {
+    include "_/unit.php";
+});

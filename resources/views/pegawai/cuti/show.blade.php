@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NAMA PENGAJU</dt>
-                        <dd>{{ $cuti->nama }}</dd>
+                        <dd>{{ $cuti->nama }}, {{ $cuti->pegawai->gelar_belakang }}</dd>
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NIP/NIK</dt>
@@ -28,7 +28,7 @@
                         <dd>{{ $cuti->jenis_cuti }}</dd>
                     </div>
                     <div class="col-md-6">
-                        <dt class="font-weight-bold">Periode cuti</dt>
+                        <dt class="font-weight-bold">PERIODE CUTI</dt>
                         <dd>{{ $cuti->dari_tanggal_string }} - {{ $cuti->sampai_tanggal_string }}</dd>
                     </div>
                     <div class="col-md-6">
@@ -36,20 +36,50 @@
                         <dd>{{ $cuti->lamanya_cuti }}</dd>
                     </div>
                 </div>
-                <br>
-                @if ($cuti->status == 1)
-                <a href="{{ url('pegawai/cetak_cuti/word-export', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
+                <hr>
+                @if ($cuti->status== '1')
+                <a href="{{ url('pegawai/cetak_cuti/word-export1', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
                 </a>
                 @endif
-                @if ($cuti->status == 2)
-                <a href="{{ url('pegawai/cetak_cuti/word-export2', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
+                @if ($cuti->status_kj == 'SETUJUI')
+                <a href="{{ url('pegawai/cetak_cuti/word-export2', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
                 </a>
                 @endif
-                @if ($cuti->status == 3)
-                <a href="{{ url('pegawai/cetak_cuti/word-export3', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
+                @if ($cuti->status_kj == 'TIDAK DISETUJUI')
+                <a href="{{ url('pegawai/cetak_cuti/word-export2', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
+                </a>
+                @endif
+                @if ($cuti->status_kj == 'PERUBAHAN')
+                <a href="{{ url('pegawai/cetak_cuti/word-export2', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
+                </a>
+                @endif
+                @if ($cuti->status_kj == 'DITANGGUHKAN')
+                <a href="{{ url('pegawai/cetak_cuti/word-export2', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
+                </a>
+                @endif
+                @if ($cuti->status_ak == 'SETUJUI.')
+                <a href="{{ url('pegawai/cetak_cuti/word-export3', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
+                </a>
+                @endif
+                @if ($cuti->status_ak == 'PERUBAHAN.')
+                <a href="{{ url('pegawai/cetak_cuti/word-export3', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
+                </a>
+                @endif
+                @if ($cuti->status_ak == 'TIDAK DISETUJUI.')
+                <a href="{{ url('pegawai/cetak_cuti/word-export3', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
+                </a>
+                @endif
+                @if ($cuti->status_ak == 'DITANGGUHKAN.')
+                <a href="{{ url('pegawai/cetak_cuti/word-export3', $cuti->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                    <span><i class="fas fa-download"></i> Download Dokumen</span>
                 </a>
                 @endif
                 <br>

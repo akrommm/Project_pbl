@@ -1,9 +1,8 @@
 <x-module.pegawai>
-    <div class="card-header py-2">
+    <div class="card-header">
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> TAMBAH PENGAJUAN IZIN PERJALANAN DINAS LUAR
         </h5>
     </div>
-    <br>
     <div class="row">
         <div class="col-md-12">
             <a href="{{ url('pegawai/dinas') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"></i> Kembali</a>

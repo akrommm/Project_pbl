@@ -53,6 +53,7 @@ class IzinController extends Controller
     {
         $izin->keterangan = request('keterangan');
         $izin->status = request('status');
+        $izin->nip_ak = auth()->user()->nip;
         $izin->nama_ak = auth()->user()->nama;
         $izin->save();
 

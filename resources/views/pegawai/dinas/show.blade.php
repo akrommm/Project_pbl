@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NAMA PENGAJU</dt>
-                        <dd>{{ $dinas->nama }}</dd>
+                        <dd>{{ $dinas->nama }}, {{ $dinas->pegawai->gelar_belakang }}</dd>
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">NIP/NIK</dt>
@@ -32,21 +32,7 @@
                     </div>
                 </div>
                 <hr>
-                @if ($dinas->status == 1)
-                <a href="{{ url('pegawai/cetak_dinas/word-export', $dinas->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
-                </a>
-                @endif
-                @if ($dinas->status == 2)
-                <a href="{{ url('pegawai/cetak_dinas/word-export2', $dinas->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
-                </a>
-                @endif
-                @if ($dinas->status == 3)
-                <a href="{{ url('pegawai/cetak_dinas/word-export3', $dinas->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                    <span> Download Dokumen</span>
-                </a>
-                @endif
+                <a href="{{ url($dinas->surat) }}" class="text-white btn btn-block btn-dark col-md-2" target="blank_"><i class="fas fa-download"></i> Download Dokumen</a>
                 <br>
             </form>
         </div>

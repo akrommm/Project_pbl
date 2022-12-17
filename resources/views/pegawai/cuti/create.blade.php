@@ -1,9 +1,8 @@
 <x-module.pegawai>
-    <div class="card-header py-2">
+    <div class="card-header">
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> TAMBAH PENGAJUAN CUTI
         </h5>
     </div>
-    <br>
     <div class="row">
         <div class="col-md-12">
             <a href="{{ url('pegawai/cuti') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"></i> kembali</a>
@@ -45,6 +44,16 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3">
+                                <label for="" class="control-label mt-3">PANGKAT/GOL</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" class="form-control  @error('pangkat') is-invalid @enderror" name="pangkat">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
                                 <label for="" class="control-label mt-3">MASA KERJA</label>
                             </div>
                             <div class="col-md-9">
@@ -76,12 +85,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <select name="lamanya_cuti" class="form-control">
-                                        <option disabled selected>Pilih Lamanya Cuti</option>
-                                        <option value="Hari">Hari</option>
-                                        <option value="Bulan">Bulan</option>
-                                        <option value="Tahun">Tahun</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="lamanya_cuti" placeholder="...Hari/Bulan/Tahun">
                                 </div>
                             </div>
                         </div>

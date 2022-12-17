@@ -34,19 +34,14 @@
                 </div>
             </div>
             <br>
-            @if ($izin->status == 1)
-            <a href="{{ url('kepegawaian/cetak_izin/word-export1', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                <span> Download Dokumen</span>
-            </a>
-            @endif
             @if ($izin->status == 'Menyetujui')
-            <a href="{{ url('kepegawaian/cetak_izin', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+            <a href="{{ url('kepegawaian/cetak_izin/word-export10', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
                 <span><i class=" fas fa-download "></i> Download Dokumen</span>
             </a>
             @endif
             @if ($izin->status == 'Tidak Menyetujui')
-            <a href="{{ url('kepegawaian/cetak_izin/word-export3', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark fas fa-download col-md-2">
-                <span> Download Dokumen</span>
+            <a href="{{ url('kepegawaian/cetak_izin/word-export11', $izin->id) }}" target="_blank" class="text-white btn btn-block btn-dark col-md-2">
+                <span><i class=" fas fa-download "></i> Download Dokumen</span>
             </a>
             @endif
             <hr>

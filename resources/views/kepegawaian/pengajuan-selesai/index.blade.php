@@ -64,7 +64,7 @@
                     <th width="170px " class="text-center" style="color: white;">AKSI</th>
                     <th width="100px " class="text-center" style="color: white;">NIP/NIK</th>
                     <th class="text-center" style="color: white;">NAMA PEGAWAI</th>
-                    <th class="text-center" style="color: white;">PERIHAL</th>
+                    <th class="text-center" style="color: white;">JENIS CUTI</th>
                     <th width="190px " class="text-center" style="color: white;">STATUS</th>
                 </thead>
                 <tbody>
@@ -72,7 +72,7 @@
                     $no = 1;
                     @endphp
                     @foreach ($list_cuti as $cuti)
-                    @if ($cuti->status == 3)
+                    @if ($cuti->status_ak == 'SETUJUI.' || $cuti->status_ak == 'PERUBAHAN.' || $cuti->status_ak == 'DITANGGUHKAN.' || $cuti->status_ak == 'TIDAK DISETUJUI.')
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
                         <td class="text-center">
@@ -82,22 +82,22 @@
                         </td>
                         <td class="text-center">{{ $cuti->nip }}</td>
                         <td class="text-center">{{ $cuti->nama}} </td>
-                        <td class="text-center">{{ $cuti->perihal }}</td>
+                        <td class="text-center">{{ $cuti->jenis_cuti }}</td>
                         <td class="text-center">
-                            @if ($cuti->status == 1)
-                            <h4><span class="badge badge-warning">Pengajuan Baru</span></h4>
+                            @if ($cuti->status_ak == 'PERUBAHAN.')
+                            <h4><span class="badge badge-warning">Perubahan</span></h4>
                             @endif
 
-                            @if ($cuti->status == 2)
-                            <h4><span class="badge badge-success">Disetujui Ketua Jurusan</span></h4>
+                            @if ($cuti->status_ak == 'SETUJUI.')
+                            <h4><span class="badge badge-success">Disetujui</span></h4>
                             @endif
 
-                            @if ($cuti->status == 3)
-                            <h4><span class="badge badge-success">Disetujui Admin Kepegawaian</span></h4>
+                            @if ($cuti->status_ak == 'TIDAK DISETUJUI.')
+                            <h4><span class="badge badge-danger">Tidak Disetujui</span></h4>
                             @endif
 
-                            @if ($cuti->status == 4)
-                            <h4><span class="badge badge-danger">Pengajuan Ditolak</span></h4>
+                            @if ($cuti->status_ak == 'DITANGGUHKAN.')
+                            <h4><span class="badge badge-primary">Ditangguhkan</span></h4>
                             @endif
                         </td>
                     </tr>

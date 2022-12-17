@@ -9,7 +9,11 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
+                    @if ($pegawai->foto)
                     <img src="{{ url($pegawai->foto) }}" class="img-fluid" alt="">
+                    @else
+                    <img src="{{url('/')}}/images/profile.jpg" class="img-fluid" alt="">
+                    @endif
                 </div>
             </div>
         </div>

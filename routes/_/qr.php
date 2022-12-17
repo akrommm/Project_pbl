@@ -12,3 +12,5 @@ Route::post('pengajuan-izin', [PengajuanController::class, 'generateizin']);
 Route::post('pengajuan-sakit', [PengajuanController::class, 'generatesakit']);
 Route::post('persetujuan-izin', [PersetujuanController::class, 'generateizin']);
 Route::post('persetujuan-sakit', [PersetujuanController::class, 'generatesakit']);
+
+Route::post('qr-generator', [QrController::class, 'generate']);

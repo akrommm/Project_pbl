@@ -31,12 +31,17 @@
             <li class="dropdown dropdown-animated scale-left" style="padding-left: 20px;">
                 <div class="pointer" data-toggle="dropdown">
                     <div class="pull-left p-r-10 fs-14 font-heading d-lg-block d-none">
-                        <span class="semi-bold">
+                        <span class="semi-bold" style="font-weight: 500 ;">
                             @if (auth()->check())
                             Hallo, {{ auth()->user()->nama }}
                             @endif
+                            @if (auth()->user()->foto)
+                            <img src="{{url('/'.auth()->user()->foto)}}" alt="User Image" style="width: 60px;height: 60px; padding: 10px; margin: 0px; " class="img-circle">
+                            @else
+                            <img src="{{url('/')}}/images/profile.jpg" alt="User Avatar" style="width: 60px;height: 60px; padding: 10px; margin: 0px; " class="img-circle">
+                            <!-- <img src="{{url('/')}}/images/profile.jpg" class="img-fluid" alt=""> -->
+                            @endif
                         </span>
-                        <i class="anticon anticon-down"></i>
                     </div>
                 </div>
                 <div class="p-b-15 p-t-20 dropdown-menu pop-profile">

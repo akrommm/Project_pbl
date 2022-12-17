@@ -1,4 +1,4 @@
-<x-module.pegawai>
+<x-module.kajur>
     <div class="card-header py-2">
         <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> PENGAJUAN CUTI
         </h5>
@@ -25,7 +25,7 @@
                     $no = 1;
                     @endphp
                     @foreach ($list_cuti as $cuti)
-                    @if ($pegawai->id == $cuti->id_pegawai)
+                    @if ($pegawai->id_unitkerja == $cuti->id_unitkerja)
                     @if ($cuti->status == 1)
                     <tr>
                         <td class="text-center">{{ $no++ }}</td>
@@ -191,4 +191,4 @@
             </table>
         </div>
     </div>
-</x-module.pegawai>
+</x-module.kajur>
