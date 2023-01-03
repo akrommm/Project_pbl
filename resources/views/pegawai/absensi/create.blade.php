@@ -35,7 +35,14 @@
                     </div>
                     <div class="col-md-9">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="" readonly value="{{ auth()->user()->jabatan }}">
+                            <select class="form-control default-select" name="jabatan">
+                                <option selected>Pilih Jabatan</option>
+                                @foreach ($list_golongan as $golongan)
+                                </option>
+                                <option value="{{ $golongan->id }}">{{ $golongan->jabatan }}
+                                </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>

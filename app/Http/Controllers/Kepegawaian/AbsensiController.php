@@ -30,12 +30,12 @@ class AbsensiController extends Controller
         $worksheet->getCell('C4')->setValue(request()->user()->unitkerja->nama_unit);
         $worksheet->getCell('C5')->setValue($absensi->bulan);
         $worksheet->getCell('A9')->setValue($absensi->nama);
-        $worksheet->getCell('B9')->setValue($absensi->jabatan);
+        $worksheet->getCell('B9')->setValue($absensi->golongan->jabatan);
         $worksheet->getCell('C9')->setValue($absensi->jumlah_kerja);
         $worksheet->getCell('D9')->setValue($absensi->jumlah_kehadiran);
-        $worksheet->getCell('B6')->setValue('UANG MAKAN');
-        $worksheet->getCell('C6')->setValue('35000');
-        $worksheet->getCell('G8')->setValue('UANG MAKAN');
+        $worksheet->getCell('A6')->setValue('Uang Makan Harian');
+        $worksheet->getCell('C6')->setValue($absensi->golongan->uang_makan);
+        $worksheet->getCell('G8')->setValue('Uang Makan');
         $worksheet->getCell('G9')->setValue('=D9*C6');
         $worksheet->getCell('E9')->setValue('=D9/C9*100');
 

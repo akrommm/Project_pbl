@@ -45,4 +45,12 @@
             </li>
         </ul>
     </li>
+    <li class="nav-item">
+        <a href=" {{ url('kepegawaian/golongan') }}">
+            <span class="icon-holder">
+                <i class="nav-icon fas fa-award"></i>
+            </span>
+            <span class="title">GOLONGAN</span>
+        </a>
+    </li>
 </ul>

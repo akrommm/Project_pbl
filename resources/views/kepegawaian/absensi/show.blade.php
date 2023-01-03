@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">JABATAN</dt>
-                        <dd>{{ $absensi->jabatan }}</dd>
+                        <dd>{{ $absensi->golongan->jabatan }}</dd>
                     </div>
                     <div class="col-md-6">
                         <dt class="font-weight-bold">UNIT KERJA</dt>

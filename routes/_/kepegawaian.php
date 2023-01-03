@@ -4,6 +4,7 @@ use App\Http\Controllers\Kepegawaian\AbsensiController;
 use App\Http\Controllers\Kepegawaian\BerandaController;
 use App\Http\Controllers\Kepegawaian\CutiController;
 use App\Http\Controllers\Kepegawaian\DinasController;
+use App\Http\Controllers\Kepegawaian\GolonganController;
 use App\Http\Controllers\Kepegawaian\IzinController;
 use App\Http\Controllers\Kepegawaian\PengajuanSelesaiController;
 use App\Http\Controllers\Kepegawaian\QrController;
@@ -17,6 +18,7 @@ Route::resource('izin', IzinController::class);
 Route::resource('cuti', CutiController::class);
 Route::resource('dinas', DinasController::class);
 Route::resource('absensi', AbsensiController::class);
+Route::resource('golongan', GolonganController::class);
 Route::get('exportabsensi/{id}', [AbsensiController::class, 'absensiexport']);
 
 Route::get('cetak_izin/word-export/{id}', [IzinController::class, 'wordExport']);

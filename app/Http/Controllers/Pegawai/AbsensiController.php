@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pegawai;
 
 use App\Exports\AbsensiExport;
 use App\Http\Controllers\Controller;
+use App\Models\Golongan\Golongan;
 use App\Models\Pegawai\Absensi;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -34,16 +35,17 @@ class AbsensiController extends Controller
 
     public function create()
     {
-        return view('pegawai.absensi.create');
+        $data['list_golongan'] = Golongan::all();
+        return view('pegawai.absensi.create', $data);
     }
 
     public function store()
     {
         $absensi = new Absensi();
+        $absensi->id_golongan = request('jabatan');
         $absensi->id_pegawai = request()->user()->id;
         $absensi->id_unitkerja = request()->user()->unitkerja->id;
         $absensi->nama = request()->user()->nama;
-        $absensi->jabatan = request()->user()->jabatan;
         $absensi->bulan = request('bulan');
         $absensi->nip = request()->user()->nip;
         $absensi->jumlah_kehadiran = request('jumlah_kehadiran');
@@ -72,12 +74,12 @@ class AbsensiController extends Controller
         $worksheet->getCell('C4')->setValue(request()->user()->unitkerja->nama_unit);
         $worksheet->getCell('C5')->setValue($absensi->bulan);
         $worksheet->getCell('A9')->setValue($absensi->nama);
-        $worksheet->getCell('B9')->setValue($absensi->jabatan);
+        $worksheet->getCell('B9')->setValue($absensi->golongan->jabatan);
         $worksheet->getCell('C9')->setValue($absensi->jumlah_kerja);
         $worksheet->getCell('D9')->setValue($absensi->jumlah_kehadiran);
-        $worksheet->getCell('B6')->setValue('UANG MAKAN');
-        $worksheet->getCell('C6')->setValue('35000');
-        $worksheet->getCell('G8')->setValue('UANG MAKAN');
+        $worksheet->getCell('A6')->setValue('Uang Makan Harian');
+        $worksheet->getCell('C6')->setValue($absensi->golongan->uang_makan);
+        $worksheet->getCell('G8')->setValue('Uang Makan');
         $worksheet->getCell('G9')->setValue('=D9*C6');
         $worksheet->getCell('E9')->setValue('=D9/C9*100');
 

@@ -10,7 +10,7 @@
             <span class="title">DASHBOARD</span>
         </a>
     </li>
-    <li class="nav-item dropdown">
+    <!-- <li class="nav-item dropdown">
         <a class="dropdown-toggle" href="javascript:void(0);">
             <span class="icon-holder">
                 <i class="nav-icon fas fa-file-alt"></i>
@@ -23,7 +23,7 @@
         <ul class="dropdown-menu">
             <x-template.menu.menu-item title="Rekap Absensi" url="kajur/absensi" icon="file-alt" />
         </ul>
-    </li>
+    </li> -->
     <li class="nav-item dropdown">
         <a class="dropdown-toggle" href="javascript:void(0);">
             <span class="icon-holder">
