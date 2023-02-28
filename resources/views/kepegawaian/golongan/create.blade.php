@@ -11,7 +11,7 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="" class="control-label mt-3">JABATAN </label>
+                        <label for="" class="control-label mt-3">GOLONGAN </label>
                     </div>
                     <div class="col-md-9">
                         <div class="form-group">

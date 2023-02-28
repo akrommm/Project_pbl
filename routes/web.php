@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Profile\PegawaiProfileController;
-use App\Http\Controllers\Kajur\SkpController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

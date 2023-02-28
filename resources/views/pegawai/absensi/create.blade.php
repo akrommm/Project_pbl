@@ -7,6 +7,7 @@
     <a href="{{ url('pegawai/absensi') }}" class="btn btn-primary btn-tone btn-sm mt-4"><i class="fas fa-arrow-left"></i> Kembali</a>
     <div class="card">
         <div class="card-body">
+
             <form action="{{ url('pegawai/absensi') }}" method="post">
                 @csrf
                 <div class="row">
@@ -31,12 +32,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="" class="control-label mt-3">JABATAN </label>
+                        <label for="" class="control-label mt-3">GOLONGAN </label>
                     </div>
                     <div class="col-md-9">
                         <div class="form-group">
                             <select class="form-control default-select" name="jabatan">
-                                <option selected>Pilih Jabatan</option>
+                                <option selected>Pilih Golongan</option>
                                 @foreach ($list_golongan as $golongan)
                                 </option>
                                 <option value="{{ $golongan->id }}">{{ $golongan->jabatan }}
@@ -46,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-3">
                         <label for="" class="control-label mt-3">DATA ABSENSI BULAN </label>
                     </div>
@@ -119,7 +120,7 @@
                             <input type="number" class="form-control" name="jumlah_sakit" placeholder="..hari">
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Jabatan</label>
                     <input type="text" name="jabatan" class="form-control" id="exampleFormControlInput1">

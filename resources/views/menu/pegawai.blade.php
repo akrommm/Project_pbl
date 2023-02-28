@@ -7,7 +7,7 @@
             <span class="icon-holder">
                 <i class="nav-icon fas fa-home"></i>
             </span>
-            <span class="title">DASHBOARD</span>
+            <span class="title">BERANDA</span>
         </a>
     </li>
     <li class="nav-item dropdown">

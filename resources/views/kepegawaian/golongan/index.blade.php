@@ -1,6 +1,6 @@
 <x-module.kepegawaian>
     <div class="card-header">
-        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> GOLONGAN UANG MAKAN
+        <h5 class="m-0 font-weight-bold text-dark" style="text-align:center; font-size: 25px"> GOLONGAN TUNJANGAN UANG MAKAN
         </h5>
     </div>
     <br>
@@ -11,7 +11,7 @@
                 <thead class="bg-dark">
                     <th style="width: 1%;color: white;">NO</th>
                     <th width="90px" class="text-center" style="color: white;">AKSI</th>
-                    <th class="text-center" style="color: white;">JABATAN</th>
+                    <th class="text-center" style="color: white;">GOLONGAN</th>
                     <th class="text-center" style="color: white;">UANG MAKAN</th>
                 </thead>
                 <tbody>
