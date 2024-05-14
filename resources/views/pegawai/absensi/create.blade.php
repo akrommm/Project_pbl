@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="row">
+                <div class="row">
                     <div class="col-md-3">
                         <label for="" class="control-label mt-3">DATA ABSENSI BULAN </label>
                     </div>
@@ -120,7 +120,7 @@
                             <input type="number" class="form-control" name="jumlah_sakit" placeholder="..hari">
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Jabatan</label>
                     <input type="text" name="jabatan" class="form-control" id="exampleFormControlInput1">

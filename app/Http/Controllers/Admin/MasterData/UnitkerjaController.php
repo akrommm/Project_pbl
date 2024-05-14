@@ -21,6 +21,12 @@ class UnitkerjaController extends Controller
         return view('admin.master-data.unitkerja.create');
     }
 
+    public function edit(Unitkerja $unitkerja)
+    {
+        $data['unitkerja'] = $unitkerja;
+        return view('admin.master-data.unitkerja.edit', $data);
+    }
+
     public function store()
     {
         $unitkerja = new Unitkerja();
